@@ -6,7 +6,7 @@ function formatCurrency(n: number) {
   return "$" + Math.round(n).toLocaleString("en-AU");
 }
 
-// Stamp duty thresholds per state (simplified, illustrative)
+
 const STAMP_DUTY: Record<string, (price: number, fhb: boolean) => number> = {
   VIC: (price, fhb) => {
     if (fhb && price <= 600000) return 0;

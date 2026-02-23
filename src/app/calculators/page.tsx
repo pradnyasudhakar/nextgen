@@ -25,7 +25,7 @@ export default function CalculatorsPage() {
           Financial Tools
         </p>
         <h1 className="text-3xl sm:text-4xl font-black text-white mb-3">
-          Free Calculators
+           Calculators
         </h1>
         <p className="text-white/80 text-base max-w-xl mx-auto">
           Estimate your borrowing power, monthly repayments, and property purchase costs instantly.

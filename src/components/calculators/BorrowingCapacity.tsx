@@ -35,7 +35,7 @@ export default function BorrowingCapacity() {
     const rate = parseFloat(interestRate) / 100;
     const term = parseInt(loanTerm);
     const assessmentRate = rate + 0.03; // 3% buffer
-    const hem = parseFloat(HEM_TABLE[dependants] ?? "1800");
+    const hem = HEM_TABLE[dependants] ?? 1800;
 
     const toAnnual = (val: string, freq: string) =>
       parseFloat(val || "0") * freqMultiplier(freq);
@@ -116,7 +116,7 @@ export default function BorrowingCapacity() {
         {/* Dependants */}
         <div>
           <label className={labelCls} style={{ color: "var(--color-primary)" }}>No. of dependants</label>
-          <select value={dependants} onChange={(e) => setDependants(e.target.value)} className={inputCls} style={{ focusRingColor: "var(--color-primary)" }}>
+          <select value={dependants} onChange={(e) => setDependants(e.target.value)} className={inputCls}>
             {["0", "1", "2", "3", "4"].map((n) => <option key={n}>{n}</option>)}
           </select>
         </div>
@@ -253,7 +253,7 @@ export default function BorrowingCapacity() {
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
               <XAxis dataKey="year" label={{ value: "Year", position: "insideBottom", offset: -10, fontSize: 12 }} tick={{ fontSize: 11 }} />
               <YAxis tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`} tick={{ fontSize: 11 }} />
-              <Tooltip formatter={(v: number) => [formatCurrency(v), "Balance"]} labelFormatter={(l) => `Year ${l}`} />
+              <Tooltip formatter={(v: number | undefined) => [formatCurrency(v ?? 0), "Balance"]} labelFormatter={(l) => `Year ${l}`} />
               <Area type="monotone" dataKey="balance" stroke="var(--color-primary)" strokeWidth={2} fill="url(#purpleGrad)" />
             </AreaChart>
           </ResponsiveContainer>

@@ -174,7 +174,7 @@ export default function Repayments() {
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
               <XAxis dataKey="year" label={{ value: "Year", position: "insideBottom", offset: -10, fontSize: 12 }} tick={{ fontSize: 11 }} />
               <YAxis tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`} tick={{ fontSize: 11 }} />
-              <Tooltip formatter={(v: number, name: string) => [formatCurrency(v), name === "principal" ? "Principal" : "Interest"]} labelFormatter={(l) => `Year ${l}`} />
+              <Tooltip formatter={(v: number | undefined, name: string | undefined) => [formatCurrency(v ?? 0), name === "principal" ? "Principal" : "Interest"]} labelFormatter={(l) => `Year ${l}`} />
               <Legend verticalAlign="top" />
               <Area type="monotone" dataKey="interest" name="interest" stroke="var(--color-secondary)" strokeWidth={2} fill="url(#secGrad)" />
               <Area type="monotone" dataKey="principal" name="principal" stroke="var(--color-primary)" strokeWidth={2} fill="url(#primGrad)" />

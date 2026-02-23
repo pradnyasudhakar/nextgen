@@ -4,7 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "NextGen Financial Services",
+  title: "NextGen ",
   description: "Your trusted finance broker in Melbourne.",
 };
 
