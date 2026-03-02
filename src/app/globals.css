@@ -1,17 +1,118 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&display=swap");
 @import "tailwindcss";
 
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DESIGN TOKENS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @theme {
-  --color-primary: #3b1fa3;
-  --color-primary-dark: #2d177d;
-  --color-primary-light: #ede9ff;
-  --color-secondary: #6c47d9;
-  --color-accent: #7c3aed;
-  --color-dark: #0f0a1e;
-  --color-light: #f8f7ff;
+  /* Colors */
+  --color-primary:       #0a6b52;
+  --color-primary-dark:  #085c45;
+  --color-primary-light: #e6f4ef;
+  --color-secondary:     #0db87a;
+  --color-accent:        #0d9e75;
+  --color-dark:          #071c16;
+  --color-light:         #f0faf6;
+
+  /* Font */
   --font-sans: "Inter", sans-serif;
+
+  /* Font Weights */
+  --font-regular:  400;
+  --font-medium:   500;
+  --font-semibold: 600;
+  --font-bold:     700;
+  --font-black:    900;
+
+  /* Spacing */
+  --section-y:    5rem;
+  --section-x:    4rem;
+
+  /* Border Radius */
+  --radius-sm:   0.5rem;
+  --radius-md:   0.75rem;
+  --radius-lg:   1rem;
+  --radius-xl:   1.5rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(10,107,82,0.08);
+  --shadow-md: 0 4px 16px rgba(10,107,82,0.12);
+  --shadow-lg: 0 8px 32px rgba(10,107,82,0.16);
+
+  /* Transition */
+  --transition: all 0.2s ease;
 }
 
-/* *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; } */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BASE RESET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 html { scroll-behavior: smooth; }
-body { font-family: var(--font-sans); color: #1a1a2e; background: #ffffff; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family:             var(--font-sans);
+  color:                   #1a2e28;
+  background:              #ffffff;
+  -webkit-font-smoothing:  antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height:             1.6;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   LAYOUT ONLY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.section {
+  padding-top:    var(--section-y);
+  padding-bottom: var(--section-y);
+  padding-left:   1.5rem;
+  padding-right:  1.5rem;
+}
+@media (min-width: 640px) {
+  .section { padding-left: 2.5rem; padding-right: 2.5rem; }
+}
+@media (min-width: 1024px) {
+  .section { padding-left: var(--section-x); padding-right: var(--section-x); }
+}
+
+.container {
+  max-width:    1280px;
+  margin-left:  auto;
+  margin-right: auto;
+}
+
+.section-header {
+  margin-bottom: 3rem;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ICON BUTTON (navbar/footer icons only)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.icon-btn {
+  width:           2.5rem;
+  height:          2.5rem;
+  border-radius:   var(--radius-full);
+  border:          1px solid var(--color-primary-light);
+  color:           var(--color-primary);
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  transition:      var(--transition);
+  cursor:          pointer;
+}
+.icon-btn:hover { background: var(--color-primary-light); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DIVIDER & LINK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.divider {
+  border:     none;
+  border-top: 1px solid #e8eeec;
+  margin:     0;
+}
+
+.link {
+  color:       var(--color-primary);
+  font-weight: var(--font-semibold);
+  transition:  var(--transition);
+}
+.link:hover { opacity: 0.75; }
