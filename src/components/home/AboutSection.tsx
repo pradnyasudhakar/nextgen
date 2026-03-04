@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Image from "next/image";
 import { H2, Label, P ,Highlight } from "../ui/typography";
 import { Button } from "../ui/button";
 
@@ -9,11 +9,12 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           {/* ── Left: Image ── */}
-          <div className="rounded-md max-w-auto max-h-105 overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80"
+          <div className="rounded-md  overflow-hidden">
+            <Image
+              src="/images/about-img.png"
               alt="Two professionals discussing finance documents"
-              className="w-full  h-full "
+              width={450}
+              height={250}
               
             />
           </div>
@@ -23,7 +24,7 @@ export default function AboutSection() {
 
             <div>
               {/* Label */}
-              <Label className="label mb-3">ABOUT US</Label>
+              <Label className=" mb-3">ABOUT US</Label>
 
               {/* Heading */}
               <H2 className=" mb-2">
@@ -34,7 +35,7 @@ export default function AboutSection() {
               {/* Paragraphs */}
               <div className="space-y-4">
                 <P>
-                  <span className="font-bold" style={{ color: "var(--color-dark)" }}>NextGen</span>{" "}
+                  <span className="font-[500] text-[#0F0F0F] ">NextGen</span>{" "}
                   helps businesses and investors access capital through tailored
                   structures that reflect their plans, timelines, and opportunities.
                 </P>
@@ -51,7 +52,7 @@ export default function AboutSection() {
 
             {/* CTA */}
             <div className="flex justify-end mt-16">
-              <Button href="/about-us" variant="outline-rounded">
+              <Button href="/about-us"   variant="outline-rounded">
                 Know More About Us
               </Button>
             </div>

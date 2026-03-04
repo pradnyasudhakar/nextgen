@@ -1,23 +1,27 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&display=swap");
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   IMPORTS — must be first
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@import url("https://stijndv.com/fonts/Eudoxus-Sans.css");
 @import "tailwindcss";
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    DESIGN TOKENS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @theme {
-  /* Colors */
-  --color-primary:       #0a6b52;
-  --color-primary-dark:  #085c45;
-  --color-primary-light: #e6f4ef;
-  --color-secondary:     #0db87a;
-  --color-accent:        #0d9e75;
-  --color-dark:          #071c16;
-  --color-light:         #f0faf6;
+  /* Colors — Figma scheme */
+  --color-primary:       #00674E;
+  --color-primary-dark:  #004f3c;
+  --color-primary-light: #e6f2ef;
+  --color-secondary:     #006868;
+  --color-accent:        #006868;
+  --color-dark:          #3f3f3f;
+  --color-light:         #f5f9f7;
 
   /* Font */
-  --font-sans: "Inter", sans-serif;
+  --font-sans: "Eudoxus Sans", sans-serif;
 
   /* Font Weights */
+  --font-light:    300;
   --font-regular:  400;
   --font-medium:   500;
   --font-semibold: 600;
@@ -25,8 +29,8 @@
   --font-black:    900;
 
   /* Spacing */
-  --section-y:    5rem;
-  --section-x:    4rem;
+  --section-y: 5rem;
+  --section-x: 4rem;
 
   /* Border Radius */
   --radius-sm:   0.5rem;
@@ -36,9 +40,9 @@
   --radius-full: 9999px;
 
   /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(10,107,82,0.08);
-  --shadow-md: 0 4px 16px rgba(10,107,82,0.12);
-  --shadow-lg: 0 8px 32px rgba(10,107,82,0.16);
+  --shadow-sm: 0 1px 3px rgba(0,103,78,0.08);
+  --shadow-md: 0 4px 16px rgba(0,103,78,0.12);
+  --shadow-lg: 0 8px 32px rgba(0,103,78,0.16);
 
   /* Transition */
   --transition: all 0.2s ease;
@@ -50,16 +54,16 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family:             var(--font-sans);
-  color:                   #1a2e28;
-  background:              #ffffff;
+  font-family:             "Eudoxus Sans", sans-serif;
+  color:                   #0F0F0F;
+  background:              #FBFBFB;
   -webkit-font-smoothing:  antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height:             1.6;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   LAYOUT ONLY
+   LAYOUT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .section {
   padding-top:    var(--section-y);
@@ -80,12 +84,10 @@ body {
   margin-right: auto;
 }
 
-.section-header {
-  margin-bottom: 3rem;
-}
+.section-header { margin-bottom: 3rem; }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   ICON BUTTON (navbar/footer icons only)
+   ICON BUTTON
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .icon-btn {
   width:           2.5rem;

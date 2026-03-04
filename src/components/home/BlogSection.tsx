@@ -1,23 +1,26 @@
 import Link from "next/link";
-import { Label, H2, Highlight, H3, H4 } from "../ui/typography";
+import Image from "next/image";
+import { Label, H2, Highlight, P } from "../ui/typography";
 import { Button } from "../ui/button";
 import { ChevronRight } from "lucide-react";
 
 const posts = [
   {
     slug: "home-loan-vs-investment-loan",
-    title: "Home Loan vs Investment Loan: What's the difference, and which suits you?",
-    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80",
+    title:
+      "Home Loan vs Investment Loan: What's the difference, and which suits you?",
+    image: "/images/blog-1.png",
   },
   {
     slug: "equipment-finance-101",
-    title: "Equipment Finance 101: Buy vs lease, and how to get approved faster",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80",
+    title:
+      "Equipment Finance 101: Buy vs lease, and how to get approved faster",
+    image: "/images/blog-2.png",
   },
   {
     slug: "smsf-property-finance",
     title: "SMSF Property Finance: The rules and the biggest mistakes to avoid",
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80",
+    image: "/images/blog-3.png",
   },
 ];
 
@@ -25,17 +28,15 @@ export default function BlogSection() {
   return (
     <section className="">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 py-10">
-
         {/* ── Header row ── */}
         <div className="flex items-end justify-between mb-10">
           <div>
             <Label className=" mb-4">BLOGS</Label>
             <H2 className="">
-              <Highlight>Latest</Highlight>{" "}
-              Financial Guides &amp; News
+              <Highlight>Latest</Highlight> Financial Guides &amp; News
             </H2>
           </div>
-          <Button href="/blog" variant="outline-rounded" >
+          <Button href="/blog" variant="outline-rounded">
             View More
           </Button>
         </div>
@@ -45,20 +46,27 @@ export default function BlogSection() {
           {posts.map((post) => (
             <article key={post.slug} className="group">
               {/* Image */}
-              <div className="rounded-xl overflow-hidden mb-5 h-52 bg-gray-100">
-                <img
+              <div className="relative rounded-xl overflow-hidden mb-5 h-52 bg-gray-100">
+                <Image
                   src={post.image}
                   alt={post.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
 
               {/* Title */}
-              <H4 className="h4 mb-4">{post.title}</H4>
+              <P className="h4 mb-4">{post.title}</P>
 
               {/* Read Article */}
-              <Link href={`/blog/${post.slug}`} className=" text-[1rem] flex items-center text-primary px-0">
-                Read Article <span><ChevronRight /></span>
+              <Link
+                href={`/blog/${post.slug}`}
+                className=" text-[1rem] flex items-center text-primary px-0"
+              >
+                Read Article{" "}
+                <span>
+                  <ChevronRight />
+                </span>
               </Link>
             </article>
           ))}
@@ -70,7 +78,6 @@ export default function BlogSection() {
             View More
           </Link>
         </div>
-
       </div>
     </section>
   );

@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 export function Display({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h1
-      className={cn("text-[1.5rem] sm:text-[1.5rem] lg:text-[2.5rem]  leading-[1.15] tracking-tight text-dark", className)}
+      className={cn("text-[1.5rem] sm:text-[1.5rem] lg:text-[2.5rem] font-light leading-[1.1] tracking-tight text-[#FBFBFB]", className)}
       {...props}
     />
   );
@@ -17,7 +17,7 @@ export function Display({ className, ...props }: React.HTMLAttributes<HTMLHeadin
 export function H1({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h1
-      className={cn("text-4xl sm:text-5xl font-bold leading-[1.15] tracking-tight text-dark", className)}
+      className={cn("text-4xl sm:text-5xl font-bold leading-[1.15] tracking-tight text-[#0F0F0F]", className)}
       {...props}
     />
   );
@@ -26,7 +26,7 @@ export function H1({ className, ...props }: React.HTMLAttributes<HTMLHeadingElem
 export function H2({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h2
-      className={cn("text-[1.8rem] sm:text-[1.8rem] font-semibold leading-snug tracking-tight text-dark", className)}
+      className={cn("text-[1.8rem] sm:text-[1.8rem] font-[500] leading-[1.1] tracking-tight text-[#0F0F0F]", className)}
       {...props}
     />
   );
@@ -35,7 +35,7 @@ export function H2({ className, ...props }: React.HTMLAttributes<HTMLHeadingElem
 export function H3({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h3
-      className={cn("text-xl sm:text-2xl font-semibold leading-snug text-dark", className)}
+      className={cn("text-[1.3rem] sm:text-[1.3rem] font-[500] leading-snug text-[#0F0F0F]", className)}
       {...props}
     />
   );
@@ -57,7 +57,7 @@ export function H4({ className, ...props }: React.HTMLAttributes<HTMLHeadingElem
 export function P({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
     <p
-      className={cn("text-base leading-tight text-[#4a6460]", className)}
+      className={cn("text-base font-normal leading-tight text-[#555555]", className)}
       {...props}
     />
   );
@@ -84,7 +84,7 @@ export function Small({ className, ...props }: React.HTMLAttributes<HTMLParagrap
 export function Label({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
     <p
-      className={cn("text-[0.7rem] font-[700] text-[#808180] uppercase tracking-[0.26em] ", className)}
+      className={cn("text-[0.7rem]  font-extrabold text-[#9C9C9C] uppercase tracking-[0.26em] ", className)}
       {...props}
     />
   );

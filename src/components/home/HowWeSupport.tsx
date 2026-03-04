@@ -29,7 +29,7 @@ export default function HowWeSupport() {
 
         {/* Header */}
         <div className="section-header">
-          <Label className="mb-4">HOW WE SUPPORT OUR CLIENTS</Label>
+          <Label className="mb-4">Why Choose Us </Label>
           <H2 className="max-w-2xl">
             <Highlight>Careful thinking,</Highlight>{" "}
             commercial judgement,

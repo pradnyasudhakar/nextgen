@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Phone, Mail, Menu, X } from "lucide-react";
 import clsx from "clsx";
+import { Button } from "../ui/button";
 
 const navLinks = [
   { label: "About", href: "/about-us" },
@@ -62,18 +63,18 @@ export default function Navbar() {
   return (
     <nav
       className={clsx(
-        "sticky top-0 z-50 bg-white border-b transition-all duration-300",
+        "sticky top-0 z-50 bg-[#FBFBFB]  transition-all duration-300",
         scrolled ? "shadow-sm" : ""
       )}
-      style={{ borderColor: scrolled ? "var(--color-primary-light)" : "#f0f0f0" }}
+      
     >
       <div className="px-6 sm:px-10 lg:px-20">
         <div className="flex items-center justify-between h-16" ref={dropdownRef}>
 
           {/* Logo */}
           <Link href="/" className="flex items-center shrink-0">
-            <span className="text-[2rem] font-[600] uppercase tracking-[0.04em]"
-              style={{ color: "var(--color-primary)" }}>
+            <span className="text-[2rem] text-primary font-[600] uppercase tracking-[0.04em]"
+              >
               NextGen
             </span>
           </Link>
@@ -92,7 +93,7 @@ export default function Navbar() {
                       onClick={() => setOpenDropdown(isDropOpen ? null : link.label)}
                       className="flex items-center gap-1 px-4 py-2 rounded-lg text-sm transition-all duration-200 whitespace-nowrap"
                       style={{
-                        color: active || isDropOpen ? "var(--color-primary)" : "#000",
+                        color: active || isDropOpen ? "var(--color-primary)" : "#0F0F0F",
                         background: active || isDropOpen ? "var(--color-primary-light)" : "transparent",
                         fontWeight: active || isDropOpen ? "var(--font-semibold)" : "var(--font-medium)",
                       }}
@@ -112,7 +113,7 @@ export default function Navbar() {
                       href={link.href}
                       className="flex items-center px-4 py-2 rounded-lg text-sm transition-all duration-200 whitespace-nowrap"
                       style={{
-                        color: active ? "var(--color-primary)" : "#000",
+                        color: active ? "var(--color-primary)" : "#0F0F0F",
                         background: active ? "var(--color-primary-light)" : "transparent",
                         fontWeight: active ? "var(--font-semibold)" : "var(--font-medium)",
                       }}
@@ -123,7 +124,7 @@ export default function Navbar() {
 
                   {/* ── Smooth Dropdown ── */}
                   <div
-                    className="absolute top-full left-0 mt-2 w-52 bg-white rounded-md border z-50 overflow-hidden"
+                    className="absolute top-full left-0 mt-2 w-52 bg-[#FBFBFB] rounded-md border z-50 overflow-hidden"
                     style={{
                       borderColor: "var(--color-primary-light)",
                       boxShadow: "var(--shadow-md)",
@@ -141,14 +142,14 @@ export default function Navbar() {
                           key={child.href}
                           href={child.href}
                           className="block px-4 py-2.5 text-sm transition-colors duration-150"
-                          style={{ color: "#000000" }}
+                          style={{ color: "#0F0F0F" }}
                           onMouseEnter={(e) => {
                             (e.currentTarget as HTMLElement).style.background = "var(--color-primary-light)";
                             (e.currentTarget as HTMLElement).style.color = "var(--color-primary)";
                           }}
                           onMouseLeave={(e) => {
                             (e.currentTarget as HTMLElement).style.background = "";
-                            (e.currentTarget as HTMLElement).style.color = "#000000";
+                            (e.currentTarget as HTMLElement).style.color = "#0F0F0F";
                           }}
                         >
                           {child.label}
@@ -162,16 +163,16 @@ export default function Navbar() {
           </div>
 
           {/* Right: Icons + CTA */}
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
+          <div className="hidden lg:flex items-center gap-5 shrink-0">
             <a href="tel:0478250003" className="icon-btn" aria-label="Call us">
               <Phone size={15} />
             </a>
             <a href="mailto:admin@capitalex.com.au" className="icon-btn" aria-label="Email us">
               <Mail size={15} />
             </a>
-            <Link href="/apply-now" className="btn-primary">
+            <Button href="/apply-now" className="text-[#FBFBFB] px-5 py-1  text-[0.8rem] "  variant="primary">
               Get Started
-            </Link>
+            </Button>
           </div>
 
           {/* Hamburger */}
@@ -194,7 +195,7 @@ export default function Navbar() {
 
       {/* ── Mobile Drawer — smooth slide + fade ── */}
       <div
-        className="lg:hidden overflow-hidden bg-white border-t"
+        className="lg:hidden overflow-hidden bg-[#FBFBFB] border-t"
         style={{
           borderColor: "var(--color-primary-light)",
           maxHeight: isOpen ? "600px" : "0px",
@@ -217,7 +218,7 @@ export default function Navbar() {
                       onClick={() => setMobileExpanded(isExpanded ? null : link.label)}
                       className="w-full flex items-center justify-between px-4 py-3 rounded-lg text-sm transition-colors duration-200"
                       style={{
-                        color: isExpanded ? "var(--color-primary)" : "#000",
+                        color: isExpanded ? "var(--color-primary)" : "#0F0F0F",
                         background: isExpanded ? "var(--color-primary-light)" : "",
                         fontWeight: isExpanded ? "var(--font-semibold)" : "var(--font-medium)",
                       }}
@@ -245,7 +246,7 @@ export default function Navbar() {
                         {link.children!.map((child) => (
                           <Link key={child.href} href={child.href}
                             className="px-4 py-2.5 rounded-lg text-sm transition-colors duration-150"
-                            style={{ color: "#000" }}>
+                            style={{ color: "#0F0F0F" }}>
                             {child.label}
                           </Link>
                         ))}
@@ -261,7 +262,7 @@ export default function Navbar() {
                       background: "var(--color-primary-light)",
                       borderLeft: "3px solid var(--color-primary)",
                       fontWeight: "var(--font-semibold)",
-                    } : { color: "#000" }}
+                    } : { color: "#0F0F0F" }}
                   >
                     {link.label}
                   </Link>

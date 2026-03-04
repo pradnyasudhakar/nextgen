@@ -70,13 +70,13 @@ interface IconCardProps extends CardProps {
 
 export function IconCard({ icon, children, className, href, ...props }: IconCardProps) {
   const cls = cn(
-    "bg-white shadow-[0_4px_20px_rgba(10,107,82,0.10)] rounded-[10px] p-4 transition-all duration-200 hover:border-primary",
+    "bg-[#FBFBFB]  shadow-[0px_3px_30px_0px_rgba(0,0,0,0.06)] rounded-[12px] p-6 transition-all duration-200 hover:shadow-[0px_3px_30px_0px_rgba(0,103,78,0.12)] hover:border-[var(--color-primary-light)]",
     className
   );
 
   const content = (
     <>
-      <div className="w-12 h-12 flex items-center justify-center mb-5 text-primary">
+      <div className="w-14 h-14 flex items-center justify-center mb-8 text-primary">
         {icon}
       </div>
       {children}
@@ -92,7 +92,7 @@ export function IconCard({ icon, children, className, href, ...props }: IconCard
 
 // ── Number Card — Figma "How We Support" style ──
 
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { H3, P } from "./typography";
 
 interface NumberCardProps extends CardProps {
@@ -103,8 +103,8 @@ interface NumberCardProps extends CardProps {
 
 export function NumberCard({ number, title, description, href, className, ...props }: NumberCardProps) {
   const cls = cn(
-    "bg-white  border-1  border-[#0a6b52] rounded-2xl p-4 flex flex-col justify-between overflow-hidden transition-all duration-200 hover:shadow-[0_4px_20px_rgba(10,107,82,0.10)] hover:border-[var(--color-primary-light)]",
-    "lg:min-h-[340px] lg:max-w-[320px] ",
+    "bg-white border border-primary rounded-[12px] p-6 flex flex-col justify-between overflow-hidden transition-all duration-200 hover:shadow-[0_4px_20px_rgba(10,107,82,0.10)] hover:border-[var(--color-primary-light)]",
+    "min-h-[340px]",
     className
   );
 
@@ -115,21 +115,21 @@ export function NumberCard({ number, title, description, href, className, ...pro
         <H3 className=" max-w-50 mb-4">
           {title}
         </H3>
-        <P>
+        <P className="">
           {description}
         </P>
       </div>
 
       {/* Bottom: faded number + arrow */}
-      <div className="flex items-end justify-between mt-4">
+      <div className="flex items-end justify-between mt-8">
         <span
           className="text-[8rem] font-[700] leading-none select-none"
           style={{ color: "var(--color-primary-light)" }}
         >
           {number}
         </span>
-        <div className="w-8 h-8 rounded-full border border-primary text-primary flex items-center justify-center shrink-0 mb-2">
-          <ChevronRight size={16} />
+        <div className="w-10 h-10 rounded-full border-2 border-primary text-primary flex items-center justify-center shrink-0 mb-2">
+          <ArrowRight size={16} />
         </div>
       </div>
     </>

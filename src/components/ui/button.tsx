@@ -22,7 +22,7 @@ const variants: Record<Variant, string> = {
   outline: "inline-flex items-center justify-center gap-2 font-bold rounded-full transition-all border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary-light)]",
 
   // Transparent bg, rounded-xl border — "Know More About Us"
-  "outline-rounded": "inline-flex items-center justify-center gap-2 font-bold rounded-xl transition-all border border-[var(--color-primary)] text-[var(--color-primary)] bg-transparent hover:bg-[var(--color-primary-light)]",
+  "outline-rounded": "inline-flex items-center text-[1rem] justify-center gap-2 font-[500] rounded-full transition-all border border-[var(--color-primary)] text-[var(--color-primary)] bg-transparent hover:bg-[var(--color-primary-light)]",
 
   // No border, no bg — "Read Article ›"
   ghost: "inline-flex items-center justify-center gap-2 font-bold text-[var(--color-primary)] transition-all hover:opacity-75 bg-transparent",
