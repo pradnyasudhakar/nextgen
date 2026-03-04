@@ -3,7 +3,7 @@ import { Display, Lead } from "@/components/ui/typography";
 
 export default function Hero() {
   return (
-    <section className="relative w-full overflow-hidden min-h-screen">
+    <section className="relative w-full overflow-hidden min-h-auto md:min-h-screen">
 
       {/* Background Image */}
       <img
@@ -16,7 +16,7 @@ export default function Hero() {
       <div className="absolute inset-0 rounded-md bg-linear-to-r from-black/60 via-black/30 to-black/5" />
 
       {/* Content */}
-      <div className="relative z-10 flex items-center min-h-screen max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 py-20">
+      <div className="relative z-10 flex items-center md:min-h-screen max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 py-20">
         <div className="max-w-100">
 
         <div className="">

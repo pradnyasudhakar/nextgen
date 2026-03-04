@@ -37,10 +37,8 @@ export default function Navbar() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const pathname = usePathname();
-  const isMounted = useRef(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => { isMounted.current = true; }, []);
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", fn);
@@ -72,19 +70,19 @@ export default function Navbar() {
       <div className="px-6 sm:px-10 lg:px-20">
         <div className="flex items-center justify-between h-16" ref={dropdownRef}>
 
-          {/* ── Logo ── */}
+          {/* Logo */}
           <Link href="/" className="flex items-center shrink-0">
-            <span className="text-[2rem] font-[600]  uppercase tracking-[0.04em]"
+            <span className="text-[2rem] font-[600] uppercase tracking-[0.04em]"
               style={{ color: "var(--color-primary)" }}>
               NextGen
             </span>
           </Link>
 
-          {/* ── Desktop Nav ── */}
+          {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => {
+            {navLinks.map((link, i) => {
               const active = pathname === link.href || pathname.startsWith(link.href + "/");
-              const hasChildren = !!link.children;
+                const hasChildren = !!link.children;
               const isDropOpen = openDropdown === link.label;
 
               return (
@@ -92,7 +90,7 @@ export default function Navbar() {
                   {hasChildren ? (
                     <button
                       onClick={() => setOpenDropdown(isDropOpen ? null : link.label)}
-                      className="flex items-center gap-1 px-4 py-2 rounded-lg text-sm transition-all duration-150 whitespace-nowrap"
+                      className="flex items-center gap-1 px-4 py-2 rounded-lg text-sm transition-all duration-200 whitespace-nowrap"
                       style={{
                         color: active || isDropOpen ? "var(--color-primary)" : "#000",
                         background: active || isDropOpen ? "var(--color-primary-light)" : "transparent",
@@ -100,15 +98,19 @@ export default function Navbar() {
                       }}
                     >
                       {link.label}
-                      <ChevronDown size={14}
-                        className="transition-transform duration-200"
-                        style={{ transform: isDropOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+                      {/* ── Smooth rotating arrow ── */}
+                      <ChevronDown
+                        size={14}
+                        style={{
+                          transition: "transform 2s cubic-bezier(0.16,1,0.3,1)",
+                          transform: isDropOpen ? "rotate(-180deg)" : "rotate(0deg)",
+                        }}
                       />
                     </button>
                   ) : (
                     <Link
                       href={link.href}
-                      className="flex items-center px-4 py-2 rounded-lg text-sm transition-all duration-150 whitespace-nowrap"
+                      className="flex items-center px-4 py-2 rounded-lg text-sm transition-all duration-200 whitespace-nowrap"
                       style={{
                         color: active ? "var(--color-primary)" : "#000",
                         background: active ? "var(--color-primary-light)" : "transparent",
@@ -119,20 +121,26 @@ export default function Navbar() {
                     </Link>
                   )}
 
-                  {/* Dropdown */}
-                  {hasChildren && isDropOpen && (
-                    <div
-                      className="absolute top-full left-0 mt-2 w-52 bg-white rounded-xl border py-1.5 z-50"
-                      style={{
-                        borderColor: "var(--color-primary-light)",
-                        boxShadow: "var(--shadow-md)",
-                      }}
-                    >
-                      {link.children!.map((child) => (
+                  {/* ── Smooth Dropdown ── */}
+                  <div
+                    className="absolute top-full left-0 mt-2 w-52 bg-white rounded-md border z-50 overflow-hidden"
+                    style={{
+                      borderColor: "var(--color-primary-light)",
+                      boxShadow: "var(--shadow-md)",
+                      // Smooth open/close animation
+                      transition: "opacity 0.35s cubic-bezier(0.16,1,0.3,1), transform 2s cubic-bezier(0.16,1,0.3,1)",
+                      opacity: isDropOpen ? 1 : 0,
+                      transform: isDropOpen ? "translateY(0px) scaleY(1)" : "translateY(-10px) scaleY(0.95)",
+                      transformOrigin: "top center",
+                      pointerEvents: isDropOpen ? "auto" : "none",
+                    }}
+                  >
+                    <div className="py-1.5">
+                      {link.children?.map((child) => (
                         <Link
                           key={child.href}
                           href={child.href}
-                          className="block px-4 py-2.5 text-sm transition-colors"
+                          className="block px-4 py-2.5 text-sm transition-colors duration-150"
                           style={{ color: "#000000" }}
                           onMouseEnter={(e) => {
                             (e.currentTarget as HTMLElement).style.background = "var(--color-primary-light)";
@@ -147,13 +155,13 @@ export default function Navbar() {
                         </Link>
                       ))}
                     </div>
-                  )}
+                  </div>
                 </div>
               );
             })}
           </div>
 
-          {/* ── Right: Icons + CTA ── */}
+          {/* Right: Icons + CTA */}
           <div className="hidden lg:flex items-center gap-3 shrink-0">
             <a href="tel:0478250003" className="icon-btn" aria-label="Call us">
               <Phone size={15} />
@@ -166,39 +174,48 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* ── Hamburger ── */}
+          {/* Hamburger */}
           <button
             onClick={() => setIsOpen((prev) => !prev)}
             className="lg:hidden w-9 h-9 flex items-center justify-center rounded-lg transition-colors"
             style={{ color: "var(--color-primary)" }}
             aria-label="Toggle menu"
           >
-            {isOpen ? <X size={22} /> : <Menu size={22} />}
+            {/* Smooth icon swap */}
+            <span style={{ transition: "opacity 0.2s ease", opacity: isOpen ? 0 : 1, position: isOpen ? "absolute" : "relative" }}>
+              <Menu size={22} />
+            </span>
+            <span style={{ transition: "opacity 0.2s ease", opacity: isOpen ? 1 : 0, position: isOpen ? "relative" : "absolute" }}>
+              <X size={22} />
+            </span>
           </button>
         </div>
       </div>
 
-      {/* ── Mobile Drawer ── */}
+      {/* ── Mobile Drawer — smooth slide + fade ── */}
       <div
-        className={clsx(
-          "lg:hidden overflow-hidden transition-all duration-300 bg-white border-t",
-          isOpen ? "max-h-150" : "max-h-0"
-        )}
-        style={{ borderColor: "var(--color-primary-light)" }}
+        className="lg:hidden overflow-hidden bg-white border-t"
+        style={{
+          borderColor: "var(--color-primary-light)",
+          maxHeight: isOpen ? "600px" : "0px",
+          opacity: isOpen ? 1 : 0,
+          transform: isOpen ? "translateY(0px)" : "translateY(-8px)",
+          transition: "max-height 2s ease, opacity 1s ease, transform 1s ease",
+        }}
       >
         <div className="px-6 py-5 flex flex-col gap-1">
-          {navLinks.map((link) => {
+          {navLinks.map((link, i) => {
             const active = pathname === link.href;
             const hasChildren = !!link.children;
             const isExpanded = mobileExpanded === link.label;
 
             return (
-              <div key={link.href}>
+              <div key={link.href} style={{ transition: `opacity 0.2s ease ${i * 0.05}s, transform 0.2s ease ${i * 0.05}s`, opacity: isOpen ? 1 : 0, transform: isOpen ? "translateY(0)" : "translateY(-4px)" }}>
                 {hasChildren ? (
                   <>
                     <button
                       onClick={() => setMobileExpanded(isExpanded ? null : link.label)}
-                      className="w-full flex items-center justify-between px-4 py-3 rounded-lg text-sm transition-colors"
+                      className="w-full flex items-center justify-between px-4 py-3 rounded-lg text-sm transition-colors duration-200"
                       style={{
                         color: isExpanded ? "var(--color-primary)" : "#000",
                         background: isExpanded ? "var(--color-primary-light)" : "",
@@ -206,30 +223,39 @@ export default function Navbar() {
                       }}
                     >
                       {link.label}
-                      <ChevronDown size={14}
-                        className="transition-transform duration-200"
+                      <ChevronDown
+                        size={14}
                         style={{
-                          transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)",
+                          transition: "transform 2s cubic-bezier(0.16,1,0.3,1)",
+                          transform: isExpanded ? "rotate(-180deg)" : "rotate(0deg)",
                           color: "var(--color-primary)",
                         }}
                       />
                     </button>
-                    {isExpanded && (
-                      <div className="ml-4 mt-1 flex flex-col gap-0.5">
+
+                    {/* Mobile sub-links smooth expand */}
+                    <div
+                      className="ml-4 overflow-hidden"
+                      style={{
+                        maxHeight: isExpanded ? "300px" : "0px",
+                        transition: "max-height 1s ease",
+                      }}
+                    >
+                      <div className="flex flex-col gap-0.5 pt-1">
                         {link.children!.map((child) => (
                           <Link key={child.href} href={child.href}
-                            className="px-4 py-2.5 rounded-lg text-sm transition-colors"
+                            className="px-4 py-2.5 rounded-lg text-sm transition-colors duration-150"
                             style={{ color: "#000" }}>
                             {child.label}
                           </Link>
                         ))}
                       </div>
-                    )}
+                    </div>
                   </>
                 ) : (
                   <Link
                     href={link.href}
-                    className="block px-4 py-3 rounded-lg text-sm transition-colors"
+                    className="block px-4 py-3 rounded-lg text-sm transition-colors duration-200"
                     style={active ? {
                       color: "var(--color-primary)",
                       background: "var(--color-primary-light)",
@@ -244,14 +270,13 @@ export default function Navbar() {
             );
           })}
 
-          {/* Mobile phone */}
           <div className="flex items-center gap-3 mt-3 px-4">
             <a href="tel:0478250003" className="link flex items-center gap-2 text-sm">
               <Phone size={14} /> 0478 250 003
             </a>
           </div>
 
-          <Link href="/apply-now" className="btn-primary mt-3 justify-center">
+          <Link href="/apply-now" className="btn-primary mt-3 px-4 justify-center">
             Get Started
           </Link>
         </div>

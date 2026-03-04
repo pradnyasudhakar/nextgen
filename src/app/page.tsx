@@ -1,5 +1,6 @@
 import AboutSection from "@/components/home/AboutSection";
 import BlogSection from "@/components/home/BlogSection";
+import CTABanner from "@/components/home/CTABanner";
 import Hero from "@/components/home/Hero";
 import HowWeSupport from "@/components/home/HowWeSupport";
 import OurServices from "@/components/home/OurServices";
@@ -11,6 +12,7 @@ export default function HomePage() {
       <OurServices/>
       <AboutSection/>
       <HowWeSupport/>
+      <CTABanner/>
       <BlogSection/>
     </>
   );

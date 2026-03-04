@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Clock, CalendarDays, ContactIcon } from "lucide-react";
+import { H1, Label, Small, Highlight } from "@/components/ui/typography";
+import { Button } from "@/components/ui/button";
 
 const categories = [
   "All",
@@ -13,16 +15,6 @@ const categories = [
   "Education",
   "Tips",
 ];
-
-const categoryColors: Record<string, string> = {
-  "Home Loans": "#3b1fa3",
-  Investment: "#059669",
-  Refinancing: "#d97706",
-  Education: "#0284c7",
-  Commercial: "#7c3aed",
-  Tips: "#db2777",
-  All: "#3b1fa3",
-};
 
 function formatDate(dateStr: string) {
   if (!dateStr) return "";
@@ -46,46 +38,38 @@ export default function BlogClient({ posts }: { posts: any[] }) {
 
       {/* ── Page Header ── */}
       <div className="border-b border-gray-100 py-14 bg-white">
-        <div className="max-w-7xl mx-auto px-16">
-          <p
-            className="text-xs font-bold uppercase tracking-widest mb-3"
-            style={{ color: "#6c47d9" }}
-          >
-            Our Blog
-          </p>
-          <h1
-            className="text-3xl sm:text-4xl font-black mb-3"
-            style={{ color: "#0f0a1e" }}
-          >
-            Insights on Finance & Mortgages
-          </h1>
-          <p className="text-gray-500 text-sm leading-relaxed max-w-xl">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20">
+          <Label className="mb-3">Our Blog</Label>
+          <H1 className="mb-3">
+            Insights on <Highlight>Finance</Highlight> & Mortgages
+          </H1>
+          <Small className="max-w-xl">
             Expert tips, guides and market updates to help you make confident
             financial decisions at every stage.
-          </p>
+          </Small>
         </div>
       </div>
 
       {/* ── Category Pills ── */}
       <div className="border-b border-gray-100 bg-white">
-        <div className="max-w-7xl mx-auto px-16">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20">
           <div className="flex gap-2 overflow-x-auto py-4 scrollbar-hide">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className="shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold transition-colors duration-150 border"
+                className="shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-150 border-2"
                 style={
                   activeCategory === cat
                     ? {
-                        backgroundColor: categoryColors[cat],
-                        color: "white",
-                        borderColor: categoryColors[cat],
+                        backgroundColor: "var(--color-primary)",
+                        color: "#ffffff",
+                        borderColor: "var(--color-primary)",
                       }
                     : {
                         backgroundColor: "white",
-                        color: "#6b7280",
-                        borderColor: "#e5e7eb",
+                        color: "var(--color-dark)",
+                        borderColor: "var(--color-primary-light)",
                       }
                 }
               >
@@ -97,12 +81,10 @@ export default function BlogClient({ posts }: { posts: any[] }) {
       </div>
 
       {/* ── Posts Grid ── */}
-      <div className="max-w-7xl mx-auto px-16 py-12">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 py-12">
         {filteredPosts.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-gray-400 text-sm">
-              No blog posts found in this category.
-            </p>
+            <Small>No blog posts found in this category.</Small>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -114,7 +96,7 @@ export default function BlogClient({ posts }: { posts: any[] }) {
               return (
                 <article
                   key={post.id}
-                  className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-purple-100 hover:shadow-lg hover:shadow-purple-50 transition-all duration-300 flex flex-col group"
+                  className="bg-white rounded-2xl overflow-hidden border border-[#e8eeec] hover:border-primary-light hover:shadow-[0_4px_20px_rgba(10,107,82,0.10)] transition-all duration-300 flex flex-col group"
                 >
                   {/* Image */}
                   <div className="relative h-44 overflow-hidden bg-gray-50">
@@ -128,10 +110,7 @@ export default function BlogClient({ posts }: { posts: any[] }) {
                     {post.category && (
                       <span
                         className="absolute top-3 left-3 text-xs font-bold px-2.5 py-1 rounded-full text-white"
-                        style={{
-                          backgroundColor:
-                            categoryColors[post.category] ?? "#3b1fa3",
-                        }}
+                        style={{ backgroundColor: "var(--color-primary)" }}
                       >
                         {post.category}
                       </span>
@@ -140,7 +119,10 @@ export default function BlogClient({ posts }: { posts: any[] }) {
 
                   {/* Content */}
                   <div className="p-5 flex flex-col flex-1">
-                    <div className="flex items-center gap-4 text-gray-400 text-xs mb-3 flex-wrap">
+
+                    {/* Meta */}
+                    <div className="flex items-center gap-4 text-xs mb-3 flex-wrap"
+                      style={{ color: "var(--color-accent)", opacity: 0.7 }}>
                       {post.publishedDate && (
                         <span className="flex items-center gap-1.5">
                           <CalendarDays size={11} />
@@ -161,24 +143,25 @@ export default function BlogClient({ posts }: { posts: any[] }) {
                       )}
                     </div>
 
+                    {/* Title */}
                     <h2
-                      className="text-sm font-bold leading-snug mb-2 group-hover:text-purple-700 transition-colors"
-                      style={{ color: "#0f0a1e" }}
+                      className="text-sm font-bold leading-snug mb-2 group-hover:text-primary transition-colors"
+                      style={{ color: "var(--color-dark)" }}
                     >
                       {post.title}
                     </h2>
 
-                    <p className="text-gray-400 text-xs leading-relaxed mb-4 flex-1">
+                    {/* Excerpt */}
+                    <p className="text-xs leading-relaxed mb-4 flex-1"
+                      style={{ color: "#4a6460" }}>
                       {post.excerpt}
                     </p>
 
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold transition-colors hover:gap-2.5"
-                      style={{ color: "#3b1fa3" }}
-                    >
+                    {/* Read More */}
+                    <Button href={`/blog/${post.slug}`} variant="ghost" className="px-0 text-xs justify-start">
                       Read More <ArrowRight size={13} />
-                    </Link>
+                    </Button>
+
                   </div>
                 </article>
               );

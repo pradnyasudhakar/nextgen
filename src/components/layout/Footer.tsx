@@ -11,7 +11,7 @@ export default function Footer() {
 
         {/* ── LEFT COLUMN ── */}
         <div
-          className="flex flex-row lg:flex-col w-full min-w-full  lg:min-w-75 lg:w-75 border-[rgba(0,0,0,0.08)] px-6 lg:px-20 py-12 lg:py-16 justify-between  border-b lg:border-b-0 lg:border-r"
+          className="flex flex-row lg:flex-col w-full min-w-full  lg:min-w-75 lg:w-75 border-[rgba(0,0,0,0.08)] px-6 sm:px-10 lg:px-20 py-12 lg:py-16 justify-between  border-b lg:border-b-0 lg:border-r"
           
         >
           {/* Logo */}
@@ -63,7 +63,7 @@ export default function Footer() {
         </div>
 
         {/* ── RIGHT SECTION ── */}
-        <div className="flex-1 px-6 lg:px-20 py-12 lg:py-16">
+        <div className="flex-1 px-6 sm:px-10 lg:px-20 py-12 lg:py-16">
 
           {/* Nav columns */}
           <div className="grid  grid-cols-4 sm:grid-cols-4 gap-0 lg:gap-10 mb-14">
