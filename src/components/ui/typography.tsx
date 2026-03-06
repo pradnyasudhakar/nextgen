@@ -26,7 +26,7 @@ export function H1({ className, ...props }: React.HTMLAttributes<HTMLHeadingElem
 export function H2({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h2
-      className={cn("text-[1.8rem] sm:text-[1.8rem] font-[500] leading-[1.1] tracking-tight text-[#0F0F0F]", className)}
+      className={cn("text-[1.5rem] sm:text-[1.9rem] font-normal leading-[1.2] tracking-normal  text-dark", className)}
       {...props}
     />
   );
@@ -35,7 +35,7 @@ export function H2({ className, ...props }: React.HTMLAttributes<HTMLHeadingElem
 export function H3({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h3
-      className={cn("text-[1.3rem] sm:text-[1.3rem] font-[500] leading-snug text-[#0F0F0F]", className)}
+      className={cn("text-[1.4rem] sm:text-[1.4rem] font-[500] leading-snug text-dark", className)}
       {...props}
     />
   );
@@ -97,7 +97,7 @@ export function Label({ className, ...props }: React.HTMLAttributes<HTMLParagrap
 export function Highlight({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) {
   return (
     <span
-      className={cn("text-primary font-semibold", className)}
+      className={cn("text-primary font-[500]", className)}
       {...props}
     />
   );

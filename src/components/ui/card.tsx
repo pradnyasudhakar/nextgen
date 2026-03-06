@@ -22,42 +22,22 @@ export function Card({ variant = "default", hover = true, href, className, child
     hover && "transition-all duration-200 hover:shadow-[0_4px_20px_rgba(10,107,82,0.10)] hover:border-[var(--color-primary-light)]",
     className
   );
-
-  if (href) {
-    return <Link href={href} className={cls}>{children}</Link>;
-  }
-
+  if (href) return <Link href={href} className={cls}>{children}</Link>;
   return <div className={cls} {...props}>{children}</div>;
 }
-
-// ── Sub-components ──────────────────────────
 
 export function CardHeader({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return <div className={cn("mb-5", className)} {...props} />;
 }
-
 export function CardTitle({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
-  return (
-    <h3
-      className={cn("text-xl font-semibold leading-snug text-dark", className)}
-      {...props}
-    />
-  );
+  return <h3 className={cn("text-xl font-semibold leading-snug text-dark", className)} {...props} />;
 }
-
 export function CardDescription({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {
-  return (
-    <p
-      className={cn("text-sm leading-relaxed text-[#4a6460] mt-2", className)}
-      {...props}
-    />
-  );
+  return <p className={cn("text-sm leading-relaxed text-[#4a6460] mt-2", className)} {...props} />;
 }
-
 export function CardContent({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return <div className={cn("", className)} {...props} />;
 }
-
 export function CardFooter({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return <div className={cn("mt-6 flex items-center", className)} {...props} />;
 }
@@ -70,10 +50,10 @@ interface IconCardProps extends CardProps {
 
 export function IconCard({ icon, children, className, href, ...props }: IconCardProps) {
   const cls = cn(
-    "bg-[#FBFBFB]  shadow-[0px_3px_30px_0px_rgba(0,0,0,0.06)] rounded-[12px] p-6 transition-all duration-200 hover:shadow-[0px_3px_30px_0px_rgba(0,103,78,0.12)] hover:border-[var(--color-primary-light)]",
+    "bg-[#FBFBFB] shadow-[0px_3px_30px_0px_#0000001A] rounded-[12px] p-5",
+    "transition-all duration-200",
     className
   );
-
   const content = (
     <>
       <div className="w-14 h-14 flex items-center justify-center mb-8 text-primary">
@@ -82,29 +62,30 @@ export function IconCard({ icon, children, className, href, ...props }: IconCard
       {children}
     </>
   );
-
-  if (href) {
-    return <Link href={href} className={cls}>{content}</Link>;
-  }
-
+  if (href) return <Link href={href} className={cls}>{content}</Link>;
   return <div className={cls} {...props}>{content}</div>;
 }
 
-// ── Number Card — Figma "How We Support" style ──
+// ── Number Card ──────────────────────────────
 
-import { ArrowRight } from "lucide-react";
+
 import { H3, P } from "./typography";
 
 interface NumberCardProps extends CardProps {
-  number: string;
-  title:  string;
+  number:      string;
+  titleParts?: { text: string; green?: boolean }[];
+  title:       string;
   description: string;
 }
 
-export function NumberCard({ number, title, description, href, className, ...props }: NumberCardProps) {
+export function NumberCard({ number, titleParts, title, description, href, className, ...props }: NumberCardProps) {
   const cls = cn(
-    "bg-white border border-primary rounded-[12px] p-6 flex flex-col justify-between overflow-hidden transition-all duration-200 hover:shadow-[0_4px_20px_rgba(10,107,82,0.10)] hover:border-[var(--color-primary-light)]",
-    "min-h-[340px]",
+    "group",
+    "bg-[#FBFBFB] border border-primary rounded-[12px] p-6",
+    "flex flex-col justify-between overflow-hidden",
+    "transition-all duration-300",
+    "hover:border-[var(--color-primary)] hover:shadow-[0_4px_24px_rgba(0,103,78,0.13)] hover:-translate-y-5",
+    "max-h-[260px]",
     className
   );
 
@@ -112,32 +93,28 @@ export function NumberCard({ number, title, description, href, className, ...pro
     <>
       {/* Top: title + description */}
       <div>
-        <H3 className=" max-w-50 mb-4">
-          {title}
+        <H3 className="max-w-65 mb-4 text-dark  transition-colors duration-300">
+          {titleParts
+            ? titleParts.map((part, i) =>
+                part.green
+                  ? <span key={i} style={{ color: "var(--color-primary)" }}>{part.text}</span>
+                  : <span key={i}>{part.text}</span>
+              )
+            : title}
         </H3>
-        <P className="">
-          {description}
-        </P>
+        <P>{description}</P>
       </div>
 
-      {/* Bottom: faded number + arrow */}
-      <div className="flex items-end justify-between mt-8">
-        <span
-          className="text-[8rem] font-[700] leading-none select-none"
-          style={{ color: "var(--color-primary-light)" }}
-        >
+      {/* Bottom: number + arrow */}
+      <div className="flex items-end justify-end mt-5">
+        <span className="text-[5rem] font-[700] leading-none select-none transition-colors duration-300 text-[#dceee9] group-hover:text-primary">
           {number}
         </span>
-        <div className="w-10 h-10 rounded-full border-2 border-primary text-primary flex items-center justify-center shrink-0 mb-2">
-          <ArrowRight size={16} />
-        </div>
+        
       </div>
     </>
   );
 
-  if (href) {
-    return <Link href={href} className={cls}>{content}</Link>;
-  }
-
+  if (href) return <Link href={href} className={cls}>{content}</Link>;
   return <div className={cls} {...props}>{content}</div>;
 }

@@ -8,7 +8,7 @@ const services = [
     titleGreen: "Home",
     titleBlack: "Loans",
     description:
-      "Finance structured to support the life built around the property, not just the purchase itself.",
+      "Owner-occupied, investment, refinancing and construction lending solutions tailored to your circumstances.",
     href: "/services/home-loans",
   },
   {
@@ -16,7 +16,7 @@ const services = [
     titleGreen: "Commercial",
     titleBlack: "Loans",
     description:
-      "Capital positioned with intent, reflecting in both performance and long-term conviction.",
+      "Funding for commercial property acquisitions or refinancing, aligned with your long-term investment strategy.",
     href: "/services/commercial-loans",
   },
   {
@@ -24,7 +24,7 @@ const services = [
     titleGreen: "Business",
     titleBlack: "Finance",
     description:
-      "Capital that works in the background so your business can move forward in the foreground.",
+      "Structured lending to support business purchases, expansion, or working capital requirements.",
     href: "/services/business-finance",
   },
   {
@@ -32,7 +32,7 @@ const services = [
     titleGreen: "Asset",
     titleBlack: "Finance",
     description:
-      "Capability strengthened without unsettling the balance sheet or disrupting financial stability.",
+      "Finance solutions for vehicles, plant, and equipment to support operational growth and cash flow management.",
     href: "/services/asset-finance",
   },
   {
@@ -40,7 +40,7 @@ const services = [
     titleGreen: "Development",
     titleBlack: "Finance",
     description:
-      "Funding designed to advance in line with feasibility, timelines, and each stage of delivery.",
+      "Funding assistance for residential or commercial development projects, with guidance through lender requirements.",
     href: "/services/development-finance",
   },
   {
@@ -48,22 +48,21 @@ const services = [
     titleGreen: "SMSF",
     titleBlack: "Finance",
     description:
-      "Strategic borrowing within your super fund, structured with foresight and long-term discipline.",
+      "Lending support for Self-Managed Super Funds investing in property, working alongside your professional advisers.",
     href: "/services/smsf-finance",
   },
 ];
 
 export default function OurServices() {
   return (
-    <section className="">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 py-10">
+    <section id="services" className="">
+      <div className="max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-10">
         {/* Header */}
         <div className="section-header">
           <Label className="mb-2">OUR SERVICES</Label>
           <H2 className="max-w-xl">
-            We <Highlight>pride ourselves</Highlight> on delivering
-            <br />
-            proactive service and support
+            Finance Solutions Designed for <br className="hidden md:block lg:block "></br>  <Highlight>What&apos;s Next.</Highlight> 
+           
           </H2>
         </div>
 

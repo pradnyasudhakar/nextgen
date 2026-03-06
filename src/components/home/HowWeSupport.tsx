@@ -4,46 +4,70 @@ import { NumberCard } from "@/components/ui/card";
 const features = [
   {
     number: "1",
-    title: "Lifetime loan support",
-    description: "We stay with you beyond approval — ongoing help, answers, and reviews as your goals change.",
+    title: [{ text: "A Relationship-First", green: true }, { text: " Approach" }],
+    description: "Partnerships built on understanding your goals.",
     href: "/services",
   },
   {
     number: "2",
-    title: "Real people, fast response",
-    description: "Speak to a dedicated broker who makes the process simple and keeps you updated promptly.",
+    title: [{ text: "Time to " }, { text: "Understand", green: true }, { text: " Your Story" }],
+    description: "We explore your journey before shaping solutions.",
     href: "/contact-us",
   },
   {
     number: "3",
-    title: "Right-fit loans, competitive rates",
-    description: "We listen first, then source options that match your needs and negotiate strong rates from lenders.",
+    title: [{ text: "Clear, Honest " }, { text: "Communication", green: true }],
+    description: "Options and outcomes explained clearly for confident decisions.",
     href: "/calculators",
+  },
+  {
+    number: "4",
+    title: [{ text: "Support Beyond " }, { text: "Settlement", green: true }],
+    description: "Guidance continues as your needs and goals evolve.",
+    href: "/services",
+  },
+  {
+    number: "5",
+    title: [{ text: "Best Interest and " }, { text: "Compliance Focus", green: true }],
+    description: "Recommendations grounded in your best interest, always.",
+    href: "/services",
+  },
+  {
+    number: "6",
+    title: [{ text: "Consistency and " }, { text: "Accountability", green: true }],
+    description: "Steady engagement and reliable outcomes you can count on.",
+    href: "/services",
+  },
+  {
+    number: "7",
+    title: [{ text: "Professional Network", green: true }, { text: " and Lender Access" }],
+    description: "Connections that give access to the right capital and advice.",
+    href: "/services",
   },
 ];
 
 export default function HowWeSupport() {
   return (
     <section className="">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 py-10">
+      <div className="max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-10">
 
         {/* Header */}
         <div className="section-header">
-          <Label className="mb-4">Why Choose Us </Label>
+          <Label className="mb-4">HOW WE SUPPORT OUR CLIENTS</Label>
           <H2 className="max-w-2xl">
-            <Highlight>Careful thinking,</Highlight>{" "}
-            commercial judgement,
-            <br />and quiet persistence at work.
+            A relationship-first approach,{" "}
+            <Highlight>expert guidance,</Highlight>
+            <br className="hidden  md:block lg:block " />and disciplined execution at every stage.
           </H2>
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 md:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((f) => (
             <NumberCard
               key={f.number}
               number={f.number}
-              title={f.title}
+              titleParts={f.title}
               description={f.description}
               href={f.href}
             />

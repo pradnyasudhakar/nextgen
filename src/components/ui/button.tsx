@@ -15,16 +15,58 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variants: Record<Variant, string> = {
-  // Filled green — "Get Started", "Book an Appointment"
-  primary: "inline-flex items-center justify-center gap-2 font-bold text-white rounded-full transition-all hover:opacity-90 bg-[var(--color-primary)] border-2 border-transparent",
+  // Green bg → hover: white fill from bottom-left, green text
+  primary: [
+    "inline-flex items-center justify-center gap-2 font-bold rounded-full",
+    "border border-[var(--color-primary)]",
+    "text-white bg-[var(--color-primary)]",
+    "relative overflow-hidden",
+    "before:content-[''] before:absolute before:inset-0 before:rounded-full",
+    "before:bg-white",
+    "before:scale-0 before:origin-bottom-left",
+    "before:transition-transform before:duration-400 before:ease-out",
+    "hover:before:scale-100",
+    "hover:text-[var(--color-primary)]",
+    "transition-colors duration-400",
+    "[&>span]:relative [&>span]:z-10",
+    "[&>svg]:relative [&>svg]:z-10",
+  ].join(" "),
 
-  // Green border, rounded-full — "View All Services"
-  outline: "inline-flex items-center justify-center gap-2 font-bold rounded-full transition-all border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary-light)]",
+  // Transparent → hover: green fill from bottom-left, white text
+  outline: [
+    "inline-flex items-center justify-center gap-2 font-bold rounded-full",
+    // "border-1 border-[var(--color-primary)]",
+    "text-[var(--color-primary)] bg-transparent",
+    "relative overflow-hidden",
+    "before:content-[''] before:absolute before:inset-0 before:rounded-full",
+    "before:bg-[var(--color-primary)]",
+    "before:scale-0 before:origin-bottom-left",
+    "before:transition-transform before:duration-400 before:ease-out",
+    "hover:before:scale-100",
+    "hover:text-white",
+    "transition-colors duration-400",
+    "[&>span]:relative [&>span]:z-10",
+    "[&>svg]:relative [&>svg]:z-10",
+  ].join(" "),
 
-  // Transparent bg, rounded-xl border — "Know More About Us"
-  "outline-rounded": "inline-flex items-center text-[1rem] justify-center gap-2 font-[500] rounded-full transition-all border border-[var(--color-primary)] text-[var(--color-primary)] bg-transparent hover:bg-[var(--color-primary-light)]",
+  // Same as outline
+  "outline-rounded": [
+    "inline-flex items-center justify-center gap-2 font-[500] rounded-full",
+    "border border-[var(--color-primary)]",
+    "text-[var(--color-primary)] bg-transparent",
+    "relative overflow-hidden",
+    "before:content-[''] before:absolute before:inset-0 before:rounded-full",
+    "before:bg-[var(--color-primary)]",
+    "before:scale-0 before:origin-bottom-left",
+    "before:transition-transform before:duration-400 before:ease-out",
+    "hover:before:scale-100",
+    "hover:text-white",
+    "transition-colors duration-400",
+    "[&>span]:relative [&>span]:z-10",
+    "[&>svg]:relative [&>svg]:z-10",
+  ].join(" "),
 
-  // No border, no bg — "Read Article ›"
+  // ghost — simple
   ghost: "inline-flex items-center justify-center gap-2 font-bold text-[var(--color-primary)] transition-all hover:opacity-75 bg-transparent",
 };
 
@@ -47,19 +89,16 @@ export function Button({
 
   if (href) {
     return (
-      <Link
-        href={href}
-        className={cls}
-        {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-      >
-        {children}
+      <Link href={href} className={cls}
+        {...(external ? { target: "_blank", rel: "noreferrer" } : {})}>
+        <span>{children}</span>
       </Link>
     );
   }
 
   return (
     <button className={cls} {...props}>
-      {children}
+      <span>{children}</span>
     </button>
   );
 }

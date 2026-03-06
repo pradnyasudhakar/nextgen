@@ -1,11 +1,11 @@
-import { H2, Label, Lead, Highlight } from "@/components/ui/typography";
+import { H2, Label, Highlight, P } from "@/components/ui/typography";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export default function CTABanner() {
   return (
     <section className="">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 py-10">
+      <div className="max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-10">
         <div
           className="relative rounded-2xl overflow-hidden px-8 py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8"
           style={{ backgroundColor: "#f0f2f0" }}
@@ -25,12 +25,13 @@ export default function CTABanner() {
           <div className="relative z-10 max-w-lg">
             <Label className="mb-3">BOOK AN APPOINTMENT</Label>
             <H2 className="mb-3">
-              <Highlight>Our team</Highlight> is ready to help you!
+             Let’s Start the  <Highlight>Conversation</Highlight> 
             </H2>
-            <Lead className="text-sm sm:text-base">
-              We&apos;ll walk you through the entire loan journey, keeping you
-              informed and supported at every stage.
-            </Lead>
+            <P className="">
+              Whether you&apos;re purchasing, refinancing, investing, or expanding your business, we will help you explore your options with confidence. 
+Book a consultation today and take the next step towards your financial goals.
+
+            </P>
           </div>
 
           {/* Right: CTA button */}

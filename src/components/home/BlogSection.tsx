@@ -26,8 +26,8 @@ const posts = [
 
 export default function BlogSection() {
   return (
-    <section className="">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 py-10">
+    <section id="blog" className="">
+      <div className="max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-10">
         {/* ── Header row ── */}
         <div className="flex items-end justify-between mb-10">
           <div>
@@ -36,7 +36,7 @@ export default function BlogSection() {
               <Highlight>Latest</Highlight> Financial Guides &amp; News
             </H2>
           </div>
-          <Button href="/blog" variant="outline-rounded">
+          <Button href="/blog" className="md:block hidden " variant="outline-rounded">
             View More
           </Button>
         </div>
@@ -74,9 +74,9 @@ export default function BlogSection() {
 
         {/* Mobile View More */}
         <div className="mt-10 text-center sm:hidden">
-          <Link href="/blog" className="btn-outline">
+           <Button href="/blog" variant="outline-rounded">
             View More
-          </Link>
+          </Button>
         </div>
       </div>
     </section>
