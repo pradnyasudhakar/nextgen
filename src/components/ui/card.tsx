@@ -68,32 +68,32 @@ export function IconCard({ icon, children, className, href, ...props }: IconCard
 
 // ── Number Card ──────────────────────────────
 
-
 import { H3, P } from "./typography";
 
+type TitlePart = { text: string; green?: boolean };
+
 interface NumberCardProps extends CardProps {
-  number:      string;
-  titleParts?: { text: string; green?: boolean }[];
-  title:       string;
-  description: string;
+  number:       string;
+  title?:       string;      // ← optional
+  titleParts?:  TitlePart[]; // ← optional
+  description:  string;
 }
 
-export function NumberCard({ number, titleParts, title, description, href, className, ...props }: NumberCardProps) {
+export function NumberCard({ number, title, titleParts, description, href, className, ...props }: NumberCardProps) {
   const cls = cn(
     "group",
     "bg-[#FBFBFB] border border-primary rounded-[12px] p-6",
     "flex flex-col justify-between overflow-hidden",
     "transition-all duration-300",
-    "hover:border-[var(--color-primary)] hover:shadow-[0_4px_24px_rgba(0,103,78,0.13)] hover:-translate-y-5",
-    "max-h-[260px]",
+    "hover:border-[var(--color-primary)] hover:shadow-[0_4px_24px_rgba(0,103,78,0.13)] hover:-translate-y-4",
+    "min-h-[220px]",
     className
   );
 
   const content = (
     <>
-      {/* Top: title + description */}
       <div>
-        <H3 className="max-w-65 mb-4 text-dark  transition-colors duration-300">
+        <H3 className="max-w-65 mb-4 text-dark transition-colors duration-300">
           {titleParts
             ? titleParts.map((part, i) =>
                 part.green
@@ -105,12 +105,10 @@ export function NumberCard({ number, titleParts, title, description, href, class
         <P>{description}</P>
       </div>
 
-      {/* Bottom: number + arrow */}
       <div className="flex items-end justify-end mt-5">
         <span className="text-[5rem] font-[700] leading-none select-none transition-colors duration-300 text-[#dceee9] group-hover:text-primary">
           {number}
         </span>
-        
       </div>
     </>
   );

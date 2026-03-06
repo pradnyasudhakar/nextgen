@@ -1,7 +1,14 @@
 import { H2, Label, Highlight } from "@/components/ui/typography";
 import { NumberCard } from "@/components/ui/card";
 
-const features = [
+type TitlePart = { text: string; green?: boolean };
+
+const features: {
+  number: string;
+  title: TitlePart[];
+  description: string;
+  href: string;
+}[] = [
   {
     number: "1",
     title: [{ text: "A Relationship-First", green: true }, { text: " Approach" }],
@@ -51,17 +58,16 @@ export default function HowWeSupport() {
     <section className="">
       <div className="max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-10">
 
-        {/* Header */}
         <div className="section-header">
           <Label className="mb-4">HOW WE SUPPORT OUR CLIENTS</Label>
           <H2 className="max-w-2xl">
             A relationship-first approach,{" "}
             <Highlight>expert guidance,</Highlight>
-            <br className="hidden  md:block lg:block " />and disciplined execution at every stage.
+            <br className="hidden md:block lg:block" />
+            and disciplined execution at every stage.
           </H2>
         </div>
 
-        {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((f) => (
             <NumberCard
