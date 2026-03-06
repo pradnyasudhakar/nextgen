@@ -316,7 +316,7 @@ export default function Navbar() {
               </a>
             </div>
 
-            <Button href="/apply-now" className="btn-primary mt-3 px-4 justify-center">
+            <Button href="/contact" className="btn-primary mt-3 px-4 justify-center">
               Get Started
             </Button>
           </div>
