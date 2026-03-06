@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import Image from "next/image";
 import { Mail, Instagram, Linkedin } from "lucide-react";
 import {  Small } from "@/components/ui/typography";
@@ -43,12 +44,12 @@ export default function Footer() {
             <p  className="mb-4 font-[700] text-[1rem] text-primary">SERVICES</p>
 
             <ul className="space-y-3 text-[#555555] text-[1rem]">
-              <li><Link href="/services/home-finance">Home Finance</Link></li>
-              <li><Link href="/services/commercial-finance">Commercial Finance</Link></li>
-              <li><Link href="/services/business-finance">Business Finance</Link></li>
+              <li><Link href="/#services">Home Finance</Link></li>
+              <li><Link href="/#services">Commercial Finance</Link></li>
+              <li><Link href="/#services">Business Finance</Link></li>
               <li><Link href="/services/asset-finance">Asset Finance</Link></li>
               <li><Link href="/services/development-finance">Development Finance</Link></li>
-              <li><Link href="/services/smsf-finance">SMSF Finance</Link></li>
+              <li><Link href="/#services">SMSF Finance</Link></li>
             </ul>
           </div>
 
@@ -58,9 +59,9 @@ export default function Footer() {
             <div className="flex justify-between ">
 
               <div className="flex  flex-col gap-6 mb-6">
-                <Link href="/about-us" className="font-[700] text-[1rem] text-primary">ABOUT</Link>
-                <Link href="/blog" className="font-[700] text-[1rem] text-primary">BLOGS</Link>
-                <Link href="/faqs" className="font-[700] text-[1rem] text-primary">FAQS</Link>
+                <Link href="/#about" className="font-[700] text-[1rem] text-primary">ABOUT</Link>
+                <Link href="/#blog" className="font-[700] text-[1rem] text-primary">BLOGS</Link>
+                <Link href="/#" className="font-[700] text-[1rem] text-primary">FAQS</Link>
               </div>
 
               <div className="flex flex-col gap-10 justify-between ">
