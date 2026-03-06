@@ -36,7 +36,7 @@ Book a consultation today and take the next step towards your financial goals.
 
           {/* Right: CTA button */}
           <div className="relative z-10 shrink-0">
-            <Button href="/contact-us" variant="primary" size="lg">
+            <Button href="/contact" variant="primary" size="lg">
               Get In Touch
             </Button>
           </div>
