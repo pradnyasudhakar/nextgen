@@ -110,7 +110,7 @@ export default function Footer() {
 
         {/* Bottom Disclaimer */}
 
-        <div className="mt-14  space-y-4">
+        <div className=" mt-8 lg:mt-14  space-y-4">
           <p className="text-dark font-[500]  leading-snug tracking-tight text-[1rem] ">
             ZAK consultancy Pty Ltd <br />
             Credit Representative Number is 576217 and is authorised under Australian Credit Licence Number: 389328 | ABN: 92686717402
