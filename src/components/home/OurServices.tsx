@@ -9,7 +9,7 @@ const services = [
     titleBlack: "Loans",
     description:
       "Owner-occupied, investment, refinancing and construction lending solutions tailored to your circumstances.",
-    href: "/services/home-loans",
+    href: "#",
   },
   {
     icon: "/images/icon-2.png",
@@ -17,7 +17,7 @@ const services = [
     titleBlack: "Loans",
     description:
       "Funding for commercial property acquisitions or refinancing, aligned with your long-term investment strategy.",
-    href: "/services/commercial-loans",
+    href: "#",
   },
   {
     icon: "/images/icon-3.png",
@@ -25,7 +25,7 @@ const services = [
     titleBlack: "Finance",
     description:
       "Structured lending to support business purchases, expansion, or working capital requirements.",
-    href: "/services/business-finance",
+    href: "#",
   },
   {
     icon: "/images/icon-4.png",
@@ -33,7 +33,7 @@ const services = [
     titleBlack: "Finance",
     description:
       "Finance solutions for vehicles, plant, and equipment to support operational growth and cash flow management.",
-    href: "/services/asset-finance",
+    href: "#",
   },
   {
     icon: "/images/icon-5.png",
@@ -41,7 +41,7 @@ const services = [
     titleBlack: "Finance",
     description:
       "Funding assistance for residential or commercial development projects, with guidance through lender requirements.",
-    href: "/services/development-finance",
+    href: "#",
   },
   {
     icon: "/images/icon-6.png",
@@ -49,7 +49,7 @@ const services = [
     titleBlack: "Finance",
     description:
       "Lending support for Self-Managed Super Funds investing in property, working alongside your professional advisers.",
-    href: "/services/smsf-finance",
+    href: "#",
   },
 ];
 

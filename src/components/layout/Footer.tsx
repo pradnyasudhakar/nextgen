@@ -47,8 +47,8 @@ export default function Footer() {
               <li><Link href="/#services">Home Finance</Link></li>
               <li><Link href="/#services">Commercial Finance</Link></li>
               <li><Link href="/#services">Business Finance</Link></li>
-              <li><Link href="/services/asset-finance">Asset Finance</Link></li>
-              <li><Link href="/services/development-finance">Development Finance</Link></li>
+              <li><Link href="/#">Asset Finance</Link></li>
+              <li><Link href="/#">Development Finance</Link></li>
               <li><Link href="/#services">SMSF Finance</Link></li>
             </ul>
           </div>
