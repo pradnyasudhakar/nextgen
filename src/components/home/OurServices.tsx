@@ -68,9 +68,9 @@ export default function OurServices() {
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-5">
-          {services.map((service) => (
+          {services.map((service, i) => (
             <IconCard
-              key={service.href}
+              key={i}
               href={service.href}
               icon={
                 <Image

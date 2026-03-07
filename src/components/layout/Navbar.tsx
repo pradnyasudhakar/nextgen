@@ -9,7 +9,7 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 
 const navLinks = [
-  { label: "Home", href: "#" },
+  { label: "Home", href: "/" },
   { label: "About", href: "/#about" },
   {
     label: "Services",
@@ -119,17 +119,16 @@ export default function Navbar() {
                         }} />
                       </button>
                     ) : (
-                      <Link
-                        href={link.href}
-                        className="flex items-center px-4 py-2 rounded-lg text-[0.9rem] transition-all duration-200 whitespace-nowrap"
-                        style={{
-                          color: active ? "var(--color-primary)" : "#002566",
-                          background: active ? "var(--color-primary-light)" : "transparent",
-                          fontWeight: active ? "var(--font-semibold)" : "var(--font-medium)",
-                        }}
-                      >
-                        {link.label}
-                      </Link>
+                     <Link
+  href={link.href}
+  className="flex items-center px-4 py-2 rounded-lg text-[0.9rem] transition-all duration-200 whitespace-nowrap"
+  style={{
+    color: "#002566",
+    fontWeight: "var(--font-medium)",
+  }}
+>
+  {link.label}
+</Link>
                     )}
 
                     {/* Dropdown */}
