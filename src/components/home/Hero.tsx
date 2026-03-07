@@ -15,7 +15,7 @@ export default function Hero() {
           <div className="max-w-105  ">
             
             {/* Heading */}
-            <Display className="text-[#FBFBFB] [word-spacing:10px] leading-8 lg:leading-12 font-[300] mb-6">
+            <Display className="text-[#FBFBFB] [word-spacing:8px] leading-8 lg:leading-12 font-[300] mb-6">
               Your Partner For What <br />
               <span className="font-[700]">Comes Next</span>
             </Display>
