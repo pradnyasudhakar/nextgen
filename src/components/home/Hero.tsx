@@ -3,7 +3,7 @@ import { Display, Lead } from "@/components/ui/typography";
 
 export default function Hero() {
   return (
-    <section className="w-full px-2 overflow-hidden">
+    <section className="w-full px-3 overflow-hidden">
       
       <div
         className="w-full min-h-130 lg:min-h-screen rounded-[20px]

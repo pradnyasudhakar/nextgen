@@ -4,9 +4,9 @@ import { H2, Label, P, Highlight } from "../ui/typography";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="">
-      <div className="max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20 justify-between items-center">
+    <section  className="">
+      <div className="max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20 mt-16 justify-between items-center">
          
 
           {/* ── Right: Content ── */}

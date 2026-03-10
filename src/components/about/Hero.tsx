@@ -2,9 +2,9 @@ import { Display } from "@/components/ui/typography";
 
 export default function Hero() {
   return (
-    <section className="w-full px-2 overflow-hidden">
+    <section className="w-full px-3 overflow-hidden">
       <div
-        className="w-full h-130  lg:h-100 rounded-[20px]
+        className="w-full h-130   lg:h-100 rounded-[20px]
         bg-[url('/images/about-bg.png')] bg-black/20 bg-blend-overlay bg-position-[65%]   lg:bg-cover  bg-no-repeat"
       >
         {/* Content */}
