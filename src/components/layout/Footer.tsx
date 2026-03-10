@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-16">
 
         {/* 4 col grid — same as Figma */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_0.6fr_0.8fr] gap-10 lg:gap-40">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_0.6fr_0.8fr] gap-10 justify-between lg:gap-30">
 
           {/* COL 1 — Logo + address + links */}
           <div className="flex flex-col justify-between " >
@@ -58,7 +58,7 @@ export default function Footer() {
           </div>
 
           {/* COL 4 — Social icons + FBAA logo */}
-          <div className="flex flex-col justify-between gap-10">
+          <div className=" lg:ml-10 flex flex-col justify-between gap-10">
             {/* Social icons */}
             <div className="flex gap-3">
               <a href="https://mail.google.com/mail/?view=cm&to=admin@nextgenlg.com.au" target="_blank"
