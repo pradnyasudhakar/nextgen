@@ -42,7 +42,7 @@ export default function Footer() {
               
             </div>
 
-            <div className="flex flex-col lg:flex-row gap-1 mt-2 text-[0.8rem] text-[#555555] underline">
+            <div className="flex flex-col lg:flex-row gap-2 mt-2 text-[0.8rem] text-[#555555] underline">
               <Link href="/compliments-concerns">Compliments and Concerns</Link>
               <Link href="/disclaimer">Important Information</Link>
               {/* <Link href="/important-information">Important Information</Link> */}
