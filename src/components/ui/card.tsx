@@ -97,7 +97,7 @@ export function NumberCard({ number, title, titleParts, description, href, class
           {titleParts
             ? titleParts.map((part, i) =>
                 part.green
-                  ? <span key={i} style={{ color: "var(--color-primary)" }}>{part.text}</span>
+                  ? <span key={i} style={{ color: "var(--color-primary)" ,fontWeight: 500 }}>{part.text}</span>
                   : <span key={i}>{part.text}</span>
               )
             : title}

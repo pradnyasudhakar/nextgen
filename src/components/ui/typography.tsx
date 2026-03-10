@@ -35,7 +35,7 @@ export function H2({ className, ...props }: React.HTMLAttributes<HTMLHeadingElem
 export function H3({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h3
-      className={cn("text-[1.4rem] sm:text-[1.4rem] font-[500] leading-snug text-dark", className)}
+      className={cn("text-[1.4rem] sm:text-[1.4rem] font-normal leading-snug text-dark", className)}
       {...props}
     />
   );

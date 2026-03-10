@@ -62,9 +62,9 @@ export default function HowWeSupport() {
           <Label className="mb-4">HOW WE SUPPORT OUR CLIENTS</Label>
           <H2 className="max-w-2xl">
             A relationship-first approach,{" "}
-            <Highlight>expert guidance,</Highlight>
+            expert guidance,
             <br className="hidden md:block lg:block" />
-            and disciplined execution at every stage.
+            and <Highlight>disciplined execution</Highlight>  at every stage.
           </H2>
         </div>
 
