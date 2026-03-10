@@ -10,7 +10,7 @@ export default function Hero() {
         bg-[url('/images/hero-bg.png')] bg-black/20 bg-blend-overlay bg-position-[65%]   lg:bg-cover  bg-no-repeat"
       >
         {/* Content */}
-        <div className="flex items-center min-h-130 lg:min-h-screen max-w-7xl 2xl:max-w-8xl mx-auto px-10 sm:px-16 lg:px-28 py-20">
+        <div className="flex items-center min-h-130 lg:min-h-screen max-w-7xl 2xl:max-w-8xl mx-auto px-10 sm:px-16 lg:px-26 py-20">
           
           <div className="max-w-105 2xl:max-w-150  ">
             

@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 export function Display({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h1
-      className={cn(" 2xl:text-[3rem] 2xl:tracking-normal 2xl:leading-[1.2] text-[1.5rem] sm:text-[1.5rem] lg:text-[2.5rem] font-light leading-[1.1] tracking-tight text-[#FBFBFB]", className)}
+      className={cn(" 2xl:text-[3rem] 2xl:tracking-normal 2xl:leading-[1.2] text-[1.5rem] sm:text-[1.7rem] lg:text-[2.5rem] font-light leading-[1.1] tracking-tight text-[#FBFBFB]", className)}
       {...props}
     />
   );

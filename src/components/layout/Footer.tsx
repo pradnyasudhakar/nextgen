@@ -5,11 +5,11 @@ import { Small } from "@/components/ui/typography";
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: "#00674E0D" }}>
+    <footer style={{ backgroundColor: "#EEF3F2" }}>
       <div className="max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-16">
 
         {/* 4 col grid — same as Figma */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_0.6fr_0.8fr] gap-10 justify-between lg:gap-30">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_0.6fr_0.8fr] gap-10  justify-between  lg:gap-30">
 
           {/* COL 1 — Logo + address + links */}
           <div className="flex flex-col justify-between " >
