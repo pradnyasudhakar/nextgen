@@ -1,0 +1,23 @@
+import { Display } from "@/components/ui/typography";
+
+export default function Hero() {
+  return (
+    <section className="w-full px-2 overflow-hidden">
+      <div
+        className="w-full h-130  lg:h-100 rounded-[20px]
+        bg-[url('/images/about-bg.png')] bg-black/20 bg-blend-overlay bg-position-[65%]   lg:bg-cover  bg-no-repeat"
+      >
+        {/* Content */}
+        <div className="flex items-center h-130  lg:h-100 max-w-7xl mx-auto px-10 sm:px-16 lg:px-28 py-20">
+          <div className="max-w-160">
+            {/* Heading */}
+            <Display className="text-[#FBFBFB] [word-spacing:8px] leading-8 lg:leading-12 font-light mb-6">
+              A steady partner in the decisions that{" "}
+              <span className="font-[700]">shape your future</span>
+            </Display>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

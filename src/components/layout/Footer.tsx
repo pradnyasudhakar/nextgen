@@ -10,7 +10,7 @@ export default function Footer() {
       
       <div className="max-w-7xl mx-auto px-10 sm:px-16 lg:px-28 py-16">
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-0">
 
           {/* LEFT */}
           <div>
@@ -23,24 +23,34 @@ export default function Footer() {
               />
             </Link>
 
-            <p className=" mt-6 leading-snug text-[0.8rem] text-[#555555">
-              © {new Date().getFullYear()} © 2026 ZAK Consultancy Pty Ltd. PO Box 52, Vermont, VIC 3133
+            <p className=" mt-10 leading-snug text-[0.9rem] text-[#555555">
+              © {new Date().getFullYear()}  ZAK Consultancy Pty Ltd.  
+            </p>
+            <p className=" mt-2 flex gap-2 leading-snug text-[0.9rem] text-[#555555">
+              <Image
+                                 src="/images/location.png"
+                                 alt="email icon"
+                                 width={14}
+                                 height={14}
+                               /> PO Box 52, Vermont, VIC 3133
             </p>
 
-            <div className="flex gap-6 mt-6 text-[0.8rem] text-[#555555] underline">
-              <Link href="/sitemap">Sitemap</Link>
+            <div className="flex flex-col lg:flex-row gap-2 lg:gap-4 mt-6 text-[0.9rem] text-[#555555] underline">
+             
               <Link href="/privacy-policy">Privacy policy</Link>
               <Link href="/disclaimer">Disclaimer</Link>
+              
             </div>
 
-            <div className="flex flex-col mt-2 text-[0.8rem] text-[#555555] underline">
-              <Link href="/compliments">Compliments and Concerns</Link>
-              <Link href="/important-information">Important Information</Link>
+            <div className="flex flex-col lg:flex-row gap-2 mt-2 text-[0.9rem] text-[#555555] underline">
+              <Link href="/compliments-concerns">Compliments and Concerns</Link>
+              <Link href="/disclaimer">Important Information</Link>
+              {/* <Link href="/important-information">Important Information</Link> */}
             </div>
           </div>
 
           {/* SERVICES */}
-          <div className="  " >
+          <div className="flex flex-col justify-end lg:ml-16 " >
             <p  className="mb-4 font-[700] text-[1rem] text-primary">SERVICES</p>
 
             <ul className="space-y-3 text-[#555555] text-[1rem]">
@@ -54,7 +64,7 @@ export default function Footer() {
           </div>
 
           {/* RIGHT */}
-          <div className="   justify-between">
+          <div className="justify-between">
 
             <div className="flex justify-between ">
 

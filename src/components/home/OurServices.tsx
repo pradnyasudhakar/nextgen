@@ -16,7 +16,7 @@ const services = [
     titleGreen: "Commercial",
     titleBlack: "Loans",
     description:
-      "Funding for commercial property acquisitions or refinancing, aligned with your long-term investment strategy.",
+      "Funding for commercial property acquisitions or refinancing, aligned with your long-term  strategy.",
     href: "#",
   },
   {

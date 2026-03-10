@@ -22,7 +22,7 @@ export default function Hero() {
 
             {/* Subtext */}
             <Lead className="text-[#FBFBFB] font-extralight mb-6">
-              We provide the capital and insight needed as you step into new
+              We provide the guidance and insight needed as you step into new
               opportunities and decisions.
             </Lead>
 
