@@ -81,11 +81,7 @@ export default function PrivacyPolicy() {
           <div>
             <H3 className="text-[#002566] mb-3">How Can You Check, Update, or Change the Information We Are Holding?</H3>
             <P className="leading-relaxed text-[#3f3f3f]">
-              Upon receipt of your written request and enough information to allow us to
-              identify the information, we will disclose to you the personal information we
-              hold about you. We will also correct, amend, or delete any personal information
-              that we agree is inaccurate. We do not charge for receiving a request for access
-              to personal information or for complying with a correction request.
+              Upon receipt of your written request and enough information to allow us to identify the information, we will disclose to you the personal information we hold about you. We will also correct, amend, or delete any personal information that we agree is inaccurate. 
             </P>
             <P className="leading-relaxed text-[#3f3f3f] mt-3">
               If you wish to access or correct your personal information, please contact us at{" "}
@@ -120,15 +116,15 @@ export default function PrivacyPolicy() {
           <div className="bg-[#f5faf8] border border-[#d0e8e0] rounded-md p-6">
             <H3 className="text-[#002566] mb-3">Complaints — Internal Dispute Resolution</H3>
             <P className="leading-relaxed text-[#3f3f3f]">
-              If you do have a complaint, please let us know by email — if we do not know
-              about it, we cannot fix it. Please contact our Complaints Officer at{" "}
+              If you do have a complaint, please let us know by email, because if we do not know about it, we cannot fix it.{" "}
+              You may also contact us by email addressed to; The Complaints Officer at &nbsp;
               <a href="mailto:admin@nextgenlg.com.au"
                 className="text-primary underline underline-offset-2 font-[500]">
-                admin@nextgenlg.com.au
-              </a>{" "}
-              and include as much information as you can. You must submit your complaint in
-              writing. When we receive a complaint, we will attempt to resolve it promptly.
+                   admin@nextgenlg.com.au
+              </a>{" "}&nbsp;
+              please make sure you include as much information as you can.
             </P>
+            <P>You should explain the details of your complaint as clearly as you can. You must do this in writing. When we receive a complaint, we will attempt to resolve it promptly.</P>
           </div>
 
         </div>
