@@ -9,7 +9,7 @@ export default function Hero() {
       >
         {/* Content */}
         <div className="flex items-center h-130  lg:h-100 max-w-7xl mx-auto px-10 sm:px-16 lg:px-28 py-20">
-          <div className="max-w-160">
+          <div className="max-w-160 2xl:max-w-200 ">
             {/* Heading */}
             <Display className="text-[#FBFBFB] [word-spacing:8px] leading-8 lg:leading-12 font-light mb-6">
               A steady partner in the decisions that{" "}
