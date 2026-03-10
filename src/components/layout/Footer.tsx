@@ -29,7 +29,7 @@ export default function Footer() {
               <Link href="/privacy-policy">Privacy policy</Link>
               <Link href="/disclaimer">Disclaimer</Link>
             </div>
-            <div className="flex flex-row gap-3 mt-0 text-[0.8rem] text-[#555555] underline flex-wrap">
+            <div className="flex flex-row -mt-3 gap-3  text-[0.8rem] text-[#555555] underline flex-wrap">
               <Link href="/compliments-concerns">Compliments and Concerns</Link>
             
             </div>

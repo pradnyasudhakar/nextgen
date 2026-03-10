@@ -10,9 +10,9 @@ export default function Hero() {
         bg-[url('/images/hero-bg.png')] bg-black/20 bg-blend-overlay bg-position-[65%]   lg:bg-cover  bg-no-repeat"
       >
         {/* Content */}
-        <div className="flex items-center min-h-130 lg:min-h-screen max-w-7xl mx-auto px-10 sm:px-16 lg:px-28 py-20">
+        <div className="flex items-center min-h-130 lg:min-h-screen max-w-7xl 2xl:max-w-8xl mx-auto px-10 sm:px-16 lg:px-28 py-20">
           
-          <div className="max-w-105 2xl-max-w-150  ">
+          <div className="max-w-105 2xl:max-w-150  ">
             
             {/* Heading */}
             <Display className="  text-[#FBFBFB] [word-spacing:8px] leading-8 lg:leading-12 font-[300] mb-6">
@@ -21,7 +21,7 @@ export default function Hero() {
             </Display>
 
             {/* Subtext */}
-            <Lead className="text-[#FBFBFB] font-extralight mb-6">
+            <Lead className="text-[#FBFBFB] max-w-105 2xl:max-w-110 font-extralight mb-6">
               We provide the guidance and insight needed as you step into new
               opportunities and decisions.
             </Lead>
@@ -29,7 +29,7 @@ export default function Hero() {
             {/* Button */}
             <Button
               href="/contact"
-              className="text-[0.9rem]"
+              className="text-[0.9rem] 2xl:text-[1rem] "
               variant="primary"
               size="lg"
             >
