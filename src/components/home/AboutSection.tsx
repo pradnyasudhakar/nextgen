@@ -49,7 +49,7 @@ export default function AboutSection() {
 
             {/* CTA */}
             <div className="flex justify-end mt-16">
-              <Button href="/contact" variant="outline-rounded">
+              <Button href="/about" variant="outline-rounded">
                 Know More About Us
               </Button>
             </div>
