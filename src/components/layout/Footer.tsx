@@ -51,9 +51,9 @@ export default function Footer() {
           {/* COL 3 — About / Blogs / FAQs */}
           <div>
             <div className="flex flex-col gap-5">
-              <Link href="/about" className="font-[700] text-[0.9rem] text-primary tracking-wide hover:opacity-80">ABOUT</Link>
-              <Link href="/#blog" className="font-[700] text-[0.9rem] text-primary tracking-wide hover:opacity-80">BLOGS</Link>
-              <Link href="/faqs" className="font-[700] text-[0.9rem] text-primary tracking-wide hover:opacity-80">FAQS</Link>
+              <Link href="/about" className="font-[700] text-[0.9rem] text-primary tracking-wide uppercase hover:opacity-80">ABOUT Us</Link>
+              <Link href="/#blog" className="font-[700] text-[0.9rem] text-primary tracking-wide uppercase hover:opacity-80">BLOGS</Link>
+              <Link href="/faqs" className="font-[700] text-[0.9rem] text-primary tracking-wide uppercase hover:opacity-80">FAQS</Link>
             </div>
           </div>
 
