@@ -35,14 +35,14 @@ export default function Footer() {
                                /> PO Box 52, Vermont, VIC 3133
             </p>
 
-            <div className="flex flex-col lg:flex-row gap-2 lg:gap-4 mt-6 text-[0.9rem] text-[#555555] underline">
+            <div className="flex flex-col lg:flex-row gap-2 lg:gap-3 mt-6 text-[0.8rem] text-[#555555] underline">
              
               <Link href="/privacy-policy">Privacy policy</Link>
               <Link href="/disclaimer">Disclaimer</Link>
               
             </div>
 
-            <div className="flex flex-col lg:flex-row gap-1 mt-2 text-[0.9rem] text-[#555555] underline">
+            <div className="flex flex-col lg:flex-row gap-1 mt-2 text-[0.8rem] text-[#555555] underline">
               <Link href="/compliments-concerns">Compliments and Concerns</Link>
               <Link href="/disclaimer">Important Information</Link>
               {/* <Link href="/important-information">Important Information</Link> */}
