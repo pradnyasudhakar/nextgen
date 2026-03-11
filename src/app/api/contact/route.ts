@@ -5,18 +5,35 @@ export async function POST(req: NextRequest) {
   try {
     const { name, email, phone, state, message } = await req.json();
 
+    // const transporter = nodemailer.createTransport({
+    //   service: "gmail",
+    //   auth: {
+    //     user: process.env.GMAIL_USER,
+    //     pass: process.env.GMAIL_PASS,
+    //   },
+    // });
+    // ✅ Naya — Microsoft 365
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.office365.com",
+      port: 587,
+      secure: false,
       auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASS,
+        user: process.env.MS_USER,
+        pass: process.env.MS_PASS,
+      },
+      tls: {
+        ciphers: "SSLv3",
       },
     });
 
     // ── 1. Admin ko notification ──
     await transporter.sendMail({
-      from: `"NextGen Contact Form" <${process.env.GMAIL_USER}>`,
-      to: process.env.GMAIL_USER,
+      // from: `"NextGen Contact Form" <${process.env.GMAIL_USER}>`,
+      // to: process.env.GMAIL_USER,
+      // Admin email
+      from: `"NextGen Contact Form" <${process.env.MS_USER}>`,
+      to: "admin@nextgenlg.com.au",
+
       subject: `New Enquiry from ${name}`,
       replyTo: email,
       html: `
@@ -52,7 +69,7 @@ export async function POST(req: NextRequest) {
 
     // ── 2. User ko thank you confirmation ──
     await transporter.sendMail({
-      from: `"NextGen Lending Group" <${process.env.GMAIL_USER}>`,
+      from: `"NextGen Lending Group" <${process.env.MS_USER}>`,
       to: email,
       subject: `Thank You for Contacting NextGen, ${name}!`,
       html: `
@@ -66,7 +83,7 @@ export async function POST(req: NextRequest) {
           <!-- Body -->
           <div style="background: #f5faf8; padding: 32px 28px; border-radius: 0 0 10px 10px;">
 
-            <h2 style="color: #00674E; margin-top: 0;">Thank You, ${name}! 🎉</h2>
+            <h2 style="color: #00674E; margin-top: 0;">Thank You, ${name}! </h2>
 
             <p style="color: #3f3f3f; line-height: 1.7; font-size: 15px;">
               We've received your message and appreciate you reaching out to us.
@@ -102,6 +119,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Mail error:", error);
-    return NextResponse.json({ success: false, error: String(error) }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: String(error) },
+      { status: 500 },
+    );
   }
 }

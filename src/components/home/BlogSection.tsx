@@ -36,7 +36,7 @@ export default function BlogSection() {
               <Highlight>Latest</Highlight> Financial Guides &amp; News
             </H2>
           </div>
-          <Button href="/blog" className="md:block hidden " variant="outline-rounded">
+          <Button href="#" className="md:block hidden " variant="outline-rounded">
             View More
           </Button>
         </div>
@@ -60,7 +60,7 @@ export default function BlogSection() {
 
               {/* Read Article */}
               <Link
-                href={`/blog/${post.slug}`}
+                href="#"
                 className=" text-[1rem] flex items-center text-primary px-0"
               >
                 Read Article{" "}
