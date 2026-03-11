@@ -29,7 +29,7 @@ export default function MeetTeam() {
 
               <Label className="mb-3">MEET OUR TEAM</Label>
 
-              <H2 className="mb-1 text-[1.5rem]! font-[500] text-[#002566]">
+              <H2 className="mb-1 text-[1.5rem]! font-[500] text-dark">
                 Zoher Kakajiwala
               </H2>
 
