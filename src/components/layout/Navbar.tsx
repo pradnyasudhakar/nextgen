@@ -251,8 +251,7 @@ export default function Navbar() {
                 onMouseLeave={() => setHoveredIcon(null)}
               >
                 <a
-                  href="https://mail.google.com/mail/?view=cm&to=admin@nextgenlg.com.au"
-                  target="_blank"
+                  href="mailto:admin@nextgenlg.com.au"
                   className="icon-btn"
                   aria-label="Email us"
                 >
@@ -269,6 +268,7 @@ export default function Navbar() {
                     borderColor: "var(--color-primary-light)",
                     boxShadow: "var(--shadow-md)",
                     ...tooltipStyle(hoveredIcon === "email"),
+                    pointerEvents: "none",
                   }}
                 >
                   <p className="text-sm text-dark">

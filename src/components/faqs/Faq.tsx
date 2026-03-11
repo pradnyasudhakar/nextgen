@@ -85,7 +85,7 @@ export default function FAQPage() {
                   className="w-full flex items-center justify-between px-6 py-4 text-left"
                 >
                   <span
-                    className="text-[0.95rem] font-[500] pr-4 transition-colors duration-300"
+                    className="text-[1.2rem] font-[500] pr-4 transition-colors duration-300"
                     style={{ color: isOpen ? "#002566" : "#555555" }}
                   >
                     {faq.question}
