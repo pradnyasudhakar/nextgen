@@ -23,11 +23,11 @@ export default function AboutSection() {
               {/* Paragraphs */}
               <div className="space-y-6 mt-4 leading-[100%] tracking-normal  ">
                 <P>
-                  <Highlight>Next Generation Lending Group</Highlight> believes that every lending decision is personal to the people behind it. We take the time to listen, understand your situation, and appreciate the goals you are working towards before recommending a path forward.Our work is centered on building relationships that last. 
+                <Highlight> Next Generation Lending Group</Highlight> believes that every lending decision is personal to the people behind it. Based in Melbourne, we take the time to listen, understand your situation, and appreciate the goals you are working towards before recommending a path forward.
 
                 </P>
                 <P>
-                 By combining over 15 years of experience with genuine care, we aim to support clients through important moments with advice that feels thoughtful, transparent, and dependable.
+               Our work is centred on building relationships that last. By combining over <Highlight>15 years of experience</Highlight> with genuine care, we aim to support clients through important moments with advice that feels thoughtful, transparent, and dependable. We specialise in home loans, commercial lending, business finance, asset finance, development finance, and SMSF finance, providing tailored solutions for both individuals and businesses.
                   
 
                 </P>
@@ -38,9 +38,9 @@ export default function AboutSection() {
            
           </div>
            {/* ── Left: Image ── */}
-          <div className="relative rounded-md w-full h-75 sm:w-full sm:h-120 lg:w-125 lg:h-75 overflow-hidden">
+          <div className="relative rounded-md w-full h-75 sm:w-full sm:h-120 lg:w-115 lg:h-95 overflow-hidden">
             <Image
-              src="/images/about-us.png"
+              src="/images/about-img-2.png"
               alt="Two professionals discussing finance documents"
               fill
               className="object-cover"

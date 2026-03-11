@@ -7,7 +7,7 @@ import { H2, Label, Highlight, P } from "@/components/ui/typography";
 const faqs = [
   {
     question: "What does NextGen Lending Group do?",
-    answer: "NextGen Lending Group is a mortgage broking firm that helps individuals and businesses access finance solutions. We work with a wide panel of lenders to find loans suited to your specific needs — whether for a home, investment property, business, or asset.",
+    answer: "At NextGen Lending Group, we help individuals, families, and businesses find the right finance solutions. This includes home loans, refinancing, investment loans, and other lending options. We work with a panel of lenders to compare options and guide you through the entire loan process from application to settlement.",
   },
   {
     question: "Why should I use a mortgage broker instead of going directly to a bank?",
@@ -22,27 +22,58 @@ const faqs = [
   },
   {
     question: "Does it cost anything to use your services?",
-    answer: "In most cases, our service is free to you. We are paid a commission by the lender when your loan settles. We will always disclose any fees upfront so there are no surprises.",
+    answer: "Brokers get paid a commission by the lender for bringing new business to them, but this does not impact your interest rate. Some brokers charge a fee for their service. They must disclose this fee upfront to you so that you know what it will cost if you engage their services.",
   },
   {
     question: "How much can I borrow?",
-    answer: "Your borrowing capacity depends on factors such as your income, expenses, existing debts, credit history, and the type of loan you're seeking. We assess your full financial picture to give you a clear and accurate picture of what's achievable.",
+    answer: "The amount you can borrow depends on several factors including:",
+     bullets: [
+      "Your income",
+      "Existing debts",
+      "Living expenses",
+      "Deposit amount",
+      "Employment status / position",
+    ],
+     footer:"Our borrowing calculator can give you a rough idea of how much you may be able to borrow. For a more accurate assessment, please give us a call and we can go into your options and discuss your circumstances in more detail.",
   },
   {
     question: "Do you work with self-employed clients?",
     answer: "Yes. We regularly assist self-employed borrowers and understand the unique documentation and lending requirements involved. We work with lenders who offer flexible assessment criteria for business owners and contractors.",
+    text:"We can help structure your application using the right documentation and identify lenders who specialise in self-employed lending.",
   },
   {
     question: "Can you help first-home buyers?",
-    answer: "Absolutely. We guide first-home buyers through the entire process — from understanding your borrowing capacity and government grants to selecting the right loan and managing settlement. We make the process straightforward and stress-free.",
+    answer: "Absolutely. We regularly assist first-home buyers with:",
+     bullets:[
+        "Understanding borrowing capacity",
+        "Explaining the home buying process",
+        "Accessing government incentives or grants",
+        "Choosing the right loan structure",
+            ],
+    footer:"Our goal is to make your first home purchase as smooth as possible.",        
   },
   {
     question: "What is loan pre-approval?",
-    answer: "Pre-approval is a conditional indication from a lender that they are willing to lend you a specified amount, subject to formal assessment. It gives you confidence when searching for a property and shows sellers you are a serious buyer.",
+    answer: "Loan pre-approval (also called conditional approval) is an indication from a lender that they are willing to lend you a certain amount based on your financial situation. It helps buyers:",
+     bullets:[
+        "Understand their budget",
+        "Strengthen offers when purchasing property",
+        "Move quickly when they find the right property",
+
+     ],
+     
   },
   {
     question: "How do I get started?",
-    answer: "Simply reach out to us via our contact form or call us directly. We'll arrange a conversation to understand your situation and walk you through the next steps. There's no obligation — just clear, straightforward guidance.",
+    answer: "Getting started is easy.Simply:",
+     bullets:[
+        "Contact us for an initial consultation",
+        "We assess your borrowing capacity",
+        "Compare suitable loan options",
+        "Guide you through the application process",
+
+     ],
+    footer:"You can reach out to our team anytime to begin your finance journey.", 
   },
 ];
 
@@ -65,7 +96,7 @@ export default function FAQPage() {
         </div>
 
         {/* Accordion */}
-        <div className="space-y-3">
+        <div className="space-y-6">
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
@@ -82,7 +113,7 @@ export default function FAQPage() {
                 {/* Question */}
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between px-6 py-4 text-left"
+                  className="w-full flex items-center justify-between px-6 py-6 text-left"
                 >
                   <span
                     className="text-[1.2rem] font-[500] pr-4 transition-colors duration-300"
@@ -110,7 +141,7 @@ export default function FAQPage() {
                   }}
                 >
                   {/* Divider */}
-                  <div className="mx-6 border-t border-[#e0eeea]" />
+                  <div className="mx-6 border-t border-[#9C9C9C]" />
 
                   <div className="px-6 py-5 space-y-3">
                     <P
@@ -120,8 +151,8 @@ export default function FAQPage() {
                     {faq.bullets && (
                       <ul className="space-y-1.5 pl-1">
                         {faq.bullets.map((b, j) => (
-                          <li key={j} className="flex items-start gap-2 text-[0.9rem] text-[#555555]">
-                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "var(--color-primary)" }} />
+                          <li key={j} className="flex items-center gap-2 text-[0.9rem] text-[#555555]">
+                            <span className=" flex items-center justify-center w-1 h-1 rounded-full shrink-0" style={{ background: "var(--color-primary)" }} />
                             {b}
                           </li>
                         ))}
