@@ -5,7 +5,7 @@ export default function Hero() {
     <section className="w-full px-3 overflow-hidden">
       <div
         className="w-full h-130 sm:h-90   lg:h-100 rounded-[20px]
-        bg-[url('/images/about-bg.png')] bg-black/20 bg-blend-overlay bg-position-[65%]   lg:bg-cover  bg-no-repeat"
+        bg-[url('/images/nextgen-about-bg.png')] bg-black/20 bg-blend-overlay bg-position-[65%]   lg:bg-cover  bg-no-repeat"
       >
         {/* Content */}
         <div className="flex items-center h-130 sm:h-90   lg:h-100 max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-20">

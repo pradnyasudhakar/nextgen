@@ -7,6 +7,8 @@ import { H2, H3, Label, P, Highlight } from "@/components/ui/typography";
 import { Phone } from "lucide-react";
 
 export default function ContactPage() {
+  // Component ke andar
+  const router = useRouter();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -52,8 +54,7 @@ export default function ContactPage() {
       setStatus("error");
     }
   };
-  // Component ke andar
-  const router = useRouter();
+  
   return (
     <section className="max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-10 lg:py-20">
       {/* Heading */}

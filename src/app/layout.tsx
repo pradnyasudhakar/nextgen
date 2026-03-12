@@ -4,8 +4,15 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "NextGen",
+  title: {
+    default: "NextGen Lending Group",
+    template: "NextGen Lending Group",
+  },
   description: "Your trusted finance broker in Melbourne.",
+  icons: {
+    icon: "/images/NextGenicon.png",       
+    apple: "/images/NextGenicon.png",       
+  },
 };
 
 export default function RootLayout({

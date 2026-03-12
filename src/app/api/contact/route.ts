@@ -5,35 +5,18 @@ export async function POST(req: NextRequest) {
   try {
     const { name, email, phone, state, message } = await req.json();
 
-    // const transporter = nodemailer.createTransport({
-    //   service: "gmail",
-    //   auth: {
-    //     user: process.env.GMAIL_USER,
-    //     pass: process.env.GMAIL_PASS,
-    //   },
-    // });
-    // ✅ Naya — Microsoft 365
     const transporter = nodemailer.createTransport({
-      host: "smtp.office365.com",
-      port: 587,
-      secure: false,
+      service: "gmail",
       auth: {
-        user: process.env.MS_USER,
-        pass: process.env.MS_PASS,
-      },
-      tls: {
-        ciphers: "SSLv3",
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASS,
       },
     });
 
-    // ── 1. Admin ko notification ──
+    // ── 1. Client (admin) ko notification ──
     await transporter.sendMail({
-      // from: `"NextGen Contact Form" <${process.env.GMAIL_USER}>`,
-      // to: process.env.GMAIL_USER,
-      // Admin email
-      from: `"NextGen Contact Form" <${process.env.MS_USER}>`,
+      from: `"NextGen Contact Form" <${process.env.GMAIL_USER}>`,
       to: "admin@nextgenlg.com.au",
-
       subject: `New Enquiry from ${name}`,
       replyTo: email,
       html: `
@@ -69,49 +52,37 @@ export async function POST(req: NextRequest) {
 
     // ── 2. User ko thank you confirmation ──
     await transporter.sendMail({
-      from: `"NextGen Lending Group" <${process.env.MS_USER}>`,
+      from: `"NextGen Lending Group" <${process.env.GMAIL_USER}>`,
       to: email,
       subject: `Thank You for Contacting NextGen, ${name}!`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 32px 24px; background: #ffffff;">
-
-          <!-- Header -->
           <div style="background: #00674E; padding: 24px 28px; border-radius: 10px 10px 0 0;">
             <h1 style="color: #ffffff; margin: 0; font-size: 22px;">NextGen Lending Group</h1>
           </div>
-
-          <!-- Body -->
           <div style="background: #f5faf8; padding: 32px 28px; border-radius: 0 0 10px 10px;">
-
-            <h2 style="color: #00674E; margin-top: 0;">Thank You, ${name}! </h2>
-
+            <h2 style="color: #00674E; margin-top: 0;">Thank You, ${name}!</h2>
             <p style="color: #3f3f3f; line-height: 1.7; font-size: 15px;">
               We've received your message and appreciate you reaching out to us.
               Our team will review your enquiry and get back to you as soon as possible —
               usually within <strong>1–2 business days</strong>.
             </p>
-
             <div style="background: #ffffff; border-left: 4px solid #00674E; padding: 16px 20px; border-radius: 6px; margin: 24px 0;">
               <p style="margin: 0; color: #3f3f3f; font-size: 14px;"><strong>Your message:</strong></p>
               <p style="margin: 8px 0 0; color: #4a6460; font-size: 14px; line-height: 1.6;">${message}</p>
             </div>
-
             <p style="color: #3f3f3f; line-height: 1.7; font-size: 15px;">
               If you need urgent assistance, feel free to call us directly at
               <a href="tel:0424687866" style="color: #00674E; font-weight: 600;">0424 687 866</a>.
             </p>
-
             <p style="color: #3f3f3f; font-size: 15px; margin-bottom: 0;">
               Warm regards,<br/>
               <strong style="color: #00674E;">The NextGen Lending Group Team</strong>
             </p>
           </div>
-
-          <!-- Footer -->
           <p style="text-align: center; color: #9C9C9C; font-size: 12px; margin-top: 20px;">
             © ${new Date().getFullYear()} NextGen Lending Group · PO Box 52, Vermont VIC 3133
           </p>
-
         </div>
       `,
     });
@@ -119,9 +90,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Mail error:", error);
-    return NextResponse.json(
-      { success: false, error: String(error) },
-      { status: 500 },
-    );
+    return NextResponse.json({ success: false, error: String(error) }, { status: 500 });
   }
 }
