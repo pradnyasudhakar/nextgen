@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s | Next Generation Lending Group",
   },
   description:
-    "Your Partner For What Comes Next. Next Generation Lending Group is your trusted financial broker in Victoria, Melbourne. Click on the link to know more.",
+    "Your Partner For What Comes Next. Next Generation Lending Group is your trusted financial broker in Victoria, Melbourne.",
 
   metadataBase: new URL("https://www.nextgenlg.com.au"),
 
