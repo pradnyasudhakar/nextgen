@@ -5,13 +5,14 @@ import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "NextGen Lending Group",
-    template: "NextGen Lending Group",
+    default: "Next Generation Lending Group",
+    template: "%s | Next Generation Lending Group",
   },
-  description: "Your trusted finance broker in Melbourne.",
+  description: "Your Partner For What Comes Next. Next Generation Lending Group is your trusted financial broker in Victoria, Melbourne. Click on the link to know more.",
+  metadataBase: new URL("https://www.nextgenlg.com.au"),
   icons: {
-    icon: "/images/NextGenicon.png",       
-    apple: "/images/NextGenicon.png",       
+    icon: "/images/NextGenicon.png",
+    apple: "/images/NextGenicon.png",
   },
 };
 
