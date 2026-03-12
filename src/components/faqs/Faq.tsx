@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     question: "Why should I use a mortgage broker instead of going directly to a bank?",
-    answer: "A mortgage broker gives you access to <strong>multiple lenders and loan products</strong>, not just one bank. This means we can:",
+    answer: "A mortgage broker gives you access to multiple lenders and loan products, not just one bank. This means we can:",
     bullets: [
       "Compare loan options for you",
       "Find competitive interest rates",
@@ -105,7 +105,7 @@ export default function FAQPage() {
                 className="rounded-md overflow-hidden"
                 style={{
                   background: "#FBFBFB",
-                  border: isOpen ? "1.5px solid #9C9C9C" : "1.5px solid #00674E",
+                  border: isOpen ? "1.5px solid #00674E" : "1.5px solid #9C9C9C",
                   boxShadow: isOpen ? "0 2px 16px rgba(0,103,78,0.08)" : "none",
                   transition: "border-color 0.3s ease, box-shadow 0.3s ease",
                 }}

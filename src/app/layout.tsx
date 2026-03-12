@@ -8,11 +8,40 @@ export const metadata: Metadata = {
     default: "Next Generation Lending Group",
     template: "%s | Next Generation Lending Group",
   },
-  description: "Your Partner For What Comes Next. Next Generation Lending Group is your trusted financial broker in Victoria, Melbourne. Click on the link to know more.",
+  description:
+    "Your Partner For What Comes Next. Next Generation Lending Group is your trusted financial broker in Victoria, Melbourne. Click on the link to know more.",
+
   metadataBase: new URL("https://www.nextgenlg.com.au"),
+
   icons: {
     icon: "/images/NextGenicon.png",
     apple: "/images/NextGenicon.png",
+  },
+
+  openGraph: {
+    title: "Next Generation Lending Group",
+    description:
+      "Your Partner For What Comes Next. Next Generation Lending Group is your trusted financial broker in Victoria, Melbourne.",
+    url: "https://www.nextgenlg.com.au",
+    siteName: "Next Generation Lending Group",
+    images: [
+      {
+        url: "/images/NextGenicon.png",
+        width: 1200,
+        height: 630,
+        alt: "Next Generation Lending Group",
+      },
+    ],
+    locale: "en_AU",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Next Generation Lending Group",
+    description:
+      "Your Partner For What Comes Next. Next Generation Lending Group is your trusted financial broker.",
+    images: ["/images/NextGenicon.png"],
   },
 };
 
@@ -22,7 +51,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className="[&::-webkit-scrollbar]:hidden [scrollbar-width:none]" lang="en" suppressHydrationWarning>
+    <html
+      className="[&::-webkit-scrollbar]:hidden [scrollbar-width:none]"
+      lang="en"
+      suppressHydrationWarning
+    >
       <head>
         <link
           rel="stylesheet"
