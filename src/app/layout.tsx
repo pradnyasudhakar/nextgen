@@ -27,8 +27,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/NextGenicon.png",
-        width: 1200,
-        height: 630,
+        width: 150,
+        height: 150,
         alt: "Next Generation Lending Group",
       },
     ],
