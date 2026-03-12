@@ -13,7 +13,7 @@ export default function MeetTeam() {
 
             {/* Left — Photo */}
             <div className="p-8 lg:p-8  lg:pr-0 flex justify-start items-center">
-              <div className="w-auto border border-primary  h-100 lg:w-auto lg:h-88 rounded-md overflow-hidden shrink-0">
+              <div className="w-full border border-primary  h-auto lg:w-auto lg:h-88 rounded-md overflow-hidden shrink-0">
                 <Image
                   src="/images/team-1.png"
                   alt="Zoher Kakajiwala"

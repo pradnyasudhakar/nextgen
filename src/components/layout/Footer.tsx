@@ -96,7 +96,7 @@ export default function Footer() {
             If you are considering acquiring any financial product, you should obtain and read the relevant Product Disclosure Statement (PDS) and Target Market Determination (TMD) and/or any other offer document prior to making a financial decision.
           </Small>
           <Small className="text-[#555555] leading-[1.8]">
-            Designed &amp; Developed by SAAA Consultants Pvt. Ltd
+           <a href="https://www.saaaconsultants.com/" target="_blank" >Designed &amp; Developed by SAAA Consultants Pvt. Ltd</a>
           </Small>
         </div>
 
