@@ -442,8 +442,7 @@ export default function Navbar() {
             </div>
             <div className="flex items-center gap-4 mt-3 px-4">
               <a
-                href="https://mail.google.com/mail/?view=cm&to=admin@nextgenlg.com.au"
-                target="_blank"
+                href="mailto:admin@nextgenlg.com.au"
                 className="link flex items-center gap-2 text-[0.9rem]"
               >
                 <Image
