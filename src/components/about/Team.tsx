@@ -1,9 +1,10 @@
-import { H2, Label, Highlight, P, Small } from "@/components/ui/typography";
+import { H2,  Label, Highlight, P, Small } from "@/components/ui/typography";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export default function MeetTeam() {
   return (
+   <>
     <section>
       <div className="max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-10">
 
@@ -69,5 +70,41 @@ export default function MeetTeam() {
 
       </div>
     </section>
+    <section>
+      <div className="max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-10">
+        {/* Single wide card — 2 col inside like Figma */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
+ 
+          {/* Our Vision */}
+          <div className=" bg-[#FBFBFB] shadow-[0px_3px_30px_0px_#0000001A] rounded-md p-5  ">
+            <H2 className="mb-4   font-[500]! text-dark">
+              Our Vision
+            </H2>
+            <P className="text-[1rem]!">
+              Our Vision is to redefine mortgage broking through transparency, innovation
+              and personalised advice, empowering the next generation of Australians to
+              make confident financial decisions
+            </P>
+          </div>
+ 
+          {/* Our Mission */}
+          <div className="bg-[#FBFBFB] shadow-[0px_3px_30px_0px_#0000001A] rounded-md p-5">
+            <H2
+              className="mb-4  font-[500]!"
+              style={{ color: "var(--color-primary)" }}
+            >
+              Our Mission
+            </H2>
+            <P className="text-[1rem]!">
+              Our mission is to deliver lending solutions that are carefully considered
+              and responsibly structured, ensuring that each recommendation reflects a
+              thorough understanding of the client&apos;s circumstances.
+            </P>
+          </div>
+ 
+        </div>
+      </div>
+    </section>
+   </>
   );
 }

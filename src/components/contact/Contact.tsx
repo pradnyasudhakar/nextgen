@@ -4,16 +4,83 @@ import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { H2, H3, Label, P, Highlight } from "@/components/ui/typography";
-import { Phone } from "lucide-react";
+import { Phone, AlertCircle } from "lucide-react";
+
+// ← Component BAHAR hai — focus issue fix
+const ErrorField = ({
+  field,
+  errors,
+  children,
+}: {
+  field: string;
+  errors: Record<string, string>;
+  children: React.ReactNode;
+}) => {
+  const hasError = !!errors[field];
+  return (
+    <div className="relative">
+      <div
+        style={{
+          background: hasError ? "#FFF0E6" : "transparent",
+          border: hasError ? "1.5px solid #DA5400" : "1.5px solid #e5e7eb",
+          borderRadius: "6px",
+          transition: "all 0.2s ease",
+        }}
+      >
+        {children}
+      </div>
+
+      {hasError && (
+        <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center">
+          <div className="relative mr-1" style={{ display: "flex", alignItems: "center" }}>
+            <div
+              style={{
+                position: "absolute",
+                right: "28px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                background: "#DA5400",
+                color: "#fff",
+                fontSize: "12px",
+                fontWeight: 500,
+                padding: "5px 10px",
+                borderRadius: "6px",
+                whiteSpace: "nowrap",
+                zIndex: 10,
+              }}
+            >
+              {errors[field]}
+              <span
+                style={{
+                  position: "absolute",
+                  right: "-6px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: 0, height: 0,
+                  borderTop: "6px solid transparent",
+                  borderBottom: "6px solid transparent",
+                  borderLeft: "6px solid #DA5400",
+                }}
+              />
+            </div>
+            <AlertCircle
+              size={18}
+              style={{ color: "#DA5400", flexShrink: 0 }}
+              fill="#DA5400"
+              stroke="#fff"
+              strokeWidth={2.5}
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default function ContactPage() {
   const router = useRouter();
   const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    state: "",
-    message: "",
+    name: "", email: "", phone: "", state: "", message: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -22,7 +89,6 @@ export default function ContactPage() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    // Clear error on change
     if (errors[e.target.name]) {
       setErrors({ ...errors, [e.target.name]: "" });
     }
@@ -65,15 +131,10 @@ export default function ContactPage() {
   };
 
   const inputCls = (field: string) =>
-    `w-full mt-1 border rounded-md px-4 py-2 outline-none transition-colors ${
-      errors[field]
-        ? "border-red-500 focus:border-red-500"
-        : "focus:border-primary"
-    }`;
+    `w-full px-4 py-2 outline-none bg-transparent rounded-md text-sm ${errors[field] ? "pr-10" : ""}`;
 
   return (
     <section className="max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-10 lg:py-20">
-      {/* Heading */}
       <div className="mb-12 max-w-120">
         <Label className="mb-4">CONTACT US</Label>
         <H2 className="mb-4">
@@ -85,112 +146,80 @@ export default function ContactPage() {
         </P>
       </div>
 
-      {/* Grid */}
       <div className="grid lg:grid-cols-2 gap-12">
         {/* FORM */}
         <div className="bg-[#FBFBFB] rounded-md shadow-[0px_3px_30px_0px_#0000001A] p-8">
           <div className="space-y-4">
 
-            {/* Name */}
             <div>
-              <label className="text-sm font-[500] text-dark">
+              <label className="text-sm font-[500] text-dark block mb-1">
                 Name <span className="text-[#DA5400]">*</span>
               </label>
-              <input
-                type="text"
-                name="name"
-                required
-                value={form.name}
-                onChange={handleChange}
-                placeholder="Your Full Name"
-                className={inputCls("name") }
-              />
-              {errors.name && (
-                <p className="text-xs  text-[#DA5400] mt-1">{errors.name}</p>
-              )}
+              <ErrorField field="name" errors={errors}>
+                <input
+                  type="text" name="name" value={form.name}
+                  onChange={handleChange} placeholder="Your Full Name"
+                  className={inputCls("name")}
+                />
+              </ErrorField>
             </div>
 
-            {/* Email */}
             <div>
-              <label className="text-sm font-[500] text-dark">
+              <label className="text-sm font-[500] text-dark block mb-1">
                 Email Address <span className="text-[#DA5400]">*</span>
               </label>
-              <input
-                type="email"
-                name="email"
-                required
-                value={form.email}
-                onChange={handleChange}
-                placeholder="We'll get back to you here"
-                className={inputCls("email")}
-              />
-              {errors.email && (
-                <p className="text-xs text-[#DA5400] mt-1">{errors.email}</p>
-              )}
+              <ErrorField field="email" errors={errors}>
+                <input
+                  type="email" name="email" value={form.email}
+                  onChange={handleChange} placeholder="We'll get back to you here"
+                  className={inputCls("email")}
+                />
+              </ErrorField>
             </div>
 
-            {/* Phone */}
             <div>
-              <label className="text-sm font-[500] text-dark">
+              <label className="text-sm font-[500] text-dark block mb-1">
                 Phone Number <span className="text-[#DA5400]">*</span>
               </label>
-              <input
-                type="text"
-                name="phone"
-                required
-                value={form.phone}
-                onChange={handleChange}
-                placeholder="We'll contact you on this"
-                className={inputCls("phone")}
-              />
-              {errors.phone && (
-                <p className="text-xs text-[#DA5400] mt-1">{errors.phone}</p>
-              )}
+              <ErrorField field="phone" errors={errors}>
+                <input
+                  type="text" name="phone" value={form.phone}
+                  onChange={handleChange} placeholder="We'll contact you on this"
+                  className={inputCls("phone")}
+                />
+              </ErrorField>
             </div>
 
-            {/* State */}
             <div>
-              <label className="text-sm font-[500] text-dark">
+              <label className="text-sm font-[500] text-dark block mb-1">
                 State Based in <span className="text-[#DA5400]">*</span>
               </label>
-              <select
-                name="state"
-                value={form.state}
-                onChange={handleChange}
-                className={`${inputCls("state")} text-[#9C9C9C]`}
-              >
-                <option value="">Select your locality</option>
-                <option>NSW</option>
-                <option>VIC</option>
-                <option>QLD</option>
-                <option>WA</option>
-                <option>SA</option>
-                <option>TAS</option>
-                <option>ACT</option>
-                <option>NT</option>
-              </select>
-              {errors.state && (
-                <p className="text-xs text-[#DA5400] mt-1">{errors.state}</p>
-              )}
+              <ErrorField field="state" errors={errors}>
+                <select
+                  name="state" value={form.state}
+                  onChange={handleChange}
+                  className={`${inputCls("state")} text-[#9C9C9C] w-full`}
+                >
+                  <option value="">Select your locality</option>
+                  <option>NSW</option><option>VIC</option><option>QLD</option>
+                  <option>WA</option><option>SA</option><option>TAS</option>
+                  <option>ACT</option><option>NT</option>
+                </select>
+              </ErrorField>
             </div>
 
-            {/* Message */}
             <div>
-              <label className="text-sm font-[500] text-dark">
+              <label className="text-sm font-[500] text-dark block mb-1">
                 Message <span className="text-[#DA5400]">*</span>
               </label>
-              <textarea
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                required
-                rows={4}
-                placeholder="Tell us how we can help"
-                className={inputCls("message")}
-              />
-              {errors.message && (
-                <p className="text-xs text-[#DA5400] mt-1">{errors.message}</p>
-              )}
+              <ErrorField field="message" errors={errors}>
+                <textarea
+                  name="message" value={form.message}
+                  onChange={handleChange} rows={4}
+                  placeholder="Tell us how we can help"
+                  className={`${inputCls("message")} resize-y`}
+                />
+              </ErrorField>
             </div>
 
             {status === "error" && (
@@ -200,12 +229,7 @@ export default function ContactPage() {
             )}
 
             <div className="flex justify-end">
-              <Button
-                variant="primary"
-                size="lg"
-                onClick={handleSubmit}
-                disabled={status === "loading"}
-              >
+              <Button variant="primary" size="lg" onClick={handleSubmit} disabled={status === "loading"}>
                 {status === "loading" ? "Sending..." : "Submit"}
               </Button>
             </div>
@@ -217,9 +241,7 @@ export default function ContactPage() {
           <H3 className="text-dark text-2xl mb-6">
             Prefer a <span className="text-primary">Direct Approach?</span>
           </H3>
-          <P className="mb-6">
-            You can contact us directly through the details below.
-          </P>
+          <P className="mb-6">You can contact us directly through the details below.</P>
 
           <div className="space-y-6 text-dark">
             <P className="flex items-center gap-3">

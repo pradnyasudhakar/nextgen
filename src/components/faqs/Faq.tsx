@@ -21,7 +21,7 @@ const faqs = [
     footer: "Our goal is to make the process simpler and help you secure the most suitable loan for your situation.",
   },
   {
-    question: "Does it cost anything to use your services?",
+    question: "Do you charge fees for home and investment loans?",
     answer: "Brokers get paid a commission by the lender for bringing new business to them, but this does not impact your interest rate. Some brokers charge a fee for their service. They must disclose this fee upfront to you so that you know what it will cost if you engage their services.",
   },
   {
