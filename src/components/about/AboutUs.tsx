@@ -5,7 +5,7 @@ import { H2, Label, P, Highlight } from "../ui/typography";
 export default function AboutSection() {
   return (
     <section  className="">
-      <div className="max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-20">
+      <div className="max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 pt-10 pb-5 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20  justify-between items-center">
          
 
