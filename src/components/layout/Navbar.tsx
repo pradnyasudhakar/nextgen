@@ -15,12 +15,22 @@ const navLinks = [
     label: "Services",
     href: "/#services",
     children: [
-      { label: "Home Loans", href: "/#services" },
+      { label: "Home Loans", href: "/homeloan" },
       { label: "Commercial Loans", href: "/#servicess" },
       { label: "Business Finance", href: "/#services" },
       { label: "Asset Finance", href: "/#services" },
       { label: "Development Finance", href: "/#services" },
       { label: "SMSF Finance", href: "/#servicese" },
+    ],
+  },
+  {
+    label: "Calculators",
+    href: "/#calculators",
+    children: [
+      { label: "Borrowing Capacity", href: "/BorrowingCapacity" },
+      { label: "Repayments", href: "/Repayments" },
+      { label: "Property Fees", href: "/PropertyFees" },
+      
     ],
   },
 

@@ -6,8 +6,7 @@ function formatCurrency(n: number) {
   return "$" + Math.round(n).toLocaleString("en-AU");
 }
 
-
-const STAMP_DUTY: Record<string, (price: number, fhb: boolean) => number> = {
+const STAMP_DUTY: Record<string, (price: number, fhb: boolean, propertyPurpose: string, securityType: string) => number> = {
   VIC: (price, fhb) => {
     if (fhb && price <= 600000) return 0;
     if (fhb && price <= 750000) {
@@ -89,169 +88,173 @@ function calcVicDuty(price: number) {
   return price * 0.065;
 }
 
-const FEE_ITEMS = [
-  { key: "conveyancing", label: "Conveyancing / Legal fees", defaultVal: 2000 },
-  { key: "building", label: "Building & pest inspection", defaultVal: 600 },
-  { key: "lmi", label: "Lenders Mortgage Insurance (LMI)", defaultVal: 0 },
-  { key: "other", label: "Other costs", defaultVal: 500 },
-];
+const inputCls =
+  "w-full border border-[#9C9C9C] rounded-md px-3 py-2.5 text-sm text-[#555555] focus:outline-none focus:ring-2 bg-[#FBFBFB]";
+const labelCls = "text-sm font-medium mb-1 block text-gray-500";
+
+type RadioGroupProps = {
+  label: string;
+  options: { value: string; label: string }[];
+  value: string;
+  onChange: (v: string) => void;
+};
+
+function RadioGroup({ label, options, value, onChange }: RadioGroupProps) {
+  return (
+    <div>
+      <p className={labelCls}>{label}</p>
+      <div className="flex gap-6 mt-1">
+        {options.map((opt) => (
+          <label key={opt.value} className="flex items-center gap-2 cursor-pointer text-sm text-[#555555]">
+            <input
+              type="radio"
+              name={label}
+              value={opt.value}
+              checked={value === opt.value}
+              onChange={() => onChange(opt.value)}
+              className="accent-primary w-4 h-4"
+            />
+            {opt.label}
+          </label>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function PropertyFees() {
-  const [price, setPrice] = useState("650000");
-  const [state, setState] = useState("VIC");
-  const [fhb, setFhb] = useState(false);
-  const [deposit, setDeposit] = useState("20");
-  const [fees, setFees] = useState<Record<string, string>>({
-    conveyancing: "2000",
-    building: "600",
-    lmi: "0",
-    other: "500",
-  });
+  const [price, setPrice] = useState("400000");
+  const [state, setState] = useState("ACT");
+  const [propertyPurpose, setPropertyPurpose] = useState("investment");
+  const [securityType, setSecurityType] = useState("new");
+  const [transactionType, setTransactionType] = useState("purchase");
+  const [homeBuyerConcession, setHomeBuyerConcession] = useState(true);
+  const [primaryResidence, setPrimaryResidence] = useState(false);
+  const [foreignBuyer, setForeignBuyer] = useState(false);
 
   const results = useMemo(() => {
     const purchasePrice = parseFloat(price || "0");
-    const depositPct = parseFloat(deposit || "20") / 100;
-    const depositAmt = purchasePrice * depositPct;
-    const loanAmt = purchasePrice - depositAmt;
+    const isFhb = homeBuyerConcession;
 
     const stampFn = STAMP_DUTY[state] ?? STAMP_DUTY["VIC"];
-    const stampDuty = stampFn(purchasePrice, fhb);
+    const stampDuty = transactionType === "refinance" ? 0 : stampFn(purchasePrice, isFhb, propertyPurpose, securityType);
 
-    const transferReg = 150 + purchasePrice * 0.00002;
-    const mortgageReg = 160;
+    const transferFee = Math.round(150 + purchasePrice * 0.00002 * 10 + 150);
+    const mortgageRegFee = 172;
 
-    const extraFees = Object.values(fees).reduce((sum, v) => sum + parseFloat(v || "0"), 0);
+    const totalGovtFees = stampDuty + transferFee + mortgageRegFee;
 
-    const totalUpfront = depositAmt + stampDuty + transferReg + mortgageReg + extraFees;
-
-    const breakdown = [
-      { label: "Deposit", amount: depositAmt },
-      { label: "Stamp duty", amount: stampDuty },
-      { label: "Transfer registration", amount: transferReg },
-      { label: "Mortgage registration", amount: mortgageReg },
-      { label: "Conveyancing / Legal", amount: parseFloat(fees.conveyancing || "0") },
-      { label: "Building & pest inspection", amount: parseFloat(fees.building || "0") },
-      { label: "LMI", amount: parseFloat(fees.lmi || "0") },
-      { label: "Other costs", amount: parseFloat(fees.other || "0") },
-    ];
-
-    return { depositAmt, stampDuty, loanAmt, totalUpfront, breakdown, transferReg, mortgageReg };
-  }, [price, state, fhb, deposit, fees]);
-
-  const inputCls = "w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-gray-800 focus:outline-none bg-white";
-  const labelCls = "text-sm font-medium mb-1 block text-gray-500";
+    return { stampDuty, transferFee, mortgageRegFee, totalGovtFees };
+  }, [price, state, propertyPurpose, securityType, transactionType, homeBuyerConcession, primaryResidence, foreignBuyer]);
 
   return (
     <div className="grid lg:grid-cols-2 gap-6">
       {/* Form */}
-      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-5">
-        <h2 className="text-xl font-black" style={{ color: "var(--color-primary)" }}>
-          What are the property fees?
-        </h2>
+      <div className="bg-[#FBFBFB] rounded-md shadow-lg p-6 space-y-5">
+        <h2 className="text-xl text-primary">Property fees</h2>
 
-        <div>
-          <label className={labelCls}>Purchase price*</label>
-          <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">$</span>
-            <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} className={inputCls + " pl-7"} />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className={labelCls}>State</label>
+            <label className={labelCls}>State/Territory</label>
             <select value={state} onChange={(e) => setState(e.target.value)} className={inputCls}>
-              {["VIC","NSW","QLD","WA","SA","ACT","TAS","NT"].map((s) => (
+              {["VIC", "NSW", "QLD", "WA", "SA", "ACT", "TAS", "NT"].map((s) => (
                 <option key={s}>{s}</option>
               ))}
             </select>
           </div>
           <div>
-            <label className={labelCls}>Deposit (%)</label>
-            <input type="number" value={deposit} onChange={(e) => setDeposit(e.target.value)} className={inputCls} min="5" max="100" />
+            <div className="flex justify-between items-center text-sm text-[#555555]">
+              <label className={labelCls}>Purchase price</label>
+              <span>$</span>
+            </div>
+            <input
+              type="number"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              className={inputCls}
+            />
           </div>
         </div>
 
-        <div>
-          <label className="flex items-center gap-2 cursor-pointer text-sm text-gray-700">
-            <input type="checkbox" checked={fhb} onChange={(e) => setFhb(e.target.checked)} className="accent-purple-700 w-4 h-4" />
-            First Home Buyer (stamp duty concession may apply)
-          </label>
-        </div>
+        <RadioGroup
+          label="Property purpose"
+          options={[
+            { value: "investment", label: "Investment" },
+            { value: "tolive", label: "To live in" },
+          ]}
+          value={propertyPurpose}
+          onChange={setPropertyPurpose}
+        />
 
-        <div className="border-t pt-4">
-          <p className="font-bold text-sm mb-3" style={{ color: "var(--color-primary)" }}>Additional fees</p>
-          <div className="space-y-2">
-            {FEE_ITEMS.map(({ key, label }) => (
-              <div key={key}>
-                <label className={labelCls}>{label}</label>
-                <div className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">$</span>
-                  <input
-                    type="number"
-                    value={fees[key]}
-                    onChange={(e) => setFees((prev) => ({ ...prev, [key]: e.target.value }))}
-                    className={inputCls + " pl-7"}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
+        <RadioGroup
+          label="Security type"
+          options={[
+            { value: "new", label: "New home" },
+            { value: "established", label: "Established home" },
+            { value: "vacant", label: "Vacant land" },
+          ]}
+          value={securityType}
+          onChange={setSecurityType}
+        />
+
+        <RadioGroup
+          label="Transaction type"
+          options={[
+            { value: "purchase", label: "Purchase" },
+            { value: "refinance", label: "Refinance" },
+          ]}
+          value={transactionType}
+          onChange={setTransactionType}
+        />
+
+        <div className="space-y-2.5">
+          {[
+            { label: "Home buyer concession", value: homeBuyerConcession, set: setHomeBuyerConcession },
+            { label: "Primary residence", value: primaryResidence, set: setPrimaryResidence },
+            { label: "Foreign buyer", value: foreignBuyer, set: setForeignBuyer },
+          ].map(({ label, value, set }) => (
+            <label key={label} className="flex items-center gap-2 cursor-pointer text-sm text-[#555555]">
+              <input
+                type="checkbox"
+                checked={value}
+                onChange={(e) => set(e.target.checked)}
+                className="accent-primary w-4 h-4"
+              />
+              {label}
+            </label>
+          ))}
         </div>
       </div>
 
       {/* Results */}
-      <div className="space-y-4">
-        {/* Total */}
-        <div
-          className="rounded-2xl p-6 text-white"
-          style={{ background: "linear-gradient(135deg, var(--color-primary), var(--color-secondary))" }}
-        >
-          <p className="text-white/70 text-sm mb-1">Total upfront costs</p>
-          <p className="text-4xl font-black">{formatCurrency(results.totalUpfront)}</p>
-          <p className="text-white/60 text-xs mt-2">Loan amount: {formatCurrency(results.loanAmt)}</p>
-        </div>
+      <div>
+        <div className="bg-[#EEF3F2] rounded-md border border-primary p-6">
+          {/* Header row */}
+          <div className="flex justify-between items-start mb-4">
+            <div>
+              <p className="text-[1rem] text-[#555555]">Total Goverment Fees</p>
+              <p className="text-[0.85rem] text-[#555555]">(due on settlement)</p>
+            </div>
+            <p className="text-4xl font-black" style={{ color: "var(--color-primary)" }}>
+              {formatCurrency(results.totalGovtFees)}
+            </p>
+          </div>
 
-        {/* Breakdown */}
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-          <p className="text-sm font-semibold text-gray-500 mb-4">Cost breakdown</p>
-          <div className="space-y-2.5">
-            {results.breakdown.map(({ label, amount }) => {
-              const pct = results.totalUpfront > 0 ? (amount / results.totalUpfront) * 100 : 0;
-              return (
-                <div key={label}>
-                  <div className="flex justify-between text-sm mb-1">
-                    <span className="text-gray-600">{label}</span>
-                    <span className="font-semibold text-gray-800">{formatCurrency(amount)}</span>
-                  </div>
-                  <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                    <div
-                      className="h-full rounded-full transition-all duration-500"
-                      style={{
-                        width: `${pct}%`,
-                        background: "linear-gradient(90deg, var(--color-primary), var(--color-secondary))",
-                      }}
-                    />
-                  </div>
-                </div>
-              );
-            })}
+          <div className="border-t border-[#9C9C9C] pt-4 space-y-3">
+            <div className="flex justify-between items-center">
+              <p className="text-primary text-sm">Total repayments</p>
+              <p className="text-primary font-[700]">{formatCurrency(results.stampDuty)}</p>
+            </div>
+            <div className="flex justify-between items-center">
+              <p className="text-primary text-sm">Transfer fee</p>
+              <p className="text-primary font-[700]">{formatCurrency(results.transferFee)}</p>
+            </div>
+            <div className="flex justify-between items-center">
+              <p className="text-primary text-sm">Mortgage registration fee</p>
+              <p className="text-primary font-[700]">{formatCurrency(results.mortgageRegFee)}</p>
+            </div>
           </div>
         </div>
-
-        <div className="bg-amber-50 border border-amber-100 rounded-xl p-4">
-          <p className="text-xs text-amber-700 leading-relaxed">
-            ⚠️ Stamp duty figures are indicative only and based on simplified calculations. Actual amounts may vary. Please verify with your state revenue office or solicitor.
-          </p>
-        </div>
-
-        <a
-          href="/apply-now"
-          className="flex items-center justify-center w-full py-3.5 rounded-xl text-sm font-bold text-white transition-opacity hover:opacity-90"
-          style={{ background: "linear-gradient(135deg, var(--color-primary), var(--color-secondary))" }}
-        >
-          Apply Now — Get Pre-Approved
-        </a>
       </div>
     </div>
   );

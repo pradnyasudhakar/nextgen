@@ -9,32 +9,63 @@ function formatCurrency(n: number) {
   return "$" + Math.round(n).toLocaleString("en-AU");
 }
 
+function calcNewTermMonths(principal: number, annualRate: number, baseMonthly: number, monthlyExtra: number): number {
+  const r = annualRate / 12;
+  if (r === 0) return principal > 0 ? Math.ceil(principal / (baseMonthly + monthlyExtra)) : 0;
+  let bal = principal;
+  let months = 0;
+  const totalPayment = baseMonthly + monthlyExtra;
+  while (bal > 0.01 && months < 600) {
+    const interest = bal * r;
+    bal -= (totalPayment - interest);
+    months++;
+  }
+  return months;
+}
+
 export default function Repayments() {
   const [loanAmount, setLoanAmount] = useState("500000");
   const [interestRate, setInterestRate] = useState("6.0");
   const [loanTerm, setLoanTerm] = useState("30");
-  const [repaymentFreq, setRepaymentFreq] = useState("monthly");
+  const [repaymentFreq, setRepaymentFreq] = useState("weekly");
   const [loanType, setLoanType] = useState<"principal" | "interestOnly">("principal");
   const [interestOnlyYears, setInterestOnlyYears] = useState("5");
+  const [extraRepayment, setExtraRepayment] = useState("100");
 
   const results = useMemo(() => {
     const principal = parseFloat(loanAmount || "0");
     const annualRate = parseFloat(interestRate || "0") / 100;
     const termYears = parseInt(loanTerm || "30");
+    const extra = parseFloat(extraRepayment || "0");
 
     const freqPerYear = repaymentFreq === "weekly" ? 52 : repaymentFreq === "fortnightly" ? 26 : 12;
-    const periodRate = annualRate / freqPerYear;
-    const n = termYears * freqPerYear;
+    const termMonths = termYears * 12;
+    const r = annualRate / 12;
 
-    let periodicRepayment = 0;
-    if (loanType === "principal") {
-      periodicRepayment = principal * (periodRate / (1 - Math.pow(1 + periodRate, -n)));
-    } else {
-      periodicRepayment = principal * periodRate; // interest only
-    }
+    // Base monthly repayment
+    const baseMonthly = r === 0
+      ? principal / termMonths
+      : principal * (r / (1 - Math.pow(1 + r, -termMonths)));
 
-    const totalRepaid = periodicRepayment * n;
-    const totalInterest = totalRepaid - principal;
+    const periodicRepayment = loanType === "principal"
+      ? baseMonthly * (12 / freqPerYear)
+      : principal * (annualRate / freqPerYear);
+
+    // Without extra
+    const totalNoExtra = baseMonthly * termMonths;
+    const totalInterestNoExtra = totalNoExtra - principal;
+
+    // Monthly equivalent of extra repayment at chosen frequency
+    const monthlyExtra = (extra * freqPerYear) / 12;
+
+    // New term with extra repayments
+    const newMonths = calcNewTermMonths(principal, annualRate, baseMonthly, monthlyExtra);
+    const totalWithExtra = (baseMonthly + monthlyExtra) * newMonths;
+
+    const totalSaving = Math.max(0, totalNoExtra - totalWithExtra);
+    const monthsSaved = Math.max(0, termMonths - newMonths);
+    const yearsSaved = Math.floor(monthsSaved / 12);
+    const remMonthsSaved = monthsSaved % 12;
 
     // Chart — yearly breakdown
     const chartData = [];
@@ -57,7 +88,7 @@ export default function Repayments() {
           yearPrincipal += Math.min(prin, balance);
           balance -= prin;
         } else {
-          balance -= 0; // interest only
+          balance -= 0;
         }
       }
       chartData.push({
@@ -68,10 +99,18 @@ export default function Repayments() {
       });
     }
 
-    return { periodicRepayment, totalRepaid, totalInterest, chartData };
-  }, [loanAmount, interestRate, loanTerm, repaymentFreq, loanType, interestOnlyYears]);
+    return {
+      periodicRepayment,
+      totalNoExtra,
+      totalInterestNoExtra,
+      totalSaving,
+      yearsSaved,
+      remMonthsSaved,
+      chartData,
+    };
+  }, [loanAmount, interestRate, loanTerm, repaymentFreq, loanType, interestOnlyYears, extraRepayment]);
 
-  const inputCls = "w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-gray-800 focus:outline-none focus:ring-2 bg-white";
+  const inputCls = "w-full border border-[#9C9C9C] rounded-md px-3 py-2.5 text-sm   text-[#555555] focus:outline-none focus:ring-2 bg-[#FBFBFB]";
   const labelCls = "text-sm font-medium mb-1 block text-gray-500";
 
   const freqLabel = repaymentFreq === "weekly" ? "weekly" : repaymentFreq === "fortnightly" ? "fortnightly" : "monthly";
@@ -79,86 +118,92 @@ export default function Repayments() {
   return (
     <div className="grid lg:grid-cols-2 gap-6">
       {/* Form */}
-      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-5">
-        <h2 className="text-xl font-black" style={{ color: "var(--color-primary)" }}>
-          What are my repayments?
+      <div className="bg-[#FBFBFB] rounded-md  h-117.5  shadow-lg p-6 space-y-5">
+        <h2 className="text-xl  text-primary ">
+        Extra repayments calculator
         </h2>
 
         <div>
-          <label className={labelCls}>Loan amount*</label>
+          <div className="flex justify-between items-center text-sm   text-[#555555] " ><label className={labelCls}>Loan amount </label> <span>$</span></div>
           <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">$</span>
-            <input type="number" value={loanAmount} onChange={(e) => setLoanAmount(e.target.value)} className={inputCls + " pl-7"} />
+            <input type="number" value={loanAmount} onChange={(e) => setLoanAmount(e.target.value)} className={inputCls + ""} />
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 gap-3">
           <div>
-            <label className={labelCls}>Interest rate (%)*</label>
-            <input type="number" value={interestRate} onChange={(e) => setInterestRate(e.target.value)} className={inputCls} step="0.1" />
-          </div>
-          <div>
-            <label className={labelCls}>Loan term (yrs)*</label>
+            <div className="flex justify-between items-center text-sm   text-[#555555] " ><label className={labelCls}>Loan term  </label><span>yrs</span></div>
             <input type="number" value={loanTerm} onChange={(e) => setLoanTerm(e.target.value)} className={inputCls} min="1" max="30" />
           </div>
         </div>
 
+        <h2 className="text-xl  text-primary ">
+        Extra repayments
+        </h2>
+
         <div>
           <label className={labelCls}>Repayment frequency</label>
           <select value={repaymentFreq} onChange={(e) => setRepaymentFreq(e.target.value)} className={inputCls}>
-            <option value="monthly">Monthly</option>
-            <option value="fortnightly">Fortnightly</option>
             <option value="weekly">Weekly</option>
+            <option value="fortnightly">Fortnightly</option>
+            <option value="monthly">Monthly</option>
           </select>
         </div>
 
-        <div className="border-t pt-4">
-          <p className="font-bold text-sm mb-3" style={{ color: "var(--color-primary)" }}>Loan type</p>
-          <div className="flex gap-4 mb-3">
-            {[
-              { val: "principal", label: "Principal & Interest" },
-              { val: "interestOnly", label: "Interest Only" },
-            ].map(({ val, label }) => (
-              <label key={val} className="flex items-center gap-2 cursor-pointer text-sm text-gray-700">
-                <input type="radio" checked={loanType === val} onChange={() => setLoanType(val as "principal" | "interestOnly")} className="accent-purple-700" />
-                {label}
-              </label>
-            ))}
-          </div>
-          {loanType === "interestOnly" && (
-            <div>
-              <label className={labelCls}>Interest only period (yrs)</label>
-              <select value={interestOnlyYears} onChange={(e) => setInterestOnlyYears(e.target.value)} className={inputCls}>
-                {["1","2","3","4","5","7","10"].map((y) => <option key={y}>{y}</option>)}
-              </select>
-            </div>
-          )}
-        </div>
-
-        {/* Summary */}
-        <div className="bg-gray-50 rounded-xl p-4 space-y-2 border-t pt-4">
-          <div className="flex justify-between text-sm">
-            <span className="text-gray-500">Total amount repaid</span>
-            <span className="font-semibold text-gray-800">{formatCurrency(results.totalRepaid)}</span>
-          </div>
-          <div className="flex justify-between text-sm">
-            <span className="text-gray-500">Total interest paid</span>
-            <span className="font-semibold" style={{ color: "var(--color-secondary)" }}>{formatCurrency(results.totalInterest)}</span>
-          </div>
+        <div>
+          <label className={labelCls}>Extra repayment</label>
+          <input
+            type="number"
+            value={extraRepayment}
+            onChange={(e) => setExtraRepayment(e.target.value)}
+            className={inputCls}
+            min="0"
+            placeholder="Enter amount"
+          />
         </div>
       </div>
 
       {/* Results */}
       <div className="space-y-4">
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 text-center">
-          <p className="text-sm text-gray-400 mb-1">Your {freqLabel} repayments</p>
+        <div className="bg-[#EEF3F2] rounded-md border border-primary  p-6 ">
+          <div className="flex justify-between items-center " >
+          <p className="text-[1.2rem] text-[#555555] max-w-60 ">Your approximate repayments would be</p>
           <p className="text-4xl font-black" style={{ color: "var(--color-primary)" }}>
-            {formatCurrency(results.periodicRepayment)}
+            {formatCurrency(results.periodicRepayment)} <span className="text-sm" >({freqLabel})</span>
           </p>
+          </div>
+          <div className=" border-t border-[#9C9C9C] mt-4 " >
+
+            <div className="flex justify-between items-center mt-2  " >
+              <p className=" text-primary  " >Total repayments</p>
+              <p className="text-primary  font-[700] text-right " >{formatCurrency(results.totalNoExtra)} <br />
+                <span className="text-[#555555] font-normal text-sm " >({formatCurrency(results.totalInterestNoExtra)} total interest paid)</span>
+              </p>
+            </div>
+
+            <p className=" text-primary mt-4 " >Extra repayments</p>
+
+            <div className="flex justify-between items-center mt-2  " >
+              <p className=" text-[#555555]  " >Total saving</p>
+              <p className="text-primary  font-[700] text-right " >
+                {results.totalSaving > 0 ? formatCurrency(results.totalSaving) : "$0"}
+              </p>
+            </div>
+
+            <div className="flex justify-between items-center mt-2  " >
+              <p className=" text-[#555555]  " >Years saved</p>
+              <p className="text-primary  font-[700] text-right " >
+                {results.yearsSaved > 0 || results.remMonthsSaved > 0
+                  ? `${results.yearsSaved}y ${results.remMonthsSaved}m`
+                  : "—"}
+              </p>
+            </div>
+
+          </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-          <p className="text-sm font-semibold text-gray-500 mb-4">Principal vs Interest breakdown</p>
+        <div className="bg-[#FBFBFB] rounded-md  shadow-lg p-6">
+          <h2 className="text-xl  text-primary mb-4">Principal vs Interest breakdown</h2>
           <ResponsiveContainer width="100%" height={280}>
             <AreaChart data={results.chartData} margin={{ top: 5, right: 10, bottom: 20, left: 10 }}>
               <defs>
@@ -181,14 +226,6 @@ export default function Repayments() {
             </AreaChart>
           </ResponsiveContainer>
         </div>
-
-        <a
-          href="/apply-now"
-          className="flex items-center justify-center w-full py-3.5 rounded-xl text-sm font-bold text-white transition-opacity hover:opacity-90"
-          style={{ background: "linear-gradient(135deg, var(--color-primary), var(--color-secondary))" }}
-        >
-          Apply Now — Get Pre-Approved
-        </a>
       </div>
     </div>
   );
