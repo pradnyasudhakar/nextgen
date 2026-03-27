@@ -148,7 +148,7 @@ export default function PropertyFees() {
   }, [price, state, propertyPurpose, securityType, transactionType, homeBuyerConcession, primaryResidence, foreignBuyer]);
 
   return (
-    <div className="grid lg:grid-cols-2 gap-6">
+    <div id="propertyfees" className="grid lg:grid-cols-2 gap-6">
       {/* Form */}
       <div className="bg-[#FBFBFB] rounded-md shadow-lg p-6 space-y-5">
         <h2 className="text-xl text-primary">Property fees</h2>

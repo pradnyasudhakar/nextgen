@@ -23,16 +23,15 @@ const navLinks = [
       { label: "SMSF Finance", href: "/#servicese" },
     ],
   },
-  {
-    label: "Calculators",
-    href: "/#calculators",
-    children: [
-      { label: "Borrowing Capacity", href: "/BorrowingCapacity" },
-      { label: "Repayments", href: "/Repayments" },
-      { label: "Property Fees", href: "/PropertyFees" },
-      
-    ],
-  },
+ {
+  label: "Calculators",
+  href: "/calculators",
+  children: [
+    { label: "Borrowing Capacity", href: "/calculators" },
+    { label: "Repayments", href: "/calculators#repayments" },
+    { label: "Property Fees", href: "/calculators#propertyfees" },
+  ],
+},
 
   { label: "Blogs", href: "/#blog" },
   { label: "FAQs", href: "/faqs" },

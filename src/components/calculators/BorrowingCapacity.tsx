@@ -98,7 +98,7 @@ export default function BorrowingCapacity() {
   const labelCls = "text-sm  mb-1 block";
 
   return (
-    <div className="grid  lg:grid-cols-2 gap-6">
+    <div id="BorrowingCapacity" className="grid  lg:grid-cols-2 gap-6">
       {/* Left — Form */}
       <div className="bg-[#FBFBFB] rounded-2xl  shadow-lg p-6 space-y-5">
         <h2 className="text-xl font-black text-primary " >

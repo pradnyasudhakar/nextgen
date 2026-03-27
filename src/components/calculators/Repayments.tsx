@@ -116,7 +116,7 @@ export default function Repayments() {
   const freqLabel = repaymentFreq === "weekly" ? "weekly" : repaymentFreq === "fortnightly" ? "fortnightly" : "monthly";
 
   return (
-    <div className="grid lg:grid-cols-2 gap-6">
+    <div id="repayments" className="grid lg:grid-cols-2 gap-6">
       {/* Form */}
       <div className="bg-[#FBFBFB] rounded-md  h-117.5  shadow-lg p-6 space-y-5">
         <h2 className="text-xl  text-primary ">
