@@ -64,7 +64,7 @@ export default function CalculatorsPage() {
           content: '';
           position: absolute;
           inset: 0;
-          background: var(--color-primary);
+          // background: var(--color-primary);
           opacity: 0;
           border-radius: 6px;
           transition: opacity 0.2s ease;
@@ -77,7 +77,7 @@ export default function CalculatorsPage() {
           bottom: 0;
           left: 0;
           right: 0;
-          height: 2px;
+          height: 1px;
           border-radius: 999px;
           background: var(--color-primary);
           transform-origin: left;
@@ -112,7 +112,7 @@ export default function CalculatorsPage() {
               <button
                 key={tab.id}
                 onClick={() => handleTabChange(tab.id)}
-                className="tab-btn py-3 px-4 text-[1rem] font-[500] transition-colors duration-200"
+                className="tab-btn py-2 px-3 text-[1rem] font-[500] transition-colors duration-200"
                 style={{
                   color: active === tab.id ? "var(--color-primary)" : "#555555",
                 }}

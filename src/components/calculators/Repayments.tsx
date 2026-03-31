@@ -9,33 +9,31 @@ function formatCurrency(n: number) {
   return "$" + Math.round(n).toLocaleString("en-AU");
 }
 
-// ─── EXTRA REPAYMENT LOGIC ─────────────────────────────────────────────────
-// Simulates month-by-month loan balance when extra repayment is added.
-// We cannot use a closed-form formula here because the loan pays off early
-// (before the original term ends), so we iterate until balance reaches zero.
+// ─── EXTRA REPAYMENT SAVINGS LOGIC ────────────────────────────────────────────
+// Simulates period-by-period (weekly/fortnightly/monthly) loan balance
+// when extra repayment is added, until balance reaches zero.
 //
-function calcNewTermMonths(
+function calcNewTermPeriods(
   principal: number,
-  annualRate: number,
-  baseMonthly: number,
-  monthlyExtra: number
+  rPeriodic: number,
+  basePeriodicPayment: number,
+  extraPerPeriod: number,
+  maxPeriods: number
 ): number {
-  const r = annualRate / 12;
-  if (r === 0) return principal > 0 ? Math.ceil(principal / (baseMonthly + monthlyExtra)) : 0;
+  const total = basePeriodicPayment + extraPerPeriod;
   let bal = principal;
-  let months = 0;
-  const totalPayment = baseMonthly + monthlyExtra;
-  while (bal > 0.01 && months < 600) {
-    const interest = bal * r;
-    bal -= totalPayment - interest;
-    months++;
+  let periods = 0;
+  while (bal > 0.01 && periods < maxPeriods * 2) {
+    const interest = bal * rPeriodic;
+    bal -= total - interest;
+    periods++;
   }
-  return months;
+  return periods;
 }
 
 export default function Repayments() {
   const [loanAmount, setLoanAmount] = useState("500000");
-  const [interestRate, setInterestRate] = useState("6.0");   // ← ADDED: was missing from form
+  const [interestRate, setInterestRate] = useState("6.0");
   const [loanTerm, setLoanTerm] = useState("30");
   const [repaymentFreq, setRepaymentFreq] = useState("weekly");
   const [loanType, setLoanType] = useState<"principal" | "interestOnly">("principal");
@@ -48,60 +46,54 @@ export default function Repayments() {
     const termYears = parseInt(loanTerm || "30");
     const extra = parseFloat(extraRepayment || "0");
 
-    // Frequency multiplier: how many repayments per year
     const freqPerYear = repaymentFreq === "weekly" ? 52 : repaymentFreq === "fortnightly" ? 26 : 12;
     const termMonths = termYears * 12;
-    const r = annualRate / 12; // monthly interest rate
+    const totalPeriods = termYears * freqPerYear;
+    const r = annualRate / 12;
 
-    // ─── BASE MONTHLY REPAYMENT ────────────────────────────────────────────
-    // Standard amortisation formula:
-    //   EMI = P × [r(1+r)^n] / [(1+r)^n - 1]
-    // Where:
-    //   P = principal, r = monthly rate, n = total months
-    //
+    // ─── BASE MONTHLY REPAYMENT ─────────────────────────────────────────────
     const baseMonthly =
       r === 0
         ? principal / termMonths
         : principal * (r / (1 - Math.pow(1 + r, -termMonths)));
 
-    // ─── PERIODIC REPAYMENT ────────────────────────────────────────────────
-    // Convert monthly EMI to the chosen frequency.
-    // For interest-only: repayment = principal × (annual rate / periods per year)
-    // No principal is paid during IO period, only interest.
-    //
+    // ─── PERIODIC REPAYMENT (displayed to user) ─────────────────────────────
     const periodicRepayment =
       loanType === "principal"
         ? baseMonthly * (12 / freqPerYear)
         : principal * (annualRate / freqPerYear);
 
-    // ─── TOTAL WITHOUT EXTRA ───────────────────────────────────────────────
-    // Simply: base monthly × total months
-    // Total interest = total paid − original principal
-    //
+    // ─── TOTALS WITHOUT EXTRA ───────────────────────────────────────────────
     const totalNoExtra = baseMonthly * termMonths;
-    const totalInterestNoExtra = totalNoExtra - principal;
 
-    // ─── EXTRA REPAYMENT SAVINGS ───────────────────────────────────────────
-    // Convert extra amount to monthly equivalent (regardless of chosen frequency)
-    // Then simulate month-by-month to find new payoff date
+    // ─── TOTALS WITH EXTRA — simulate period-by-period ──────────────────────
+    // "Total repayments" & "Total interest" shown = WITH extra repayment
+    // This matches how the reference site displays these values.
     //
-    const monthlyExtra = (extra * freqPerYear) / 12;
-    const newMonths = calcNewTermMonths(principal, annualRate, baseMonthly, monthlyExtra);
-    const totalWithExtra = (baseMonthly + monthlyExtra) * newMonths;
+    const rPeriodic = annualRate / freqPerYear;
+    const basePeriodicPayment = baseMonthly * (12 / freqPerYear);
 
-    // Saving = difference between total paid without vs with extra repayments
+    const newPeriods = calcNewTermPeriods(
+      principal,
+      rPeriodic,
+      basePeriodicPayment,
+      extra,
+      totalPeriods
+    );
+
+    // Total paid = (base + extra) × new periods
+    const totalWithExtra = (basePeriodicPayment + extra) * newPeriods;
+    const totalInterestWithExtra = Math.max(0, totalWithExtra - principal);
+
+    // Saving = total_without_extra − total_with_extra
     const totalSaving = Math.max(0, totalNoExtra - totalWithExtra);
-    const monthsSaved = Math.max(0, termMonths - newMonths);
+
+    const periodsSaved = Math.max(0, totalPeriods - newPeriods);
+    const monthsSaved = Math.round(periodsSaved * 12 / freqPerYear);
     const yearsSaved = Math.floor(monthsSaved / 12);
     const remMonthsSaved = monthsSaved % 12;
 
-    // ─── CHART — YEARLY PRINCIPAL vs INTEREST BREAKDOWN ───────────────────
-    // Each year, split repayments into:
-    //   - Interest paid = balance × monthly rate
-    //   - Principal paid = EMI − interest
-    //   - Remaining balance = previous balance − principal paid
-    // Interest-only period: full repayment goes to interest, balance unchanged
-    //
+    // ─── CHART — YEARLY PRINCIPAL vs INTEREST BREAKDOWN ────────────────────
     const chartData = [];
     let balance = principal;
     const monthlyRate = annualRate / 12;
@@ -125,7 +117,6 @@ export default function Repayments() {
           yearPrincipal += Math.min(prin, balance);
           balance -= prin;
         }
-        // IO period: balance unchanged, only interest charged
       }
 
       chartData.push({
@@ -138,8 +129,8 @@ export default function Repayments() {
 
     return {
       periodicRepayment,
-      totalNoExtra,
-      totalInterestNoExtra,
+      totalWithExtra,
+      totalInterestWithExtra,
       totalSaving,
       yearsSaved,
       remMonthsSaved,
@@ -172,7 +163,6 @@ export default function Repayments() {
           />
         </div>
 
-        {/* ── INTEREST RATE — was missing, now added ── */}
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className={labelCls}>Interest rate (%)</label>
@@ -245,10 +235,10 @@ export default function Repayments() {
             <div className="flex justify-between items-center mt-2">
               <p className="text-primary">Total repayments</p>
               <p className="text-primary font-[700] text-right">
-                {formatCurrency(results.totalNoExtra)}
+                {formatCurrency(results.totalWithExtra)}
                 <br />
                 <span className="text-[#555555] font-normal text-sm">
-                  ({formatCurrency(results.totalInterestNoExtra)} total interest paid)
+                  ({formatCurrency(results.totalInterestWithExtra)} total interest paid)
                 </span>
               </p>
             </div>

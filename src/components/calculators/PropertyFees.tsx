@@ -350,22 +350,22 @@ export default function PropertyFees() {
         <div className="space-y-2.5">
           {[
             {
-              label: "Home buyer concession (FHB)",
+              label: "Home buyer concession",
               value: homeBuyerConcession,
               set: setHomeBuyerConcession,
-              hint: "Reduces/waives stamp duty for first home buyers",
+              // hint: "Reduces/waives stamp duty for first home buyers",
             },
             {
               label: "Primary residence",
               value: primaryResidence,
               set: setPrimaryResidence,
-              hint: "Owner-occupier — may reduce stamp duty in some states",
+              // hint: "Owner-occupier — may reduce stamp duty in some states",
             },
             {
               label: "Foreign buyer",
               value: foreignBuyer,
               set: setForeignBuyer,
-              hint: "Adds foreign buyer surcharge (7–8% depending on state)",
+              // hint: "Adds foreign buyer surcharge (7–8% depending on state)",
             },
           ].map(({ label, value, set, hint }) => (
             <div key={label}>
