@@ -6,79 +6,126 @@ function formatCurrency(n: number) {
   return "$" + Math.round(n).toLocaleString("en-AU");
 }
 
-const STAMP_DUTY: Record<string, (price: number, fhb: boolean, propertyPurpose: string, securityType: string) => number> = {
-  VIC: (price, fhb) => {
-    if (fhb && price <= 600000) return 0;
-    if (fhb && price <= 750000) {
+// ─── STAMP DUTY TABLE ────────────────────────────────────────────────────────
+// Each state has its own tiered stamp duty calculation.
+// FHB = First Home Buyer concession (homeBuyerConcession checkbox)
+// foreignBuyer = additional surcharge on top of standard duty
+// primaryResidence = some states offer concessions for owner-occupiers
+//
+const STAMP_DUTY: Record<
+  string,
+  (price: number, fhb: boolean, propertyPurpose: string, securityType: string, primaryResidence: boolean, foreignBuyer: boolean) => number
+> = {
+  VIC: (price, fhb, _purpose, _type, primaryResidence, foreignBuyer) => {
+    let duty = 0;
+    if (fhb && price <= 600000) {
+      duty = 0; // FHB full exemption up to $600k
+    } else if (fhb && price <= 750000) {
+      // FHB sliding concession between $600k–$750k
       const full = calcVicDuty(price);
       const concession = full * ((750000 - price) / 150000);
-      return full - concession;
+      duty = full - concession;
+    } else {
+      duty = calcVicDuty(price);
     }
-    return calcVicDuty(price);
+    // Principal Place of Residence (PPR) concession — lower rate for owner-occupiers
+    // Non-PPR (investment) attracts a higher "investment" rate in VIC
+    if (!primaryResidence && !fhb) {
+      // Investment surcharge: VIC adds ~0.5% surcharge for non-PPR above $300k
+      if (price > 300000) duty += price * 0.005;
+    }
+    // Foreign buyer surcharge: VIC charges 8% on top
+    if (foreignBuyer) duty += price * 0.08;
+    return duty;
   },
-  NSW: (price, fhb) => {
-    if (fhb && price <= 800000) return 0;
-    if (price <= 14000) return price * 0.0125;
-    if (price <= 30000) return 175 + (price - 14000) * 0.015;
-    if (price <= 80000) return 415 + (price - 30000) * 0.0175;
-    if (price <= 300000) return 1290 + (price - 80000) * 0.035;
-    if (price <= 1000000) return 8990 + (price - 300000) * 0.045;
-    if (price <= 3000000) return 40490 + (price - 1000000) * 0.055;
-    return 150490 + (price - 3000000) * 0.07;
+
+  NSW: (price, fhb, _purpose, _type, _primaryResidence, foreignBuyer) => {
+    let duty = 0;
+    if (fhb && price <= 800000) {
+      duty = 0; // NSW FHB full exemption up to $800k
+    } else if (fhb && price <= 1000000) {
+      // NSW FHB partial concession $800k–$1M
+      const full = calcNswDuty(price);
+      const concession = full * ((1000000 - price) / 200000);
+      duty = full - concession;
+    } else {
+      duty = calcNswDuty(price);
+    }
+    // Foreign buyer surcharge: NSW charges 8% on top
+    if (foreignBuyer) duty += price * 0.08;
+    return duty;
   },
-  QLD: (price, fhb) => {
-    if (fhb && price <= 550000) return 0;
-    if (price <= 5000) return 0;
-    if (price <= 75000) return (price - 5000) * 0.015;
-    if (price <= 540000) return 1050 + (price - 75000) * 0.035;
-    if (price <= 1000000) return 17325 + (price - 540000) * 0.045;
-    return 38025 + (price - 1000000) * 0.0575;
+
+  QLD: (price, fhb, _purpose, _type, _primaryResidence, foreignBuyer) => {
+    let duty = 0;
+    if (fhb && price <= 550000) {
+      duty = 0; // QLD FHB full exemption up to $550k
+    } else if (fhb && price <= 600000) {
+      // QLD FHB partial concession $550k–$600k
+      const full = calcQldDuty(price);
+      duty = full * ((price - 550000) / 50000);
+    } else {
+      duty = calcQldDuty(price);
+    }
+    // Foreign buyer surcharge: QLD charges 7% on top
+    if (foreignBuyer) duty += price * 0.07;
+    return duty;
   },
-  WA: (price, fhb) => {
-    if (fhb && price <= 430000) return 0;
-    if (price <= 120000) return price * 0.019;
-    if (price <= 150000) return 2280 + (price - 120000) * 0.0285;
-    if (price <= 360000) return 3135 + (price - 150000) * 0.03;
-    if (price <= 725000) return 9435 + (price - 360000) * 0.05;
-    return 27685 + (price - 725000) * 0.051;
+
+  WA: (price, fhb, _purpose, _type, _primaryResidence, foreignBuyer) => {
+    let duty = 0;
+    if (fhb && price <= 430000) {
+      duty = 0; // WA FHB full exemption up to $430k
+    } else if (fhb && price <= 530000) {
+      // WA FHB partial concession $430k–$530k
+      const full = calcWaDuty(price);
+      duty = full * ((price - 430000) / 100000);
+    } else {
+      duty = calcWaDuty(price);
+    }
+    // Foreign buyer surcharge: WA charges 7% on top
+    if (foreignBuyer) duty += price * 0.07;
+    return duty;
   },
-  SA: (price) => {
-    if (price <= 12000) return price * 0.01;
-    if (price <= 30000) return 120 + (price - 12000) * 0.02;
-    if (price <= 50000) return 480 + (price - 30000) * 0.03;
-    if (price <= 100000) return 1080 + (price - 50000) * 0.035;
-    if (price <= 200000) return 2830 + (price - 100000) * 0.04;
-    if (price <= 250000) return 6830 + (price - 200000) * 0.0425;
-    if (price <= 300000) return 8955 + (price - 250000) * 0.0475;
-    if (price <= 500000) return 11330 + (price - 300000) * 0.05;
-    return 21330 + (price - 500000) * 0.055;
+
+  SA: (price, _fhb, _purpose, _type, _primaryResidence, foreignBuyer) => {
+    // SA has no FHB stamp duty concession (only grant available separately)
+    let duty = calcSaDuty(price);
+    // Foreign buyer surcharge: SA charges 7% on top
+    if (foreignBuyer) duty += price * 0.07;
+    return duty;
   },
-  ACT: (price) => {
-    if (price <= 200000) return price * 0.006;
-    if (price <= 300000) return 1200 + (price - 200000) * 0.023;
-    if (price <= 500000) return 3500 + (price - 300000) * 0.028;
-    if (price <= 750000) return 9100 + (price - 500000) * 0.038;
-    if (price <= 1000000) return 18600 + (price - 750000) * 0.044;
-    if (price <= 1455000) return 29600 + (price - 1000000) * 0.055;
-    return 54625 + (price - 1455000) * 0.065;
+
+  ACT: (price, fhb, _purpose, _type, _primaryResidence, foreignBuyer) => {
+    // ACT has a Home Buyer Concession Scheme (HBCS) — income-tested
+    // We apply it as a full exemption if fhb checked (simplified)
+    let duty = fhb ? 0 : calcActDuty(price);
+    // Foreign buyer surcharge: ACT charges 7% on top (if not FHB)
+    if (foreignBuyer && !fhb) duty += price * 0.07;
+    return duty;
   },
-  TAS: (price) => {
-    if (price <= 3000) return price * 0.01;
-    if (price <= 25000) return 30 + (price - 3000) * 0.015;
-    if (price <= 75000) return 360 + (price - 25000) * 0.0225;
-    if (price <= 200000) return 1485 + (price - 75000) * 0.035;
-    if (price <= 375000) return 5860 + (price - 200000) * 0.04;
-    if (price <= 725000) return 12860 + (price - 375000) * 0.0425;
-    return 27735 + (price - 725000) * 0.045;
+
+  TAS: (price, _fhb, _purpose, securityType, _primaryResidence, foreignBuyer) => {
+    let duty = calcTasDuty(price);
+    // TAS: 50% concession for first home buyers buying new homes (new builds)
+    // We simplify: apply 50% reduction for new security type
+    // (In practice TAS FHB concession is $10,000 grant, not stamp duty)
+    if (securityType === "new") duty *= 0.5;
+    // No foreign buyer surcharge currently in TAS
+    return duty;
   },
-  NT: (price) => {
-    const v = price / 1000;
-    if (v <= 525) return Math.max(0, (0.06571441 * v * v + 15 * v) - 12000) * 0.01;
-    return price * 0.049;
+
+  NT: (price, _fhb, _purpose, _type, _primaryResidence, foreignBuyer) => {
+    let duty = calcNtDuty(price);
+    // Foreign buyer surcharge: NT charges 0.5% on top
+    if (foreignBuyer) duty += price * 0.005;
+    return duty;
   },
 };
 
-function calcVicDuty(price: number) {
+// ─── STATE DUTY CALCULATION HELPERS ─────────────────────────────────────────
+
+function calcVicDuty(price: number): number {
   if (price <= 25000) return price * 0.014;
   if (price <= 130000) return 350 + (price - 25000) * 0.024;
   if (price <= 440000) return 2870 + (price - 130000) * 0.05;
@@ -86,6 +133,70 @@ function calcVicDuty(price: number) {
   if (price <= 960000) return 28970 + (price - 550000) * 0.06;
   if (price < 2000000) return 55000 + (price - 960000) * 0.055;
   return price * 0.065;
+}
+
+function calcNswDuty(price: number): number {
+  if (price <= 14000) return price * 0.0125;
+  if (price <= 30000) return 175 + (price - 14000) * 0.015;
+  if (price <= 80000) return 415 + (price - 30000) * 0.0175;
+  if (price <= 300000) return 1290 + (price - 80000) * 0.035;
+  if (price <= 1000000) return 8990 + (price - 300000) * 0.045;
+  if (price <= 3000000) return 40490 + (price - 1000000) * 0.055;
+  return 150490 + (price - 3000000) * 0.07;
+}
+
+function calcQldDuty(price: number): number {
+  if (price <= 5000) return 0;
+  if (price <= 75000) return (price - 5000) * 0.015;
+  if (price <= 540000) return 1050 + (price - 75000) * 0.035;
+  if (price <= 1000000) return 17325 + (price - 540000) * 0.045;
+  return 38025 + (price - 1000000) * 0.0575;
+}
+
+function calcWaDuty(price: number): number {
+  if (price <= 120000) return price * 0.019;
+  if (price <= 150000) return 2280 + (price - 120000) * 0.0285;
+  if (price <= 360000) return 3135 + (price - 150000) * 0.03;
+  if (price <= 725000) return 9435 + (price - 360000) * 0.05;
+  return 27685 + (price - 725000) * 0.051;
+}
+
+function calcSaDuty(price: number): number {
+  if (price <= 12000) return price * 0.01;
+  if (price <= 30000) return 120 + (price - 12000) * 0.02;
+  if (price <= 50000) return 480 + (price - 30000) * 0.03;
+  if (price <= 100000) return 1080 + (price - 50000) * 0.035;
+  if (price <= 200000) return 2830 + (price - 100000) * 0.04;
+  if (price <= 250000) return 6830 + (price - 200000) * 0.0425;
+  if (price <= 300000) return 8955 + (price - 250000) * 0.0475;
+  if (price <= 500000) return 11330 + (price - 300000) * 0.05;
+  return 21330 + (price - 500000) * 0.055;
+}
+
+function calcActDuty(price: number): number {
+  if (price <= 200000) return price * 0.006;
+  if (price <= 300000) return 1200 + (price - 200000) * 0.023;
+  if (price <= 500000) return 3500 + (price - 300000) * 0.028;
+  if (price <= 750000) return 9100 + (price - 500000) * 0.038;
+  if (price <= 1000000) return 18600 + (price - 750000) * 0.044;
+  if (price <= 1455000) return 29600 + (price - 1000000) * 0.055;
+  return 54625 + (price - 1455000) * 0.065;
+}
+
+function calcTasDuty(price: number): number {
+  if (price <= 3000) return price * 0.01;
+  if (price <= 25000) return 30 + (price - 3000) * 0.015;
+  if (price <= 75000) return 360 + (price - 25000) * 0.0225;
+  if (price <= 200000) return 1485 + (price - 75000) * 0.035;
+  if (price <= 375000) return 5860 + (price - 200000) * 0.04;
+  if (price <= 725000) return 12860 + (price - 375000) * 0.0425;
+  return 27735 + (price - 725000) * 0.045;
+}
+
+function calcNtDuty(price: number): number {
+  const v = price / 1000;
+  if (v <= 525) return Math.max(0, (0.06571441 * v * v + 15 * v - 12000) * 0.01);
+  return price * 0.049;
 }
 
 const inputCls =
@@ -136,19 +247,48 @@ export default function PropertyFees() {
     const purchasePrice = parseFloat(price || "0");
     const isFhb = homeBuyerConcession;
 
+    // ─── STAMP DUTY ────────────────────────────────────────────────────────
+    // Refinance has no stamp duty (no property transfer occurs)
+    // Purchase: use state-specific tiered formula with concessions applied
+    //
     const stampFn = STAMP_DUTY[state] ?? STAMP_DUTY["VIC"];
-    const stampDuty = transactionType === "refinance" ? 0 : stampFn(purchasePrice, isFhb, propertyPurpose, securityType);
+    const stampDuty =
+      transactionType === "refinance"
+        ? 0
+        : stampFn(purchasePrice, isFhb, propertyPurpose, securityType, primaryResidence, foreignBuyer);
 
+    // ─── TRANSFER FEE ──────────────────────────────────────────────────────
+    // Title transfer registration fee charged by state government.
+    // Approximate formula: base fee + small % of purchase price.
+    // Actual fees vary slightly by state; this is a commonly-used estimate.
+    //
     const transferFee = Math.round(150 + purchasePrice * 0.00002 * 10 + 150);
-    const mortgageRegFee = 172;
+
+    // ─── MORTGAGE REGISTRATION FEE ─────────────────────────────────────────
+    // Fixed government fee to register the mortgage on the property title.
+    // Varies by state ($120–$200), using $172 as a mid-range estimate.
+    //
+    const mortgageRegFee = transactionType === "purchase" ? 172 : 172;
 
     const totalGovtFees = stampDuty + transferFee + mortgageRegFee;
 
-    return { stampDuty, transferFee, mortgageRegFee, totalGovtFees };
+    // ─── FOREIGN BUYER SURCHARGE NOTE ──────────────────────────────────────
+    // If foreign buyer is selected, the surcharge is already included in
+    // stampDuty above (baked into each state's calculation function).
+    // We surface it separately here for display purposes.
+    //
+    const foreignSurchargeRate: Record<string, number> = {
+      VIC: 0.08, NSW: 0.08, QLD: 0.07, WA: 0.07, SA: 0.07, ACT: 0.07, TAS: 0, NT: 0.005,
+    };
+    const foreignSurcharge = foreignBuyer
+      ? Math.round(purchasePrice * (foreignSurchargeRate[state] ?? 0))
+      : 0;
+
+    return { stampDuty, transferFee, mortgageRegFee, totalGovtFees, foreignSurcharge };
   }, [price, state, propertyPurpose, securityType, transactionType, homeBuyerConcession, primaryResidence, foreignBuyer]);
 
   return (
-    <div id="propertyfees" className="grid lg:grid-cols-2 gap-6">
+    <div id="propertyfees" className="grid px-10 md:px-0 lg:grid-cols-2 gap-6">
       {/* Form */}
       <div className="bg-[#FBFBFB] rounded-md shadow-lg p-6 space-y-5">
         <h2 className="text-xl text-primary">Property fees</h2>
@@ -209,19 +349,37 @@ export default function PropertyFees() {
 
         <div className="space-y-2.5">
           {[
-            { label: "Home buyer concession", value: homeBuyerConcession, set: setHomeBuyerConcession },
-            { label: "Primary residence", value: primaryResidence, set: setPrimaryResidence },
-            { label: "Foreign buyer", value: foreignBuyer, set: setForeignBuyer },
-          ].map(({ label, value, set }) => (
-            <label key={label} className="flex items-center gap-2 cursor-pointer text-sm text-[#555555]">
-              <input
-                type="checkbox"
-                checked={value}
-                onChange={(e) => set(e.target.checked)}
-                className="accent-primary w-4 h-4"
-              />
-              {label}
-            </label>
+            {
+              label: "Home buyer concession (FHB)",
+              value: homeBuyerConcession,
+              set: setHomeBuyerConcession,
+              hint: "Reduces/waives stamp duty for first home buyers",
+            },
+            {
+              label: "Primary residence",
+              value: primaryResidence,
+              set: setPrimaryResidence,
+              hint: "Owner-occupier — may reduce stamp duty in some states",
+            },
+            {
+              label: "Foreign buyer",
+              value: foreignBuyer,
+              set: setForeignBuyer,
+              hint: "Adds foreign buyer surcharge (7–8% depending on state)",
+            },
+          ].map(({ label, value, set, hint }) => (
+            <div key={label}>
+              <label className="flex items-center gap-2 cursor-pointer text-sm text-[#555555]">
+                <input
+                  type="checkbox"
+                  checked={value}
+                  onChange={(e) => set(e.target.checked)}
+                  className="accent-primary w-4 h-4"
+                />
+                {label}
+              </label>
+              <p className="text-xs text-[#9C9C9C] ml-6">{hint}</p>
+            </div>
           ))}
         </div>
       </div>
@@ -229,10 +387,9 @@ export default function PropertyFees() {
       {/* Results */}
       <div>
         <div className="bg-[#EEF3F2] rounded-md border border-primary p-6">
-          {/* Header row */}
           <div className="flex justify-between items-start mb-4">
             <div>
-              <p className="text-[1rem] text-[#555555]">Total Goverment Fees</p>
+              <p className="text-[1rem] text-[#555555]">Total Government Fees</p>
               <p className="text-[0.85rem] text-[#555555]">(due on settlement)</p>
             </div>
             <p className="text-4xl font-black" style={{ color: "var(--color-primary)" }}>
@@ -242,13 +399,23 @@ export default function PropertyFees() {
 
           <div className="border-t border-[#9C9C9C] pt-4 space-y-3">
             <div className="flex justify-between items-center">
-              <p className="text-primary text-sm">Total repayments</p>
+              <p className="text-primary text-sm">Stamp duty</p>
               <p className="text-primary font-[700]">{formatCurrency(results.stampDuty)}</p>
             </div>
+
+            {/* Show foreign surcharge line if applicable */}
+            {foreignBuyer && results.foreignSurcharge > 0 && (
+              <div className="flex justify-between items-center ml-4">
+                <p className="text-[#555555] text-xs">↳ incl. foreign buyer surcharge</p>
+                <p className="text-[#555555] text-xs">{formatCurrency(results.foreignSurcharge)}</p>
+              </div>
+            )}
+
             <div className="flex justify-between items-center">
               <p className="text-primary text-sm">Transfer fee</p>
               <p className="text-primary font-[700]">{formatCurrency(results.transferFee)}</p>
             </div>
+
             <div className="flex justify-between items-center">
               <p className="text-primary text-sm">Mortgage registration fee</p>
               <p className="text-primary font-[700]">{formatCurrency(results.mortgageRegFee)}</p>

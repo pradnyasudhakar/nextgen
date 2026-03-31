@@ -106,7 +106,7 @@ export default function CalculatorsPage() {
         </section>
 
         {/* Tab Bar */}
-        <div className="sticky pt-20 z-40 bg-[#FBFBFB]">
+        <div className="sticky   pt-20 z-40 bg-[#FBFBFB]">
           <div className="max-w-5xl border-b border-[#9C9C9C] mx-auto flex gap-8">
             {tabs.map((tab) => (
               <button
