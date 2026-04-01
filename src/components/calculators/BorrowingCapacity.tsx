@@ -445,7 +445,7 @@ export default function BorrowingCapacity() {
                 tick={{ fontSize: 11 }}
               />
               <Tooltip
-                formatter={(v: number) => [formatCurrency(v), "Balance"]}
+                formatter={(v: number | undefined) => [formatCurrency(v ?? 0), "Balance"]}
                 labelFormatter={(l) => `Year ${l}`}
               />
               <Area
