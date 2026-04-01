@@ -350,7 +350,7 @@ export default function BorrowingCapacity() {
           <div className="mt-5 flex items-center justify-between bg-[#DDDDDD] rounded-md px-3 py-3">
             <span className="text-sm text-[#555555]">Living expenses (HEM benchmark)</span>
             <span className="text-sm font-semibold text-[#555555]">
-              {formatCurrency(results.hem)}/mo
+              {(results.hem)}
             </span>
           </div>
         </div>

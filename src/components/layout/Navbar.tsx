@@ -180,7 +180,7 @@ export default function Navbar() {
 
                     {/* Dropdown */}
                     <div
-                      className="absolute top-full left-0 mt-2 w-42 bg-[#FBFBFB] rounded-md border z-50 overflow-hidden"
+                      className="absolute top-full left-0 mt-2 w-44 bg-[#FBFBFB] rounded-md border z-50 overflow-hidden"
                       style={{
                         borderColor: "var(--color-primary-light)",
                         boxShadow: "var(--shadow-md)",
