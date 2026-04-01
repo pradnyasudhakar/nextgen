@@ -7,11 +7,6 @@ function formatCurrency(n: number) {
 }
 
 // ─── STAMP DUTY TABLE ────────────────────────────────────────────────────────
-// Each state has its own tiered stamp duty calculation.
-// FHB = First Home Buyer concession (homeBuyerConcession checkbox)
-// foreignBuyer = additional surcharge on top of standard duty
-// primaryResidence = some states offer concessions for owner-occupiers
-//
 const STAMP_DUTY: Record<
   string,
   (price: number, fhb: boolean, propertyPurpose: string, securityType: string, primaryResidence: boolean, foreignBuyer: boolean) => number
@@ -19,22 +14,17 @@ const STAMP_DUTY: Record<
   VIC: (price, fhb, _purpose, _type, primaryResidence, foreignBuyer) => {
     let duty = 0;
     if (fhb && price <= 600000) {
-      duty = 0; // FHB full exemption up to $600k
+      duty = 0;
     } else if (fhb && price <= 750000) {
-      // FHB sliding concession between $600k–$750k
       const full = calcVicDuty(price);
       const concession = full * ((750000 - price) / 150000);
       duty = full - concession;
     } else {
       duty = calcVicDuty(price);
     }
-    // Principal Place of Residence (PPR) concession — lower rate for owner-occupiers
-    // Non-PPR (investment) attracts a higher "investment" rate in VIC
     if (!primaryResidence && !fhb) {
-      // Investment surcharge: VIC adds ~0.5% surcharge for non-PPR above $300k
       if (price > 300000) duty += price * 0.005;
     }
-    // Foreign buyer surcharge: VIC charges 8% on top
     if (foreignBuyer) duty += price * 0.08;
     return duty;
   },
@@ -42,16 +32,14 @@ const STAMP_DUTY: Record<
   NSW: (price, fhb, _purpose, _type, _primaryResidence, foreignBuyer) => {
     let duty = 0;
     if (fhb && price <= 800000) {
-      duty = 0; // NSW FHB full exemption up to $800k
+      duty = 0;
     } else if (fhb && price <= 1000000) {
-      // NSW FHB partial concession $800k–$1M
       const full = calcNswDuty(price);
       const concession = full * ((1000000 - price) / 200000);
       duty = full - concession;
     } else {
       duty = calcNswDuty(price);
     }
-    // Foreign buyer surcharge: NSW charges 8% on top
     if (foreignBuyer) duty += price * 0.08;
     return duty;
   },
@@ -59,15 +47,13 @@ const STAMP_DUTY: Record<
   QLD: (price, fhb, _purpose, _type, _primaryResidence, foreignBuyer) => {
     let duty = 0;
     if (fhb && price <= 550000) {
-      duty = 0; // QLD FHB full exemption up to $550k
+      duty = 0;
     } else if (fhb && price <= 600000) {
-      // QLD FHB partial concession $550k–$600k
       const full = calcQldDuty(price);
       duty = full * ((price - 550000) / 50000);
     } else {
       duty = calcQldDuty(price);
     }
-    // Foreign buyer surcharge: QLD charges 7% on top
     if (foreignBuyer) duty += price * 0.07;
     return duty;
   },
@@ -75,49 +61,45 @@ const STAMP_DUTY: Record<
   WA: (price, fhb, _purpose, _type, _primaryResidence, foreignBuyer) => {
     let duty = 0;
     if (fhb && price <= 430000) {
-      duty = 0; // WA FHB full exemption up to $430k
+      duty = 0;
     } else if (fhb && price <= 530000) {
-      // WA FHB partial concession $430k–$530k
       const full = calcWaDuty(price);
       duty = full * ((price - 430000) / 100000);
     } else {
       duty = calcWaDuty(price);
     }
-    // Foreign buyer surcharge: WA charges 7% on top
     if (foreignBuyer) duty += price * 0.07;
     return duty;
   },
 
   SA: (price, _fhb, _purpose, _type, _primaryResidence, foreignBuyer) => {
-    // SA has no FHB stamp duty concession (only grant available separately)
     let duty = calcSaDuty(price);
-    // Foreign buyer surcharge: SA charges 7% on top
     if (foreignBuyer) duty += price * 0.07;
     return duty;
   },
 
-  ACT: (price, fhb, _purpose, _type, _primaryResidence, foreignBuyer) => {
-    // ACT has a Home Buyer Concession Scheme (HBCS) — income-tested
-    // We apply it as a full exemption if fhb checked (simplified)
-    let duty = fhb ? 0 : calcActDuty(price);
-    // Foreign buyer surcharge: ACT charges 7% on top (if not FHB)
+  // ✅ ACT: separate rate tables for owner-occupier ("tolive") vs investment
+  ACT: (price, fhb, propertyPurpose, _type, _primaryResidence, foreignBuyer) => {
+    let duty = 0;
+    if (fhb) {
+      duty = 0;
+    } else if (propertyPurpose === "investment") {
+      duty = calcActDutyInvestment(price);
+    } else {
+      duty = calcActDutyOO(price);
+    }
     if (foreignBuyer && !fhb) duty += price * 0.07;
     return duty;
   },
 
-  TAS: (price, _fhb, _purpose, securityType, _primaryResidence, foreignBuyer) => {
+  TAS: (price, _fhb, _purpose, securityType, _primaryResidence, _foreignBuyer) => {
     let duty = calcTasDuty(price);
-    // TAS: 50% concession for first home buyers buying new homes (new builds)
-    // We simplify: apply 50% reduction for new security type
-    // (In practice TAS FHB concession is $10,000 grant, not stamp duty)
     if (securityType === "new") duty *= 0.5;
-    // No foreign buyer surcharge currently in TAS
     return duty;
   },
 
   NT: (price, _fhb, _purpose, _type, _primaryResidence, foreignBuyer) => {
     let duty = calcNtDuty(price);
-    // Foreign buyer surcharge: NT charges 0.5% on top
     if (foreignBuyer) duty += price * 0.005;
     return duty;
   },
@@ -173,14 +155,24 @@ function calcSaDuty(price: number): number {
   return 21330 + (price - 500000) * 0.055;
 }
 
-function calcActDuty(price: number): number {
+// ✅ ACT Owner-Occupier / "To live in" duty rates
+function calcActDutyOO(price: number): number {
   if (price <= 200000) return price * 0.006;
-  if (price <= 300000) return 1200 + (price - 200000) * 0.023;
-  if (price <= 500000) return 3500 + (price - 300000) * 0.028;
-  if (price <= 750000) return 9100 + (price - 500000) * 0.038;
-  if (price <= 1000000) return 18600 + (price - 750000) * 0.044;
-  if (price <= 1455000) return 29600 + (price - 1000000) * 0.055;
-  return 54625 + (price - 1455000) * 0.065;
+  if (price <= 300000) return 1200 + (price - 200000) * 0.017;
+  if (price <= 500000) return 2900 + (price - 300000) * 0.0242;
+  if (price <= 750000) return 7740 + (price - 500000) * 0.0615;
+  if (price <= 1000000) return 18490 + (price - 750000) * 0.047;
+  return 30240 + (price - 1000000) * 0.055;
+}
+
+// ✅ ACT Investment duty rates (higher tiered rates)
+function calcActDutyInvestment(price: number): number {
+  if (price <= 200000) return price * 0.012;
+  if (price <= 300000) return 2400 + (price - 200000) * 0.022;
+  if (price <= 500000) return 4600 + (price - 300000) * 0.034;
+  if (price <= 750000) return 11400 + (price - 500000) * 0.0432;
+  if (price <= 1000000) return 22200 + (price - 750000) * 0.059;
+  return 36925 + (price - 1000000) * 0.0685;
 }
 
 function calcTasDuty(price: number): number {
@@ -247,36 +239,19 @@ export default function PropertyFees() {
     const purchasePrice = parseFloat(price || "0");
     const isFhb = homeBuyerConcession;
 
-    // ─── STAMP DUTY ────────────────────────────────────────────────────────
-    // Refinance has no stamp duty (no property transfer occurs)
-    // Purchase: use state-specific tiered formula with concessions applied
-    //
     const stampFn = STAMP_DUTY[state] ?? STAMP_DUTY["VIC"];
     const stampDuty =
       transactionType === "refinance"
         ? 0
         : stampFn(purchasePrice, isFhb, propertyPurpose, securityType, primaryResidence, foreignBuyer);
 
-    // ─── TRANSFER FEE ──────────────────────────────────────────────────────
-    // Title transfer registration fee charged by state government.
-    // Approximate formula: base fee + small % of purchase price.
-    // Actual fees vary slightly by state; this is a commonly-used estimate.
-    //
-    const transferFee = Math.round(150 + purchasePrice * 0.00002 * 10 + 150);
+    // ✅ Transfer fee: flat $463 government registration fee
+    const transferFee = 463;
 
-    // ─── MORTGAGE REGISTRATION FEE ─────────────────────────────────────────
-    // Fixed government fee to register the mortgage on the property title.
-    // Varies by state ($120–$200), using $172 as a mid-range estimate.
-    //
-    const mortgageRegFee = transactionType === "purchase" ? 172 : 172;
+    const mortgageRegFee = 172;
 
     const totalGovtFees = stampDuty + transferFee + mortgageRegFee;
 
-    // ─── FOREIGN BUYER SURCHARGE NOTE ──────────────────────────────────────
-    // If foreign buyer is selected, the surcharge is already included in
-    // stampDuty above (baked into each state's calculation function).
-    // We surface it separately here for display purposes.
-    //
     const foreignSurchargeRate: Record<string, number> = {
       VIC: 0.08, NSW: 0.08, QLD: 0.07, WA: 0.07, SA: 0.07, ACT: 0.07, TAS: 0, NT: 0.005,
     };
@@ -349,25 +324,10 @@ export default function PropertyFees() {
 
         <div className="space-y-2.5">
           {[
-            {
-              label: "Home buyer concession",
-              value: homeBuyerConcession,
-              set: setHomeBuyerConcession,
-              // hint: "Reduces/waives stamp duty for first home buyers",
-            },
-            {
-              label: "Primary residence",
-              value: primaryResidence,
-              set: setPrimaryResidence,
-              // hint: "Owner-occupier — may reduce stamp duty in some states",
-            },
-            {
-              label: "Foreign buyer",
-              value: foreignBuyer,
-              set: setForeignBuyer,
-              // hint: "Adds foreign buyer surcharge (7–8% depending on state)",
-            },
-          ].map(({ label, value, set, hint }) => (
+            { label: "Home buyer concession", value: homeBuyerConcession, set: setHomeBuyerConcession },
+            { label: "Primary residence", value: primaryResidence, set: setPrimaryResidence },
+            { label: "Foreign buyer", value: foreignBuyer, set: setForeignBuyer },
+          ].map(({ label, value, set }) => (
             <div key={label}>
               <label className="flex items-center gap-2 cursor-pointer text-sm text-[#555555]">
                 <input
@@ -378,7 +338,6 @@ export default function PropertyFees() {
                 />
                 {label}
               </label>
-              <p className="text-xs text-[#9C9C9C] ml-6">{hint}</p>
             </div>
           ))}
         </div>
@@ -403,7 +362,6 @@ export default function PropertyFees() {
               <p className="text-primary font-[700]">{formatCurrency(results.stampDuty)}</p>
             </div>
 
-            {/* Show foreign surcharge line if applicable */}
             {foreignBuyer && results.foreignSurcharge > 0 && (
               <div className="flex justify-between items-center ml-4">
                 <p className="text-[#555555] text-xs">↳ incl. foreign buyer surcharge</p>
