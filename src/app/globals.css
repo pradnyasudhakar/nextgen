@@ -61,7 +61,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height:             1.6;
 }
-
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   LIST RESET FIX
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@layer base {
+  ul.styled {
+    list-style: disc;
+    padding-left: 1.25rem;
+  }
+  ul.styled li::marker {
+    color: #00674E;
+  }
+}
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    LAYOUT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */

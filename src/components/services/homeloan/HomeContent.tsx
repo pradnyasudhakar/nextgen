@@ -54,35 +54,21 @@ export default function HomeContent() {
             <div id="home-loans" className="scroll-mt-24">
               <H2 className=" font-[500] mb-4">Home Loans</H2>
               <P className="mb-4">
-                Whether you are buying your first home, refinancing an existing
-                property, or purchasing an investment, the right financial
-                structure makes all the difference. A home purchase is one of
-                the most significant financial commitments you will take on. It
-                deserves clarity, careful planning, and steady guidance from the
-                beginning.
+                Whether you are buying your first home, refinancing an existing property, or purchasing an investment, the right financial structure makes all the difference. A home purchase is one of the most significant financial commitments you will take on. It deserves clarity, careful planning, and steady guidance from the beginning.
               </P>
               <P>
-                Our role is to understand your goals, your financial position,
-                and your long-term plans before shaping a solution. The focus is
-                not just approval. It is building a structure that remains
-                sustainable and flexible over time.
+                Our role is to understand your goals, your financial position, and your long-term plans before shaping a solution. The focus is not just approval. It is building a structure that remains sustainable and flexible over time.
               </P>
             </div>
 
             <div id="what-is-home-loan" className="scroll-mt-24">
               <H2 className="font-[500] mb-4">What is a Home Loan?</H2>
               <P className="mb-4">
-                A home loan, also known as a mortgage, is a secured financial
-                solution that allows you to purchase, build, or renovate
-                residential property. The property acts as security for the
-                lender.
+                A home loan, also known as a mortgage, is a secured financial solution that allows you to purchase, build, or renovate residential property. The property acts as security for the lender.
               </P>
               <P>
-                In Australia, most home loans are structured over 25 to 30
-                years. Repayments typically include both principal and interest,
-                although interest-only periods may apply in some circumstances.
-                How the loan is structured will influence cash flow,
-                flexibility, and overall cost.
+               In Australia, most home loans are structured over 25 to 30 years. Repayments typically include both principal and interest, although interest-only periods may apply in some circumstances. How the loan is structured will influence cash flow, flexibility, and overall cost.
+
               </P>
             </div>
 
@@ -91,46 +77,36 @@ export default function HomeContent() {
                 How Your Loan Can Be Structured
               </H2>
               <P className="mb-4">
-                Every borrower&apos;s situation is different. The structure of
-                your loan will depend on several key factors.
+                Every borrower’s situation is different. The structure of your loan will depend on several key factors:
               </P>
               <div className="space-y-3">
                 <P>
-                  <Highlight className="font-[700]">Purpose:</Highlight> Whether
-                  the property is owner-occupied or an investment.
+                  <Highlight className="font-[700]">Purpose:</Highlight> Whether the property is owner-occupied or an investment.
                 </P>
                 <P>
                   <Highlight className="font-[700]">Interest Type:</Highlight>{" "}
-                  Variable rates move with the market. Fixed rates provide
-                  certainty for a defined period. Some borrowers choose a split
-                  structure to balance both.
+                  Variable rates move with the market. Fixed rates provide certainty for a defined period. Some borrowers choose a split structure to balance both.
                 </P>
                 <P>
                   <Highlight className="font-[700]">Interest Type:</Highlight>{" "}
-                  Variable rates move with the market. Fixed rates provide
-                  certainty for a defined period. Some borrowers choose a split
-                  structure to balance both.
+                  Principal and interest reduce the loan balance over time. Interest only lowers short-term repayments but does not reduce the principal during that period.
                 </P>
                 <P>
                   <Highlight className="font-[700]">
                     Repayment Method:
                   </Highlight>{" "}
-                  Principal and interest reduce the loan balance over time.
-                  Interest only lowers short-term repayments but does not reduce
-                  the principal during that period.
+                  Principal and interest reduce the loan balance over time. Interest only lowers short-term repayments but does not reduce the principal during that period.
                 </P>
                 <P>
                   <Highlight className="font-[700]">
                     Features and Flexibility:
                   </Highlight>{" "}
-                  Options such as offset accounts, redraw facilities, and
-                  additional repayments can significantly influence how your
-                  loan performs over the long term.
+                  Options such as offset accounts, redraw facilities, and additional repayments can significantly influence how your loan performs over the long term.
                 </P>
               </div>
               <P className="mt-4">
-                A well-structured loan should reflect not only your current
-                position but also where you expect to be in the coming years.
+                A well-structured loan should reflect not only your current position but also where you expect to be in the coming years.
+
               </P>
             </div>
 
@@ -139,19 +115,13 @@ export default function HomeContent() {
                 Understanding Interest and Repayments
               </H2>
               <P className="mb-4">
-                Each repayment consists of two components. Principal is the
-                amount borrowed. Interest is the cost of borrowing.
+                Each repayment consists of two components. Principal is the amount borrowed. Interest is the cost of borrowing.
               </P>
               <P className="mb-4">
-                Over time, regular repayments reduce the loan balance and the
-                total interest payable. Making additional repayments, even small
-                ones, can shorten the loan term and reduce long-term costs.
+                Over time, regular repayments reduce the loan balance and the total interest payable. Making additional repayments, even small ones, can shorten the loan term and reduce long-term costs.
               </P>
               <P className="mb-4">
-                If you choose an interest-only period, repayments may be lower
-                initially. However, when that period ends, repayments will
-                increase because you will begin repaying both principal and
-                interest.
+                If you choose an interest-only period, repayments may be lower initially. However, when that period ends, repayments will increase because you will begin repaying both principal and interest.
               </P>
               <P>
                 Understanding these mechanics early helps avoid surprises later.
@@ -161,41 +131,55 @@ export default function HomeContent() {
             <div id="reviewing-refinancing" className="scroll-mt-24">
               <H2 className="font-[500] mb-4">Reviewing and Refinancing</H2>
               <P className="mb-4">
-                A loan should not remain untouched for decades. Circumstances
-                change. Rates move. Financial goals evolve.
+                A loan should not remain untouched for decades. Circumstances change. Rates move. Financial goals evolve.
               </P>
-              <P>
-                Refinancing involves replacing your current loan with a new one,
-                either with the same or a different lender. This can result in a
-                lower rate, a better structure, or access to equity built up in
-                your property.
+              <P className="mb-4">
+                Refinancing involves replacing your current plan with a new one, either with the same lender or a different institution. This may provide access to more competitive pricing, improved features, or a structure better suited to your current situation.
               </P>
+              <P>When reviewing a refinance, it is important to look beyond the headline rate. Fees, comparison rates, and overall structure determine the true cost over time.</P>
             </div>
 
             <div id="home-buying-process" className="scroll-mt-24">
               <H2 className="font-[500] mb-4">Home Buying Process</H2>
               <P className="mb-4">
-                Understanding the home buying process from start to finish helps
-                reduce stress and keeps you prepared at each stage. From initial
-                assessment to settlement, each step has its own requirements and
-                timelines.
+                The process can feel complex, but it becomes manageable when broken into stages:
               </P>
-              <P>
-                We guide you through every stage so nothing comes as a surprise.
-              </P>
+              <div className="space-y-3">
+                <P>
+                  <Highlight className="font-[700]">Pre-Approval :</Highlight> Understanding borrowing capacity before committing to a property.
+                </P>
+                <P>
+                  <Highlight className="font-[700]">Search and Contract :</Highlight>{" "}
+                  Making an offer and navigating contract terms.
+                </P>
+                <P>
+                  <Highlight className="font-[700]">Application and Approval :</Highlight>{" "}
+                 Managing documentation, lender requirements, and formal approval.
+                </P>
+                <P>
+                  <Highlight className="font-[700]">
+                   Settlement and Ongoing Review :
+
+                  </Highlight>{" "}
+                  Completing the purchase and continuing to review the structure as your circumstances evolve.
+                  <br />
+                  Our involvement does not end at settlement. Ongoing review ensures the structure continues to support your goals.
+                </P>
+                
+              </div>
+             
             </div>
 
             <div id="choosing-right" className="scroll-mt-24">
               <H2 className="font-[500] mb-4">Choosing the Right Structure</H2>
               <P className="mb-4">
-                There is no single loan structure that suits every borrower. The
-                right approach depends on your income, your property goals, your
-                risk tolerance, and your broader financial position.
+                There is no single loan that suits everyone. First home buyers, owner occupiers, investors, and refinancers all have different priorities.
+
               </P>
               <P>
-                Our role is to work through these variables with you, present
-                clear options, and help you move forward with confidence.
+                The objective is not simply to secure funding. It is to ensure the financial solution supports your lifestyle, risk tolerance, and long-term plans.
               </P>
+              <P>When structured correctly, a home loan becomes a stable foundation rather than a source of stress.</P>
             </div>
           </div>
 
