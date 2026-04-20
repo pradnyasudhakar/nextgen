@@ -74,39 +74,40 @@ export default function HomeContent() {
             </div>
 
             <div id="what-is-commercial-loan" className="scroll-mt-24">
-              <H2 className="font-[500] mb-4">
-                What is SMSF Finance?
-              </H2>
-              <P className="mb-4">
-                SMSF finance is a loan taken by your Self-Managed Super Fund to invest in property or other approved assets.
-              </P>
-              <P className="mb-4">
-                Unlike a standard loan, this sits within a regulated environment, where every decision must support your retirement goals.
-              </P>
-              <P className="mb-4">
-                SMSF finance can be used for:
-                <ul className=" styled space-y-1 mt-1 mb-2 ">
-                  <li>Residential investment property</li>
-                  <li>Commercial property (offices, retail, industrial)</li>
-                  <li>Development-ready land (in some cases)</li>
-                  
-                </ul>
-                The key difference is simple. The investment sits inside your fund, and everything around it must follow superannuation rules.
-              </P>
-            </div>
+  <H2 className="font-[500] mb-4">What is SMSF Finance?</H2>
+  <P className="mb-4">
+    SMSF finance is a loan taken by your Self-Managed Super Fund to invest in
+    property or other approved assets.
+  </P>
+  <P className="mb-4">
+    Unlike a standard loan, this sits within a regulated environment, where
+    every decision must support your retirement goals.
+  </P>
+  <P className="mb-2">SMSF finance can be used for:</P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Residential investment property</li>
+    <li>Commercial property (offices, retail, industrial)</li>
+    <li>Development-ready land (in some cases)</li>
+  </ul>
+  <P className="mb-4">
+    The key difference is simple. The investment sits inside your fund, and
+    everything around it must follow superannuation rules.
+  </P>
+</div>
 <div id="smsf-property" className="scroll-mt-24">
-              <H2 className="font-[500] mb-4">How SMSF Property Investment Works</H2>
-              <P className="mb-4">
-               
-                <ul className=" styled space-y-1 mb-2 ">
-                  <li>Your SMSF borrows through a Limited Recourse Borrowing Arrangement (LRBA)</li>
-                  <li>The property is purchased in the name of the SMSF</li>
-                  <li>If the loan defaults, the lender can only claim against that property</li>
-                  <li>Rental income and any value growth remain within the fund</li>
-                </ul>
-                <Highlight className="font-[700]" >Important:</Highlight> All purchases must meet Australian Taxation Office (ATO) requirements, including leasing rules, related party restrictions, and the sole purpose test.
-              </P>
-            </div>
+  <H2 className="font-[500] mb-4">How SMSF Property Investment Works</H2>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Your SMSF borrows through a Limited Recourse Borrowing Arrangement (LRBA)</li>
+    <li>The property is purchased in the name of the SMSF</li>
+    <li>If the loan defaults, the lender can only claim against that property</li>
+    <li>Rental income and any value growth remain within the fund</li>
+  </ul>
+  <P className="mb-4">
+    <Highlight className="font-[700]">Important:</Highlight> All purchases
+    must meet Australian Taxation Office (ATO) requirements, including leasing
+    rules, related party restrictions, and the sole purpose test.
+  </P>
+</div>
             <div id="how-structured" className="scroll-mt-24">
               <H2 className="font-[500] mb-4">
                 Types of SMSF Loans
@@ -144,165 +145,141 @@ export default function HomeContent() {
             </div>
 
             <div id="interest-repayments" className="scroll-mt-24">
-              <H2 className="font-[500] mb-4">
-                How SMSF Finance Works
-              </H2>
-              <P className="mb-4">
-                SMSF lending operates differently because it needs to meet regulatory requirements at every stage.
-              </P>
+  <H2 className="font-[500] mb-4">How SMSF Finance Works</H2>
+  <P className="mb-4">
+    SMSF lending operates differently because it needs to meet regulatory
+    requirements at every stage.
+  </P>
 
-              <P className="mb-4">
-                <Highlight className="font-[700]">
-                  
-Limited Recourse Borrowing Arrangement (LRBA)
+  <P className="mb-1">
+    <Highlight className="font-[700]">
+      Limited Recourse Borrowing Arrangement (LRBA)
+    </Highlight>
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Loan is taken by the SMSF</li>
+    <li>Lender's claim is limited to the purchased property</li>
+    <li>Other assets in the fund remain protected</li>
+  </ul>
 
-                </Highlight>{" "}
-                <br />
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>Loan is taken by the SMSF</li>
-                  <li>Lender’s claim is limited to the purchased property</li>
-                  <li>Other assets in the fund remain protected</li>
-                </ul>
-              </P>
-              <P className="mb-4">
-                <Highlight className="font-[700]">Loan Term</Highlight>{" "}
-                <br />
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>Typically 10–25 years depending on lender and property</li>
-                </ul>
-              </P>
-              <P className="mb-4">
-                <Highlight className="font-[700]">
-                 Loan-to-Value Ratio (LVR)
-                </Highlight>{" "}
-                <br />
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>Usually between 60–80%</li>
-                  <li>Depends on property type and fund position</li>
-                </ul>
-              </P>
-              <P className="mb-4">
-                <Highlight className="font-[700]">Repayment Types</Highlight>{" "}
-                <br />
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>Principal & Interest: Gradual reduction of the loan</li>
-                  <li>Interest-Only: Helps manage cash flow within the fund</li>
-                </ul>
-              </P>
-              <P className="mb-4">
-                <Highlight className="font-[700]">
-                  Security
-                </Highlight>{" "}
-                <br />
-               
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>The property is the main security</li>
-                  <li>Additional fund assets or buffers may be required
-                  </li>
-                </ul>
-              </P>
-              <P className="mb-4">
-                <Highlight className="font-[700]">
-                  Compliance Considerations
+  <P className="mb-1">
+    <Highlight className="font-[700]">Loan Term</Highlight>
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Typically 10–25 years depending on lender and property</li>
+  </ul>
 
-                </Highlight>{" "}
-                <br />
-               
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>Property must meet the sole purpose test</li>
-                  <li>Related party rules must be followed</li>
-                  <li>All income and expenses must go through the SMSF</li>
-                </ul>
-              </P>
-            </div>
+  <P className="mb-1">
+    <Highlight className="font-[700]">Loan-to-Value Ratio (LVR)</Highlight>
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Usually between 60–80%</li>
+    <li>Depends on property type and fund position</li>
+  </ul>
+
+  <P className="mb-1">
+    <Highlight className="font-[700]">Repayment Types</Highlight>
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Principal & Interest: Gradual reduction of the loan</li>
+    <li>Interest-Only: Helps manage cash flow within the fund</li>
+  </ul>
+
+  <P className="mb-1">
+    <Highlight className="font-[700]">Security</Highlight>
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>The property is the main security</li>
+    <li>Additional fund assets or buffers may be required</li>
+  </ul>
+
+  <P className="mb-1">
+    <Highlight className="font-[700]">Compliance Considerations</Highlight>
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Property must meet the sole purpose test</li>
+    <li>Related party rules must be followed</li>
+    <li>All income and expenses must go through the SMSF</li>
+  </ul>
+</div>
 
             <div id="reviewing-refinancing" className="scroll-mt-24">
-              <H2 className="font-[500] mb-4">
-               Steps to Securing SMSF Finance
-              </H2>
-              <P className="mb-4">
-                We guide you through each stage so everything is handled correctly from the start:
-              </P>
-              <P className="mb-4 mt-2 ">
-                <Highlight className="font-[700] mb-1 ">
-                  Step 1: SMSF Review & Direction
-                </Highlight>{" "}
-                <br />
-                We look at:
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>Current fund balance</li>
-                  <li>Retirement goals</li>
-                  <li>Property plans</li>
-                  <li>Compliance position</li>
-                </ul>
-              </P>
-              <P className="mb-4 ">
-                <Highlight className="font-[700] mb-1 ">
-                  Step 2: Borrowing Capacity & Planning
-                </Highlight>{" "}
-                <br />
-                We determine:
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>How much your SMSF can borrow</li>
-                  <li>Suitable loan options</li>
-                  <li>Lenders that work with SMSFs</li>
-                </ul>
-              </P>
-              <P className="mb-4 ">
-                <Highlight className="font-[700] mb-1 ">
-                 Step 3: Pre-Approval
-                </Highlight>{" "}
-                <br />
-               Gives your SMSF the ability to act when the right property becomes available.
-              </P>
-              <P className="mb-4 ">
-                <Highlight className="font-[700] mb-1 ">
-                  Step 4: Property & Compliance Checkms
-                </Highlight>{" "}
-                <br />
-                We review:
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>Market value and rental potential</li>
-                  <li>ATO compliance requirements</li>
-                  <li>Lease and ownership rules</li>
-                </ul>
+  <H2 className="font-[500] mb-4">Steps to Securing SMSF Finance</H2>
+  <P className="mb-4">
+    We guide you through each stage so everything is handled correctly from
+    the start:
+  </P>
 
-                
-              </P>
-              <P className="mb-4 ">
-                <Highlight className="font-[700] mb-1 ">
-                  Step 5: Application & Documentation
-                </Highlight>{" "}
-                <br />
-                We prepare:
-                 <ul className=" styled space-y-1 mt-1 " >
-                <li>SMSF trust documentation</li>
-                <li>Financials and fund details</li>
-                <li>Property information</li>
-               </ul>
-                
-              </P>
-              <P className="mb-4 ">
-                <Highlight className="font-[700] mb-1 ">
-                 Step 6: Approval & Settlement
+  <P className="mb-1">
+    <Highlight className="font-[700]">Step 1: SMSF Review & Direction</Highlight>
+    <br />
+    We look at:
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Current fund balance</li>
+    <li>Retirement goals</li>
+    <li>Property plans</li>
+    <li>Compliance position</li>
+  </ul>
 
-                </Highlight>{" "}
-                <br />
-               Loan is approved under LRBA guidelines, and the SMSF acquires the property.
-              </P>
-              <P className="mb-4 ">
-                <Highlight className="font-[700] mb-1 ">
-                  Step 7: Ongoing Support
-                </Highlight>{" "}
-                <br />
-               We help you:
-               <ul className=" styled space-y-1 mt-1 " >
-                <li>Review your loan and property</li>
-                <li>Manage cash flow within the fund</li>
-                <li>Plan future investments</li>
-               </ul>
-              </P>
-            </div>
+  <P className="mb-1">
+    <Highlight className="font-[700]">Step 2: Borrowing Capacity & Planning</Highlight>
+    <br />
+    We determine:
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>How much your SMSF can borrow</li>
+    <li>Suitable loan options</li>
+    <li>Lenders that work with SMSFs</li>
+  </ul>
+
+  <P className="mb-4">
+    <Highlight className="font-[700]">Step 3: Pre-Approval</Highlight>
+    <br />
+    Gives your SMSF the ability to act when the right property becomes
+    available.
+  </P>
+
+  <P className="mb-1">
+    <Highlight className="font-[700]">Step 4: Property & Compliance Checks</Highlight>
+    <br />
+    We review:
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Market value and rental potential</li>
+    <li>ATO compliance requirements</li>
+    <li>Lease and ownership rules</li>
+  </ul>
+
+  <P className="mb-1">
+    <Highlight className="font-[700]">Step 5: Application & Documentation</Highlight>
+    <br />
+    We prepare:
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>SMSF trust documentation</li>
+    <li>Financials and fund details</li>
+    <li>Property information</li>
+  </ul>
+
+  <P className="mb-4">
+    <Highlight className="font-[700]">Step 6: Approval & Settlement</Highlight>
+    <br />
+    Loan is approved under LRBA guidelines, and the SMSF acquires the
+    property.
+  </P>
+
+  <P className="mb-1">
+    <Highlight className="font-[700]">Step 7: Ongoing Support</Highlight>
+    <br />
+    We help you:
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Review your loan and property</li>
+    <li>Manage cash flow within the fund</li>
+    <li>Plan future investments</li>
+  </ul>
+</div>
 
             <div id="nextgen-lending-group" className="scroll-mt-24">
               <H2 className="font-[500] mb-4">
@@ -331,30 +308,32 @@ Limited Recourse Borrowing Arrangement (LRBA)
             </div>
             <div id="who-is-this-for" className="scroll-mt-24">
               <H2 className="font-[500] mb-4">Who We Help</H2>
-              <P className="mb-4">
+              <P className="mb-2">
                 We work with:
-                <ul className=" styled space-y-1 mt-1 ">
+               
+              </P>
+               <ul className="text-[#555555]  styled space-y-1  ">
                   <li> SMSF trustees</li>
                   <li>Investors using their super for property</li>
                   <li>SMSFs expanding their property holdings</li>
                   <li>SMSFs planning compliant development or upgrades</li>
                 </ul>
-              </P>
             </div>
             <div id="commercial-property" className="scroll-mt-24">
-              <H2 className="font-[500] mb-4">
-               Ready to Explore Property Through Your SMSF?
-              </H2>
-              <P className="mb-4">
-                SMSF property investment works best when both the funding and compliance are handled carefully from the start.
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>Speak with an SMSF finance specialist</li>
-                  <li>Explore options that suit your fund</li>
-                  <li>Understand what your SMSF can access</li>
-                </ul>
-               Let’s take your SMSF strategy forward with confidence.
-              </P>
-            </div>
+  <H2 className="font-[500] mb-4">
+    Ready to Explore Property Through Your SMSF?
+  </H2>
+  <P className="mb-2">
+    SMSF property investment works best when both the funding and compliance
+    are handled carefully from the start.
+  </P>
+  <ul className="text-[#555555] styled space-y-1  mb-2">
+    <li>Speak with an SMSF finance specialist</li>
+    <li>Explore options that suit your fund</li>
+    <li>Understand what your SMSF can access</li>
+  </ul>
+  <P>Let&apos;s take your SMSF strategy forward with confidence.</P>
+</div>
           </div>
 
           {/* ── RIGHT — Sidebar ── */}

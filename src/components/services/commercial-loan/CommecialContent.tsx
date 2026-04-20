@@ -71,16 +71,17 @@ export default function HomeContent() {
                 This is suited for individuals and businesses looking to purchase or invest in commercial property.
 
               </P>
-              <P className="mb-4">
+              <P className="">
                 We work with:
-                <ul className=" styled space-y-1 mt-1 ">
+              
+              </P>
+                <ul className="text-[#555555] styled space-y-1 mt-1 ">
                   <li>Commercial property investors</li>
                   <li>Business owners purchasing premises</li>
                   <li>Developers acquiring completed assets</li>
                   <li>SMSF investors purchasing commercial property</li>
                   
                 </ul>
-              </P>
              
             </div>
             <div id="what-is-commercial-loan" className="scroll-mt-24">
@@ -90,27 +91,29 @@ export default function HomeContent() {
               <P className="mb-4">
                 A commercial property loan is finance used to purchase or refinance commercial real estate, either as an investment or for your own business use. It helps you acquire or hold property while spreading the cost over time, rather than using all your capital upfront.
               </P>
-              <P className="mb-4">
+              <P className="">
                 This includes assets such as :
-                <ul className=" styled space-y-1 mt-1 ">
+               
+              </P>
+               <ul className="text-[#555555] mb-4 styled space-y-1 mt-1 ">
                   <li>Office buildings</li>
                   <li>Retail shops & shopping strips</li>
                   <li>Warehouses & industrial facilities</li>
                   <li>Medical suites & specialist-use properties</li>
                   <li>Mixed-use developments</li>
                 </ul>
-              </P>
               <P>
                 Unlike residential lending, commercial loans are assessed based
                 on :
-                <ul className=" styled space-y-1 mt-1 ">
+                
+               
+              </P>
+              <ul className="text-[#555555]  styled space-y-1 mt-1 ">
                   <li>The strength of the asset</li>
                   <li>Rental income (if tenanted)</li>
                   <li>Lease terms</li>
                   <li>Borrower profile and experience</li>
                 </ul>
-               
-              </P>
             </div>
 
             <div id="how-structured" className="scroll-mt-24">
@@ -194,16 +197,17 @@ export default function HomeContent() {
                 <Highlight className="font-[700]">
                    6. Specialised Commercial Properties
                   </Highlight>{" "} <br />Includes:
-                  <ul className=" styled space-y-1 mt-1 ">
+                  
+        
+
+                
+              </P>
+              <ul className="text-[#555555]  styled space-y-1 mt-1 ">
                     <li>Medical centres</li>
                     <li>Childcare facilities</li>
                     <li>Service stations</li>
                     <li>Hospitality venues</li>
                   </ul>
-        
-
-                
-              </P>
               <P className="mt-4" > <Highlight className="font-[700]" >Note:</Highlight> These require a more personalized lending approach due to their specialised nature</P>
             </div>
 
@@ -218,44 +222,49 @@ export default function HomeContent() {
                 <Highlight className="font-[700]" >Loan Term</Highlight> <br />
                 Typically 15–30 years, with shorter review periods (e.g. 3–5 years)
               </P>
-              <P className="mb-4">
+              <P className="">
               <Highlight className="font-[700]">Loan-to-Value Ratio (LVR)</Highlight> <br />Generally, 60%–80% depending on:
-              <ul className=" styled space-y-1 mt-1 ">
+             
+              </P>
+               <ul className=" text-[#555555] mb-4 styled space-y-1 mt-1 ">
                 <li>Property type</li>
                 <li>Lease strength</li>
                 <li>Borrower profile</li>
               </ul>
-              </P>
-              <P className="mb-4">
+              <P className="">
               <Highlight className="font-[700]">Interest Rates</Highlight> <br />
-              <ul className=" styled space-y-1 mt-1 ">
+              
+              </P>
+              <ul className="text-[#555555] mb-4 styled space-y-1 mt-1 ">
                 <li>Mostly variable rates</li>
                 <li>Fixed options available (usually shorter terms)</li>
               </ul>
-              </P>
-              <P className="mb-4">
+              <P className="">
               <Highlight className="font-[700]">Repayment Types</Highlight> <br />
-              <ul className=" styled space-y-1 mt-1 ">
+              
+              </P>
+              <ul className="text-[#555555] mb-4 styled space-y-1 mt-1 ">
                 <li>Principal & Interest (common for owner-occupiers)</li>
                 <li>Interest-Only (common for investors)</li>
               </ul>
-              </P>
-              <P className="mb-4">
+              <P className="">
               <Highlight className="font-[700]">Security</Highlight> <br />Typically secured against:
-              <ul className=" styled space-y-1 mt-1 ">
+              
+              </P>
+              <ul className="text-[#555555] mb-4 styled space-y-1 mt-1 ">
                 <li>The commercial property being purchased</li>
                 <li>Sometimes additional property (if required)</li>
               </ul>
-              </P>
-              <P className="mb-4">
+              <P className="">
               <Highlight className="font-[700]">Lease & Income Assessment</Highlight> <br />For investment properties, lenders assess:
-              <ul className=" styled space-y-1 mt-1 ">
+             
+              </P>
+               <ul className="text-[#555555] mb-4 styled space-y-1 mt-1 ">
                 <li>Rental income</li>
                 <li>Lease length</li>
                 <li>Tenant quality</li>
                 <li>Vacancy risk</li>
               </ul>
-              </P>
               <P><Highlight className="font-[700]">Balloon Payments</Highlight><br />
 Some commercial loans include a balloon (residual) payment at the end of the term or review period.</P>
             </div>
@@ -263,81 +272,99 @@ Some commercial loans include a balloon (residual) payment at the end of the ter
             <div id="reviewing-refinancing" className="scroll-mt-24">
               <H2 className="font-[500] mb-4">What Lender Look At</H2>
               <P className="mb-4">When assessing a commercial property loan, lenders look at a few key aspects to understand both the strength of the property and your overall position.</P>
-              <P className="mb-4">
+              <P className="">
                 To tailor the right solutions, lenders assess:
-                <ul className=" styled space-y-1 mt-1 ">
+                
+              </P>
+              <ul className="text-[#555555] mb-4 styled space-y-1 mt-1 ">
                     <li>Property location & type</li>
                     <li>Lease agreements and tenant strength</li>
                     <li>Your financial position</li>
                     <li>Your experience (especially for investors)</li>
                     <li>Deposit/equity contribution</li>
                 </ul>
-              </P>
              
             </div>
 
             <div id="home-buying-process" className="scroll-mt-24">
-              <H2 className="font-[500] mb-4">Steps to Secure a Commercial Property Loan</H2>
-              <P className="mb-4 ">Securing a commercial property loan involves a few structured steps. We guide you through each stage so the process remains clear and manageable.</P>
-              <P className="mb-4 mt-2 ">
-               <Highlight className="font-[700] mb-1 " >Step 1: Strategy & Property Assessment</Highlight> <br />
-               We understand:
-               <ul className=" styled space-y-1 mt-1 ">
-                <li>Your goals (owner-occupied vs investment)</li>
-                <li>Target property type</li>
-                <li>Budget and deposit</li>
-               </ul>
-              </P>
-              <P className="mb-4 ">
-               <Highlight className="font-[700] mb-1 " >Step 2: Borrowing Capacity & Structuring</Highlight> <br />
-               We determine:
-               <ul className=" styled space-y-1 mt-1 ">
-                <li>How much you can borrow</li>
-                <li>The loan structure</li>
-                <li>Suitable lenders for your scenario</li>
-               </ul>
-              </P>
-              <P className="mb-4 ">
-                <Highlight className="font-[700] mb-1 " >Step 3: Pre-Approval (Where Applicable)</Highlight> <br />Provides clarity when negotiating and making offers.
+  <H2 className="font-[500] mb-4">Steps to Secure a Commercial Property Loan</H2>
+  <P className="mb-4">
+    Securing a commercial property loan involves a few structured steps. We guide you through each stage so the process remains clear and manageable.
+  </P>
 
-              </P>
-               <P className="mb-4 ">
-               <Highlight className="font-[700] mb-1 " >Step 4: Property & Lease Review</Highlight> <br />
-               We assess:
-               <ul className=" styled space-y-1 mt-1 ">
-                <li>Rental income</li>
-                <li>Lease terms</li>
-                <li>Property risks</li>
-               </ul>
-              </P>
-              <P className="mb-4 ">
-               <Highlight className="font-[700] mb-1 " >Step 5: Application & Submission</Highlight> <br />
-              We prepare the application including:
-               <ul className=" styled space-y-1 mt-1 ">
-                <li>Financials</li>
-                <li>Property details</li>
-                <li>Supporting documents</li>
-               </ul>
-              </P>
-              <P className="mb-4 ">
-                <Highlight className="font-[700] mb-1 " >Step 6: Approval & Credit Assessment</Highlight> <br />We work with lenders to secure appropriate terms and conditions.
+  <P className="mt-2 mb-1">
+    <Highlight className="font-[700]">Step 1: Strategy & Property Assessment</Highlight>
+    <br />
+    We understand:
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Your goals (owner-occupied vs investment)</li>
+    <li>Target property type</li>
+    <li>Budget and deposit</li>
+  </ul>
 
-              </P>
-              <P className="mb-4 ">
-                <Highlight className="font-[700] mb-1 " >Step 7: Settlement</Highlight> <br />We coordinate with all parties to ensure a smooth settlement process.
+  <P className="mb-1">
+    <Highlight className="font-[700]">Step 2: Borrowing Capacity & Structuring</Highlight>
+    <br />
+    We determine:
+  </P>
+  <ul className="styled space-y-1 mt-1 mb-4">
+    <li>How much you can borrow</li>
+    <li>The loan structure</li>
+    <li>Suitable lenders for your scenario</li>
+  </ul>
 
+  <P className="mb-4">
+    <Highlight className="font-[700]">Step 3: Pre-Approval (Where Applicable)</Highlight>
+    <br />
+    Provides clarity when negotiating and making offers.
+  </P>
 
-              </P>
-              <P className="mb-4 ">
-               <Highlight className="font-[700] mb-1 " >Step 8: Ongoing Portfolio Support</Highlight> <br />
-             We help you:
-               <ul className=" styled space-y-1 mt-1 ">
-                <li>Review your loan regularly</li>
-                <li>Reassess when needed</li>
-                <li>Plan future property decisions</li>
-               </ul>
-              </P>
-            </div>
+  <P className="mb-1">
+    <Highlight className="font-[700]">Step 4: Property & Lease Review</Highlight>
+    <br />
+    We assess:
+  </P>
+  <ul className="styled space-y-1 mt-1 mb-4">
+    <li>Rental income</li>
+    <li>Lease terms</li>
+    <li>Property risks</li>
+  </ul>
+
+  <P className="mb-1">
+    <Highlight className="font-[700]">Step 5: Application & Submission</Highlight>
+    <br />
+    We prepare the application including:
+  </P>
+  <ul className="styled space-y-1 mt-1 mb-4">
+    <li>Financials</li>
+    <li>Property details</li>
+    <li>Supporting documents</li>
+  </ul>
+
+  <P className="mb-4">
+    <Highlight className="font-[700]">Step 6: Approval & Credit Assessment</Highlight>
+    <br />
+    We work with lenders to secure appropriate terms and conditions.
+  </P>
+
+  <P className="mb-4">
+    <Highlight className="font-[700]">Step 7: Settlement</Highlight>
+    <br />
+    We coordinate with all parties to ensure a smooth settlement process.
+  </P>
+
+  <P className="mb-1">
+    <Highlight className="font-[700]">Step 8: Ongoing Portfolio Support</Highlight>
+    <br />
+    We help you:
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Review your loan regularly</li>
+    <li>Reassess when needed</li>
+    <li>Plan future property decisions</li>
+  </ul>
+</div>
 
             <div id="nextgen-lending-group" className="scroll-mt-24">
               <H2 className="font-[500] mb-4">Why Work With NextGen Lending Group?</H2>
@@ -354,20 +381,17 @@ Some commercial loans include a balloon (residual) payment at the end of the ter
             </div>
              
              <div id="commercial-property" className="scroll-mt-24">
-              <H2 className="font-[500] mb-4">Ready to Invest in Commercial Property?</H2>
-              <P className="mb-4">
-               Commercial property can be a strong long-term investment when the structure is aligned with your plans and cash flow.
-                <ul className="styled space-y-1 mt-2 mb-2">
-                    <li>Speak to a commercial lending specialist</li>
-                    <li>Get a tailored borrowing approach</li>
-                    <li>Understand your purchasing capacity</li>
-                   
-                   
-                </ul>
-                Let’s take the next step with clarity!
-              </P>
-             
-            </div>
+  <H2 className="font-[500] mb-4">Ready to Invest in Commercial Property?</H2>
+  <P className="mb-2">
+    Commercial property can be a strong long-term investment when the structure is aligned with your plans and cash flow.
+  </P>
+  <ul className=" text-[#555555] styled space-y-1 mt-2 mb-2">
+    <li>Speak to a commercial lending specialist</li>
+    <li>Get a tailored borrowing approach</li>
+    <li>Understand your purchasing capacity</li>
+  </ul>
+  <P>Let&apos;s take the next step with clarity!</P>
+</div>
           </div>
 
           {/* ── RIGHT — Sidebar ── */}

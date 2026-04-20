@@ -69,9 +69,12 @@ export default function HomeContent() {
               <P className="mb-4">
                 Business finance is a loan or line of credit used to fund business-related activities, rather than property acquisition. Unlike commercial property lending, approvals are primarily based on how your business performs, including cash flow, profitability, and overall direction.
               </P>
-              <P className="mb-4">
+              <P >
                 Common uses include:
-                <ul className=" styled space-y-1 mt-1 mb-2 ">
+              
+                
+              </P>
+                <ul className=" text-[#555555] styled space-y-1 mt-2 mb-2 ">
                   <li>Purchasing inventory or stock</li>
                   <li>Expanding operations (new locations, premises, or departments)</li>
                   <li>Acquiring machinery, vehicles, or equipment</li>
@@ -79,9 +82,7 @@ export default function HomeContent() {
                   <li>Relocating or renovating premises</li>
                   <li>Launching new products or services</li>
                 </ul>
-                Business finance is not just about access to funds. It is about using that funding in a way that supports how your business grows.
-              </P>
-              
+              <P className="mb-4">Business finance is not just about access to funds. It is about using that funding in a way that supports how your business grows.</P>
             </div>
 
             <div id="how-structured" className="scroll-mt-24">
@@ -152,53 +153,58 @@ export default function HomeContent() {
     The way your business loan is set up can influence how it supports your operations and cash flow over time.
   </P>
 
-  <P className="mb-4">
+  <P className="">
     <Highlight className="font-[700]">Loan Term</Highlight>
     <br />
-    <ul className="styled space-y-1 mt-1">
+   
+  </P>
+   <ul className=" text-[#555555] mb-4 styled space-y-1 mt-1">
       <li>Short-term: 3–12 months (bridging, working capital)</li>
       <li>Medium-term: 1–5 years (equipment, expansion)</li>
       <li>Long-term: 5+ years (larger investments and multi-location growth)</li>
     </ul>
-  </P>
 
-  <P className="mb-4">
+  <P className="">
     <Highlight className="font-[700]">Interest Rate Options</Highlight>
     <br />
-    <ul className="styled space-y-1 mt-1">
+    
+  </P>
+  <ul className="text-[#555555] mb-4 styled space-y-1 mt-1">
       <li>Variable rates for flexibility</li>
       <li>Fixed rates for predictable repayments</li>
     </ul>
-  </P>
-
-  <P className="mb-4">
+  <P className="">
     <Highlight className="font-[700]">Repayment Types</Highlight>
     <br />
-    <ul className="styled space-y-1 mt-1">
+   
+  </P>
+   <ul className="text-[#555555] mb-4 styled space-y-1 mt-1">
       <li>Principal & interest: Gradual reduction of the loan</li>
       <li>Interest-only: Lower repayments initially to support cash flow</li>
     </ul>
-  </P>
 
-  <P className="mb-4">
-    <Highlight className="font-[700]">Security</Highlight>
-    <br />Business finance may be:
-    <ul className="styled space-y-1 mt-1">
+  <P className="">
+    <Highlight className="font-[700] mb-1 ">Security</Highlight>
+    <br />
+    Business finance may be:
+    
+  </P>
+  <ul className="text-[#555555] mb-4 styled space-y-1 mt-1">
       <li>Secured against business assets (equipment, vehicles)</li>
       <li>Supported by personal or director guarantees</li>
       <li>Unsecured (typically for smaller facilities)</li>
     </ul>
-  </P>
 
-  <P className="mb-4">
-    <Highlight className="font-[700]">Cash Flow Assessment</Highlight>
+  <P className="">
+    <Highlight className="font-[700] mb-1 ">Cash Flow Assessment</Highlight>
     <br />Lenders typically look at:
-    <ul className="styled space-y-1 mt-1">
+    
+  </P>
+  <ul className=" text-[#555555] mb-4 styled space-y-1 mt-1">
       <li>Business revenue and profitability</li>
       <li>Existing financial commitments</li>
       <li>Receivable and payable cycles</li>
     </ul>
-  </P>
 </div>
 
            <div id="reviewing-refinancing" className="scroll-mt-24">
@@ -207,60 +213,66 @@ export default function HomeContent() {
     We keep the process clear so you can stay focused on running your business:
   </P>
 
-  <P className="mb-4">
+  <P className="">
     <Highlight className="font-[700]">Step 1: Business Assessment & Goal Setting</Highlight>
     <br />We understand:
-    <ul className="styled space-y-1 mt-1">
+   
+  </P>
+   <ul className="text-[#555555] mb-4 styled space-y-1 mt-1">
       <li>Your current cash flow and position</li>
       <li>Your plans and funding requirements</li>
       <li>Existing loans or commitments</li>
     </ul>
-  </P>
 
-  <P className="mb-4">
+  <P className="">
     <Highlight className="font-[700]">Step 2: Loan Planning & Lender Matching</Highlight>
-    <br />We identify:
-    <ul className="styled space-y-1 mt-1">
+    <br />
+    We identify:
+   
+  </P>
+   <ul className="text-[#555555] mb-4 styled space-y-1 mt-1">
       <li>Borrowing capacity</li>
       <li>Suitable loan types</li>
       <li>Lenders aligned to your needs</li>
     </ul>
-  </P>
 
-  <P className="mb-4">
+  <P className="">
     <Highlight className="font-[700]">Step 3: Application Preparation</Highlight>
     <br />We prepare a complete submission including:
-    <ul className="styled space-y-1 mt-1">
+    
+  </P>
+  <ul className="text-[#555555] mb-4 styled space-y-1 mt-1">
       <li>Financial statements</li>
       <li>Business plans or projections</li>
       <li>Supporting documents</li>
     </ul>
-  </P>
 
-  <P className="mb-4">
+  <P className="">
     <Highlight className="font-[700]">Step 4: Approval & Terms Alignment</Highlight>
     <br />We work with lenders to secure:
-    <ul className="styled space-y-1 mt-1">
+    
+  </P>
+  <ul className="text-[#555555] mb-4 styled space-y-1 mt-1">
       <li>Competitive rates</li>
       <li>Flexible repayment terms</li>
       <li>Conditions that suit your business</li>
     </ul>
-  </P>
 
   <P className="mb-4">
     <Highlight className="font-[700]">Step 5: Settlement & Fund Access</Highlight>
     <br />We coordinate the process so funds are available when you need them.
   </P>
 
-  <P className="mb-4">
+  <P className="">
     <Highlight className="font-[700]">Step 6: Ongoing Support & Reviews</Highlight>
     <br />As your business evolves, we help you:
-    <ul className="styled space-y-1 mt-1">
+   
+  </P>
+   <ul className="text-[#555555] mb-4 styled space-y-1 mt-1">
       <li>Review and adjust your funding</li>
       <li>Access additional capital</li>
       <li>Plan your next steps</li>
     </ul>
-  </P>
 </div>
 
            
@@ -279,31 +291,34 @@ export default function HomeContent() {
             </div>
              <div id="who-is-this-for" className="scroll-mt-24">
               <H2 className="font-[500] mb-4">Who We Help</H2>
-              <P className="mb-4">
+              <P className="">
                 We work with:
-                <ul className=" styled space-y-1 mt-1 ">
+               
+              </P>
+               <ul className="text-[#555555] styled space-y-1 mt-1 ">
                     <li>Small to medium business owners</li>
                     <li>Self-employed professionals</li>
                     <li>Startups needing working capital</li>
                     <li>Businesses expanding operations or acquiring assets</li>
                    
                 </ul>
-              </P>
              
             </div>
              <div id="commercial-property" className="scroll-mt-24">
               <H2 className="font-[500] mb-4">Ready to Fund Your Business Growth?</H2>
-              <P className="mb-4">
+              <P className="">
                Business finance can support day-to-day operations and future plans when used thoughtfully.
-                <ul className=" styled space-y-1 mt-1 ">
+                
+               
+              </P>
+              <ul className="text-[#555555] styled space-y-1 mt-1 ">
                     <li>Speak with a business finance specialist</li>
                     <li>Explore funding options suited to your business</li>
                     <li>Understand what you can access and how to use it</li>
                    
                    
                 </ul>
-                Let’s begin with a solution that takes your business forward.
-              </P>
+                <P> Let’s begin with a solution that takes your business forward.</P>
              
             </div>
           </div>

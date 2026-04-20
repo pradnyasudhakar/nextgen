@@ -72,286 +72,261 @@ export default function HomeContent() {
             </div>
 
             <div id="what-is-commercial-loan" className="scroll-mt-24">
-              <H2 className="font-[500] mb-4">
-                What is Development & Construction Finance?
-              </H2>
-              <P className="mb-4">
-                Development or construction finance is a specialised loan used to fund property projects, including land purchase, construction, and redevelopment.
-              </P>
-              <P className="mb-4">Unlike standard lending, this type of finance is based on how the project is expected to progress and what it will be worth once completed.</P>
-              <P className="mb-4">
-                It typically takes into account:
-                <ul className=" styled space-y-1 mt-2 mb-2 ">
-                  <li>Total project costs, including land, construction, and approvals</li>
-                  <li>Project timelines and build stages</li>
-                  <li>Estimated value on completion</li>
-                  
-                </ul>
-                This type of funding is designed to support the full lifecycle of a project, from acquisition through to completion and final outcome, whether that is sale, refinance, or long-term hold.
-              </P>
-            </div>
+  <H2 className="font-[500] mb-4">
+    What is Development & Construction Finance?
+  </H2>
+  <P className="mb-4">
+    Development or construction finance is a specialised loan used to fund property projects, including land purchase, construction, and redevelopment.
+  </P>
+  <P className="mb-4">
+    Unlike standard lending, this type of finance is based on how the project is expected to progress and what it will be worth once completed.
+  </P>
+  <P className="mb-2">It typically takes into account:</P>
+  <ul className="text-[#555555] styled space-y-1 mt-2 mb-4">
+    <li>Total project costs, including land, construction, and approvals</li>
+    <li>Project timelines and build stages</li>
+    <li>Estimated value on completion</li>
+  </ul>
+  <P className="mb-4">
+    This type of funding is designed to support the full lifecycle of a project, from acquisition through to completion and final outcome, whether that is sale, refinance, or long-term hold.
+  </P>
+</div>
 
             <div id="how-structured" className="scroll-mt-24">
-              <H2 className="font-[500] mb-4">
-                Types of Development & Construction Finance
-              </H2>
-             
-              <div className="space-y-3">
-                <P>
-                  <Highlight className="font-[700]">
-                   1. Land Acquisition Loans
-                  </Highlight>{" "}
-                  <br /> Funding to secure land for future development.
-                  <br />
-                  <Highlight className="font-[700]">Best for:</Highlight>{" "}
-                  Developers preparing to move on a site <br />
-                  <Highlight className="font-[700]">
-                    Key benefit:
-                  </Highlight>{" "}
-                  Allows you to secure opportunities without tying up available capital
+  <H2 className="font-[500] mb-4">
+    Types of Development & Construction Finance
+  </H2>
 
-                </P>
-                <P>
-                  <Highlight className="font-[700]">
-                    2. Construction Loans
-                  </Highlight>{" "}
-                  <br /> Funding for the build phase of a project.
-                  <br />
-                  <Highlight className="font-[700]">Best for:</Highlight>{" "}
-                  Residential or commercial projects under construction <br />
-                  <Highlight className="font-[700]">
-                    Key benefit:
-                  </Highlight>{" "}
-                  
-  Funds released in stages as work progresses,Interest charged only on the amount used,Requires clear plans and cost estimates
+  <div className="space-y-3">
+    <P>
+      <Highlight className="font-[700]">1. Land Acquisition Loans</Highlight>
+      <br /> Funding to secure land for future development.
+      <br />
+      <Highlight className="font-[700]">Best for:</Highlight> Developers
+      preparing to move on a site
+      <br />
+      <Highlight className="font-[700]">Key benefit:</Highlight> Allows you to
+      secure opportunities without tying up available capital
+    </P>
 
-                </P>
-                <P>
-                  <Highlight className="font-[700]">
-                    3. Development Loans
-                  </Highlight>{" "}
-                  <br /> Covers the full project scope, including:
-                  <ul className="styled mt-1 " >
-                    <li>Land purchase</li>
-                    <li>Construction costs</li>
-                    <li>Professional fees and approvals</li>
-                  </ul>
-                  <br />
-                  <Highlight className="font-[700]">Best for:</Highlight> Multi-stage or larger-scale developments <br />
-                  <Highlight className="font-[700]">
-                    Key benefit:
-                  </Highlight>{" "}
-                  Funding aligned with each stage of the project
-                </P>
-                <P>
-                  <Highlight className="font-[700]">
-                    4. Bridging / Pre-Sale Finance
-                  </Highlight>{" "}
-                  <br /> Short-term funding used to:
-                  <ul className="styled mt-1 " >
-                    <li>Secure land before approvals</li>
-                    <li>Bridge the gap before long-term funding is in place</li>
-                    <li>Support pre-sale or leasing phases</li>
-                  </ul>
-                  <br />
-                  <Highlight className="font-[700]">Best for:</Highlight> Time-sensitive opportunities <br />
-                  <Highlight className="font-[700]">
-                    Key benefit:
-                  </Highlight>{" "}
-                  Quick access to funds when timing matters
-                </P>
-                <P>
-                  <Highlight className="font-[700]">
-                  5. Residential vs Commercial Development Loans
-                  </Highlight>{" "}
-                  <br />
-                  <Highlight className="font-[700]">Residential: </Highlight>{" "}
-                  Townhouses, apartments, housing estates <br />
-                  <Highlight className="font-[700]">
-                    Commercial:
-                  </Highlight>{" "}
-                  
- Office, retail, industrial, mixed-use
-Each project type is assessed differently based on scale, demand, and expected outcomes.
+    <P>
+      <Highlight className="font-[700]">2. Construction Loans</Highlight>
+      <br /> Funding for the build phase of a project.
+      <br />
+      <Highlight className="font-[700]">Best for:</Highlight> Residential or
+      commercial projects under construction
+      <br />
+      <Highlight className="font-[700]">Key benefit:</Highlight> Funds released
+      in stages as work progresses, Interest charged only on the amount used,
+      Requires clear plans and cost estimates
+    </P>
 
-                </P>
-              </div>
-            </div>
+    <div>
+      <P className="mb-1">
+        <Highlight className="font-[700]">3. Development Loans</Highlight>
+        <br /> Covers the full project scope, including:
+      </P>
+      <ul className="text-[#555555] styled space-y-1 mt-1 mb-2">
+        <li>Land purchase</li>
+        <li>Construction costs</li>
+        <li>Professional fees and approvals</li>
+      </ul>
+      <P>
+        <Highlight className="font-[700]">Best for:</Highlight> Multi-stage or
+        larger-scale developments
+        <br />
+        <Highlight className="font-[700]">Key benefit:</Highlight> Funding
+        aligned with each stage of the project
+      </P>
+    </div>
+
+    <div>
+      <P className="mb-1">
+        <Highlight className="font-[700]">4. Bridging / Pre-Sale Finance</Highlight>
+        <br /> Short-term funding used to:
+      </P>
+      <ul className="text-[#555555] styled space-y-1 mt-1 mb-2">
+        <li>Secure land before approvals</li>
+        <li>Bridge the gap before long-term funding is in place</li>
+        <li>Support pre-sale or leasing phases</li>
+      </ul>
+      <P>
+        <Highlight className="font-[700]">Best for:</Highlight> Time-sensitive
+        opportunities
+        <br />
+        <Highlight className="font-[700]">Key benefit:</Highlight> Quick access
+        to funds when timing matters
+      </P>
+    </div>
+
+    <P>
+      <Highlight className="font-[700]">
+        5. Residential vs Commercial Development Loans
+      </Highlight>
+      <br />
+      <Highlight className="font-[700]">Residential:</Highlight> Townhouses,
+      apartments, housing estates
+      <br />
+      <Highlight className="font-[700]">Commercial:</Highlight> Office, retail,
+      industrial, mixed-use
+      <br />
+      Each project type is assessed differently based on scale, demand, and
+      expected outcomes.
+    </P>
+  </div>
+</div>
 
             <div id="interest-repayments" className="scroll-mt-24">
-              <H2 className="font-[500] mb-4">
-               How Development & Construction Finance Work
-              </H2>
-              <P className="mb-4">
-                Development finance is designed to follow the progress of your project rather than operate as a single lump sum loan.
-              </P>
+  <H2 className="font-[500] mb-4">
+    How Development & Construction Finance Work
+  </H2>
+  <P className="mb-4">
+    Development finance is designed to follow the progress of your project
+    rather than operate as a single lump sum loan.
+  </P>
 
-              <P className="mb-4">
-                <Highlight className="font-[700]">
-                  Loan Term
-                </Highlight>{" "}
-                <br />
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>Typically 12–36 months for most projects</li>
-                  <li>May extend depending on project complexity</li>
-                  
-                </ul>
-              </P>
-              <P className="mb-4">
-                <Highlight className="font-[700]">Interest Rates</Highlight>{" "}
-                <br />
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>Usually variable</li>
-                  <li>Interest often applies only to funds that have been used</li>
-                  
-                </ul>
-              </P>
-              <P className="mb-4">
-                <Highlight className="font-[700]">
-                 Drawdown Schedule
-                </Highlight>{" "}
-                <br />
-                Funds are released in stages:
-                <br />
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>Land purchase</li>
-                  <li>Site preparation</li>
-                  <li>Construction milestones (foundation, framing, completion)</li>
-                  <li>Final stage or settlement</li>
-                </ul>
-              </P>
-              <P className="mb-4">
-                <Highlight className="font-[700]">Loan-to-Cost / Loan-to-Value Ratio</Highlight>{" "}
-                <br />
-                <ul className=" styled space-y-1 mt-2 mb-2 ">
-                  <li>Loan-to-Cost (LTC): Percentage of total project cost funded</li>
-                  <li>Loan-to-Value (LVR): Percentage of projected end value</li>
-                 
-                </ul>
-                Funding levels typically range between 60–80%, depending on the project and borrower profile
-              </P>
-              <P className="mb-4">
-                <Highlight className="font-[700]">
-                  Security & Guarantees
-                </Highlight>{" "}
-                <br />
-               
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>Secured against the property being developed</li>
-                  <li>May include additional guarantees</li>
-                  <li>
-                    Some lenders may require pre-sales or deposits
-                  </li>
-                </ul>
-              </P>
-              <P className="mb-4">
-                <Highlight className="font-[700]">
-                  Project Assessment
-                </Highlight>{" "}
-                <br />
-               Lenders review:
-               <br />
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>Project feasibility and budget</li>
-                  <li>Market demand and comparable sales</li>
-                  <li>
-                    Developer experience
-                  </li>
-                  <li>Exit plan</li>
-                </ul>
-              </P>
-            </div>
+  <P className="mb-1">
+    <Highlight className="font-[700]">Loan Term</Highlight>
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Typically 12–36 months for most projects</li>
+    <li>May extend depending on project complexity</li>
+  </ul>
+
+  <P className="mb-1">
+    <Highlight className="font-[700]">Interest Rates</Highlight>
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Usually variable</li>
+    <li>Interest often applies only to funds that have been used</li>
+  </ul>
+
+  <P className="mb-1">
+    <Highlight className="font-[700]">Drawdown Schedule</Highlight>
+    <br />
+    Funds are released in stages:
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Land purchase</li>
+    <li>Site preparation</li>
+    <li>Construction milestones (foundation, framing, completion)</li>
+    <li>Final stage or settlement</li>
+  </ul>
+
+  <P className="mb-1">
+    <Highlight className="font-[700]">Loan-to-Cost / Loan-to-Value Ratio</Highlight>
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-2">
+    <li>Loan-to-Cost (LTC): Percentage of total project cost funded</li>
+    <li>Loan-to-Value (LVR): Percentage of projected end value</li>
+  </ul>
+  <P className="mb-4">
+    Funding levels typically range between 60–80%, depending on the project
+    and borrower profile.
+  </P>
+
+  <P className="mb-1">
+    <Highlight className="font-[700]">Security & Guarantees</Highlight>
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Secured against the property being developed</li>
+    <li>May include additional guarantees</li>
+    <li>Some lenders may require pre-sales or deposits</li>
+  </ul>
+
+  <P className="mb-1">
+    <Highlight className="font-[700]">Project Assessment</Highlight>
+    <br />
+    Lenders review:
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Project feasibility and budget</li>
+    <li>Market demand and comparable sales</li>
+    <li>Developer experience</li>
+    <li>Exit plan</li>
+  </ul>
+</div>
 
             <div id="reviewing-refinancing" className="scroll-mt-24">
-              <H2 className="font-[500] mb-4">
-                Steps to Securing Development & Construction Finance
-              </H2>
-              <P className="mb-4">
-                We guide you through each stage so your project can move forward without unnecessary delays:
-              </P>
-              <P className="mb-4 mt-2 ">
-                <Highlight className="font-[700] mb-1 ">
-                  Step 1: Project & Strategy Review
-                </Highlight>{" "}
-                <br />
-                We assess:
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>Project type, scale, and location</li>
-                  <li>Budget and timeline</li>
-                  <li>Exit plan (sale, refinance, or hold)</li>
-                </ul>
-              </P>
-              <P className="mb-4 ">
-                <Highlight className="font-[700] mb-1 ">
-                  Step 2: Borrowing Capacity & Planning
-                </Highlight>{" "}
-                <br />
-                We determine:
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>How much you can access</li>
-                  <li>Suitable loan type</li>
-                  <li>Lenders aligned with your project</li>
-                </ul>
-              </P>
-              <P className="mb-4 ">
-                <Highlight className="font-[700] mb-1 ">
-                 Step 3: Pre-Approval / Conditional Offer
-                </Highlight>{" "}
-                <br />
-                Gives you clarity when:
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>Securing land</li>
-                  <li>Planning construction</li>
-                  <li>Negotiating terms</li>
-                </ul>
-              </P>
-              <P className="mb-4 ">
-                <Highlight className="font-[700] mb-1 ">
-                  Step 4: Application Preparation
-                </Highlight>{" "}
-                <br />
-                We prepare:
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>Construction plans and costings</li>
-                  <li>Feasibility reports</li>
-                  <li>Financials and supporting documents</li>
-                </ul>
-                
-              </P>
-              <P className="mb-4 ">
-                <Highlight className="font-[700] mb-1 ">
-                  Step 5: Approval & Fund Release Plan
-                </Highlight>{" "}
-                <br />
-               Funding is approved and aligned with project stages.
-                
-              </P>
-              <P className="mb-4 ">
-                <Highlight className="font-[700] mb-1 ">
-                  Step 6: Project Completion & Exit
-                </Highlight>{" "}
-                <br />
-               At completion:
-               <ul className=" styled space-y-1 mt-1 " >
-                <li>Project is finalised</li>
-                <li>Property is sold, refinanced, or retained</li>
-                
-               </ul>
-              </P>
-              <P className="mb-4 ">
-                <Highlight className="font-[700] mb-1 ">
-                  Step 7: Ongoing Support
-                </Highlight>{" "}
-                <br />
-               We help you:
-               <ul className=" styled space-y-1 mt-1 " >
-                <li>Plan future projects</li>
-                <li>Review funding options</li>
-                <li>Move into the next development cycle</li>
-                
-               </ul>
-              </P>
-            </div>
+  <H2 className="font-[500] mb-4">
+    Steps to Securing Development & Construction Finance
+  </H2>
+  <P className="mb-4">
+    We guide you through each stage so your project can move forward without
+    unnecessary delays:
+  </P>
+
+  <P className="mb-1">
+    <Highlight className="font-[700]">Step 1: Project & Strategy Review</Highlight>
+    <br />
+    We assess:
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Project type, scale, and location</li>
+    <li>Budget and timeline</li>
+    <li>Exit plan (sale, refinance, or hold)</li>
+  </ul>
+
+  <P className="mb-1">
+    <Highlight className="font-[700]">Step 2: Borrowing Capacity & Planning</Highlight>
+    <br />
+    We determine:
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>How much you can access</li>
+    <li>Suitable loan type</li>
+    <li>Lenders aligned with your project</li>
+  </ul>
+
+  <P className="mb-1">
+    <Highlight className="font-[700]">Step 3: Pre-Approval / Conditional Offer</Highlight>
+    <br />
+    Gives you clarity when:
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Securing land</li>
+    <li>Planning construction</li>
+    <li>Negotiating terms</li>
+  </ul>
+
+  <P className="mb-1">
+    <Highlight className="font-[700]">Step 4: Application Preparation</Highlight>
+    <br />
+    We prepare:
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Construction plans and costings</li>
+    <li>Feasibility reports</li>
+    <li>Financials and supporting documents</li>
+  </ul>
+
+  <P className="mb-4">
+    <Highlight className="font-[700]">Step 5: Approval & Fund Release Plan</Highlight>
+    <br />
+    Funding is approved and aligned with project stages.
+  </P>
+
+  <P className="mb-1">
+    <Highlight className="font-[700]">Step 6: Project Completion & Exit</Highlight>
+    <br />
+    At completion:
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Project is finalised</li>
+    <li>Property is sold, refinanced, or retained</li>
+  </ul>
+
+  <P className="mb-1">
+    <Highlight className="font-[700]">Step 7: Ongoing Support</Highlight>
+    <br />
+    We help you:
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-1 mb-4">
+    <li>Plan future projects</li>
+    <li>Review funding options</li>
+    <li>Move into the next development cycle</li>
+  </ul>
+</div>
 
             <div id="nextgen-lending-group" className="scroll-mt-24">
               <H2 className="font-[500] mb-4">
@@ -374,31 +349,29 @@ Each project type is assessed differently based on scale, demand, and expected o
               </P>
             </div>
             <div id="who-is-this-for" className="scroll-mt-24">
-              <H2 className="font-[500] mb-4">Who We Help</H2>
-              <P className="mb-4">
-                We work with:
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>Property developers (residential, commercial, mixed-use)</li>
-                  <li>Builders and construction companies</li>
-                  <li>Investors undertaking development projects</li>
-                  <li>SMSF investors developing property</li>
-                </ul>
-              </P>
-            </div>
+  <H2 className="font-[500] mb-2">Who We Help</H2>
+  <P className="mb-2">We work with:</P>
+  <ul className="text-[#555555] styled space-y-1 ">
+    <li>Property developers (residential, commercial, mixed-use)</li>
+    <li>Builders and construction companies</li>
+    <li>Investors undertaking development projects</li>
+    <li>SMSF investors developing property</li>
+  </ul>
+</div>
             <div id="commercial-property" className="scroll-mt-24">
-              <H2 className="font-[500] mb-4">
-               Ready to Move Forward with Your Development Project?
-              </H2>
-              <P className="mb-4">
-                Development finance works best when it supports how your project actually progresses.
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>Speak with a development finance specialist</li>
-                  <li>Explore funding options for your project</li>
-                  <li>Understand what you can access and how it fits</li>
-                </ul>
-                Let’s bring your development plans into motion.
-              </P>
-            </div>
+  <H2 className="font-[500] mb-4">
+    Ready to Move Forward with Your Development Project?
+  </H2>
+  <P className="mb-2">
+    Development finance works best when it supports how your project actually progresses.
+  </P>
+  <ul className="text-[#555555] styled space-y-1 mt-2  mb-2">
+    <li>Speak with a development finance specialist</li>
+    <li>Explore funding options for your project</li>
+    <li>Understand what you can access and how it fits</li>
+  </ul>
+  <P>Let&apos;s bring your development plans into motion.</P>
+</div>
           </div>
 
           {/* ── RIGHT — Sidebar ── */}

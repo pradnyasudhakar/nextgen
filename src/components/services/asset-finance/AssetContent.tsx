@@ -86,19 +86,21 @@ export default function HomeContent() {
                 essential business assets without paying the full amount
                 upfront.
               </P>
-              <P className="mb-4">
+              <P className="">
                 Common uses include:
-                <ul className=" styled space-y-1 mt-1 mb-2 ">
+                
+               
+              </P>
+              <ul className="  text-[#555555] styled space-y-1 mt-2 mb-2 ">
                   <li>Vehicles (cars, trucks, vans, UTEs)</li>
                   <li>Machinery and plant equipment</li>
                   <li>Technology and office equipment</li>
                   <li>Medical and healthcare equipment</li>
                   <li>Specialised tools and industry-specific vehicles</li>
                 </ul>
-                Because the asset itself is used as security, approvals are
+                <P> Because the asset itself is used as security, approvals are
                 often quicker and more straightforward compared to other types
-                of business funding.
-              </P>
+                of business funding.</P>
             </div>
 
             <div id="how-structured" className="scroll-mt-24">
@@ -170,55 +172,55 @@ export default function HomeContent() {
                   Loan / Hire Purchase
                 </Highlight>{" "}
                 <br />
-                <ul className=" styled space-y-1 mt-1 ">
-                  <li>Use the asset while paying it off over time</li>
-                  <li>Ownership transfers once payments are complete</li>
-                  <li>Flexible repayment options</li>
-                </ul>
+                
               </P>
-              <P className="mb-4">
+              <P className="">
                 <Highlight className="font-[700]">Chattel Mortgage</Highlight>{" "}
-                <br />
-                <ul className=" styled space-y-1 mt-1 ">
+               
+              </P>
+               
+                <ul className="text-[#555555] styled space-y-1 mt-1 mb-4 ">
                   <li>Ownership from the beginning</li>
                   <li>Loan secured against the asset</li>
                   <li>GST may be claimable upfront</li>
                 </ul>
-              </P>
-              <P className="mb-4">
+              <P className="">
                 <Highlight className="font-[700]">
                   Operating Lease / Rental Agreement
                 </Highlight>{" "}
-                <br />
-                <ul className=" styled space-y-1 mt-1 ">
+                
+              </P>
+              
+                <ul className="text-[#555555] styled space-y-1 mt-1 mb-4 ">
                   <li>Use the asset without owning it</li>
                   <li>Fixed payments over a set period</li>
                   <li>Suitable for short-term needs or frequent upgrades</li>
                 </ul>
-              </P>
-              <P className="mb-4">
+              <P className="">
                 <Highlight className="font-[700]">Balloon Payments</Highlight>{" "}
-                <br />
-                <ul className=" styled space-y-1 mt-1 ">
+                
+              </P>
+             
+                <ul className=" text-[#555555] styled space-y-1 mt-1 mb-4 ">
                   <li>Larger payment at the end of the term</li>
                   <li>Lower regular repayments</li>
                   <li>Helps manage cash flow during the loan period</li>
                 </ul>
-              </P>
-              <P className="mb-4">
-                <Highlight className="font-[700]">
+              <P className="">
+                <Highlight className="font-[700] mb-1 ">
                   Loan Term & Repayment
                 </Highlight>{" "}
                 <br />
                 For investment properties, lenders assess:
-                <ul className=" styled space-y-1 mt-1 ">
+                
+              </P>
+              <ul className=" text-[#555555] styled space-y-1 mt-1 mb-4">
                   <li>Typically 1–7 years, depending on the asset</li>
                   <li>Weekly, fortnightly, or monthly repayments</li>
                   <li>
                     Can be aligned with how your business generates income
                   </li>
                 </ul>
-              </P>
             </div>
 
             <div id="reviewing-refinancing" className="scroll-mt-24">
@@ -229,42 +231,45 @@ export default function HomeContent() {
                 We keep things simple so you can continue to focus on running
                 your business:
               </P>
-              <P className="mb-4 mt-2 ">
+              <P className=" mt-2 ">
                 <Highlight className="font-[700] mb-1 ">
                   Step 1: Asset & Requirement Assessment
                 </Highlight>{" "}
                 <br />
                 We look at:
-                <ul className=" styled space-y-1 mt-1 ">
+                
+              </P>
+              <ul className=" text-[#555555] mb-4 styled space-y-1 mt-1 ">
                   <li>What you need to purchase</li>
                   <li>Cost and expected usage</li>
                   <li>How it fits into your business</li>
                 </ul>
-              </P>
-              <P className="mb-4 ">
+              <P className=" ">
                 <Highlight className="font-[700] mb-1 ">
                   Step 2: Loan Planning & Lender Matching
                 </Highlight>{" "}
                 <br />
                 We identify:
-                <ul className=" styled space-y-1 mt-1 ">
+                
+              </P>
+              <ul className="text-[#555555] mb-4 styled space-y-1 mt-1 ">
                   <li>The most suitable option (full-doc, low-doc, no-doc)</li>
                   <li>A repayment plan that works for you</li>
                   <li>Lenders suited to your situation</li>
                 </ul>
-              </P>
-              <P className="mb-4 ">
+              <P className=" ">
                 <Highlight className="font-[700] mb-1 ">
                  Step 3: Application Preparation
                 </Highlight>{" "}
                 <br />
                 We manage documentation based on your option:
-                <ul className=" styled space-y-1 mt-1 ">
+                
+              </P>
+              <ul className="text-[#555555] mb-4 styled space-y-1 mt-1 ">
                   <li>Full-doc: financials and tax returns</li>
                   <li>Low-doc: bank statements and invoices</li>
                   <li>No-doc: minimal documentation</li>
                 </ul>
-              </P>
               <P className="mb-4 ">
                 <Highlight className="font-[700] mb-1 ">
                   Step 4: Approval & Final Terms
@@ -281,18 +286,19 @@ export default function HomeContent() {
                 Funds are released so you can move ahead without delay
                 
               </P>
-              <P className="mb-4 ">
+              <P className=" ">
                 <Highlight className="font-[700] mb-1 ">
                   Step 6: Ongoing Support
                 </Highlight>{" "}
                 <br />
                We help you:
-               <ul className=" styled space-y-1 mt-1 " >
+               
+              </P>
+              <ul className="text-[#555555] mb-4 styled space-y-1 mt-1 " >
                 <li>Stay on track with repayments</li>
                 <li>Review options when needed</li>
                 <li>Plan future purchases</li>
                </ul>
-              </P>
             </div>
 
             <div id="nextgen-lending-group" className="scroll-mt-24">
@@ -317,29 +323,32 @@ export default function HomeContent() {
             </div>
             <div id="who-is-this-for" className="scroll-mt-24">
               <H2 className="font-[500] mb-4">Who We Help</H2>
-              <P className="mb-4">
+              <P className="">
                 We work with:
-                <ul className=" styled space-y-1 mt-1 ">
+               
+              </P>
+               <ul className="text-[#555555] mb-4 styled space-y-1  mt-1 ">
                   <li>Small to medium business owners</li>
                   <li>Self-employed professionals</li>
                   <li>Businesses upgrading equipment</li>
                   <li>Startups needing flexible funding options</li>
                 </ul>
-              </P>
             </div>
             <div id="commercial-property" className="scroll-mt-24">
               <H2 className="font-[500] mb-4">
                Ready to Fund Your Next Asset or Equipment Purchase?
               </H2>
-              <P className="mb-4">
+              <P className="">
                 Getting the right equipment should feel straightforward, not complicated.
-                <ul className=" styled space-y-1 mt-1 ">
+               
+                
+              </P>
+               <ul className=" text-[#555555] styled space-y-1 mt-2 mb-2  ">
                   <li>Speak with an asset finance specialist</li>
                   <li>Explore options that suit your situation</li>
                   <li>Move ahead with the assets your business needs</li>
                 </ul>
-                Let’s move ahead with the right assets in place
-              </P>
+                <P>Let’s move ahead with the right assets in place</P>
             </div>
           </div>
 
