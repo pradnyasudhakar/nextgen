@@ -357,7 +357,7 @@ Some commercial loans include a balloon (residual) payment at the end of the ter
               <H2 className="font-[500] mb-4">Ready to Invest in Commercial Property?</H2>
               <P className="mb-4">
                Commercial property can be a strong long-term investment when the structure is aligned with your plans and cash flow.
-                <ul className=" styled space-y-1 mt-2 mb-2 ">
+                <ul className="styled space-y-1 mt-2 mb-2">
                     <li>Speak to a commercial lending specialist</li>
                     <li>Get a tailored borrowing approach</li>
                     <li>Understand your purchasing capacity</li>
