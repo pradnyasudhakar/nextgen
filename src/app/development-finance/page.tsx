@@ -1,6 +1,7 @@
 import FAQPage from "@/components/faqs/Faq";
 import HeroSection from "@/components/services/development-finance/Hero"
 import HomeContent from "@/components/services/development-finance/DevelopmentContent";
+import CTABanner from "@/components/home/CTABanner";
 
 
 export default function Hero() {
@@ -9,6 +10,7 @@ export default function Hero() {
     <HeroSection/>
      <HomeContent/>
      <FAQPage/>
+     <CTABanner/>
     </>
   );
 }
