@@ -9,8 +9,9 @@ export default function Hero() {
     <>
     <HeroSection/>
      <HomeContent/>
-     <FAQPage/>
      <CTABanner/>
+     <FAQPage/>
+     
     </>
   );
 }

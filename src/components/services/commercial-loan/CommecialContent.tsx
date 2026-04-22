@@ -16,11 +16,11 @@ const tableOfContents = [
 ];
 
 const relatedServices = [
-  { label: "Commercial Loans", href: "#" },
-  { label: "Business Finance", href: "#" },
-  { label: "Asset Finance", href: "#" },
-  { label: "Development Finance", href: "#" },
-  { label: "SMSF Finance", href: "#" },
+  { label: "Home Loans", href: "/homeloan" },
+  { label: "Business Finance", href: "/business-finance" },
+  { label: "Asset Finance", href: "/asset-finance" },
+  { label: "Development Finance", href: "/development-finance" },
+  { label: "SMSF Finance", href: "/smsf-finance" },
 ];
 
 export default function HomeContent() {
@@ -57,10 +57,9 @@ export default function HomeContent() {
               <H2 className=" font-[500] mb-4">Commercial Property Loans</H2>
               <P className="mb-4">
                 Whether you&#39;re purchasing an office, warehouse, retail space, or industrial asset, commercial property lending works differently from residential finance. It involves a more considered 
-              </P>
-              <P>
                 approach, where the structure of the loan plays an important role in how the investment performs over time.
               </P>
+             
               <P>At NextGen Lending Group, we focus on structuring commercial property loans that align with your investment approach, cash flow, and long-term plans.</P>
             </div>
 <div id="who-is-this-for" className="scroll-mt-24">

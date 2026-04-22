@@ -24,11 +24,12 @@ const tableOfContents = [
 ];
 
 const relatedServices = [
-  { label: "Commercial Loans", href: "#" },
-  { label: "Business Finance", href: "#" },
-  { label: "Asset Finance", href: "#" },
-  { label: "Development Finance", href: "#" },
-  { label: "SMSF Finance", href: "#" },
+      { label: "Home Loans", href: "/homeloan" },
+      { label: "Commercial Loans", href: "/commercial-loan" },
+      { label: "Business Finance", href: "/business-finance" },
+      { label: "Asset Finance", href: "/asset-finance" },
+      // { label: "Development Finance", href: "/development-finance" },
+      { label: "SMSF Finance", href: "/smsf-finance" },
 ];
 
 export default function HomeContent() {
