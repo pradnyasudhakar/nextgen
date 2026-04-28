@@ -115,7 +115,7 @@ export default function HomeContent() {
       <Highlight className="font-[700]">3. Equipment & Asset Finance</Highlight>
       <br />Funding to purchase business-critical assets like machinery, vehicles, or technology.
       <br /><Highlight className="font-[700]">Best for:</Highlight> Supporting operations without large upfront costs
-      <br /><Highlight className="font-[700]">Pros:</Highlight> Preserves working capital · May offer tax advantages
+      <br /><Highlight className="font-[700]">Pros:</Highlight> Preserves working capital · May offer tax advantages (please obtain independent advice)
       <br /><Highlight className="font-[700]">Cons:</Highlight> Secured against the asset
     </P>
 

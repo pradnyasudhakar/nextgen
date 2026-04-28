@@ -39,7 +39,7 @@ export default function Footer() {
           <div>
             <p className="mb-5 font-[700] text-[0.9rem] text-primary tracking-wide">SERVICES</p>
             <ul className="space-y-3 text-[#555555] text-[0.95rem]">
-              <li><Link href="/homeloan" className="hover:text-primary transition-colors">Home Finance</Link></li>
+              <li><Link href="/home-loan" className="hover:text-primary transition-colors">Home Finance</Link></li>
               <li><Link href="/commercial-loan" className="hover:text-primary transition-colors">Commercial Finance</Link></li>
               <li><Link href="/business-finance" className="hover:text-primary transition-colors">Business Finance</Link></li>
               <li><Link href="/asset-finance" className="hover:text-primary transition-colors">Asset Finance</Link></li>

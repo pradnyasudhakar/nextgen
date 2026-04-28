@@ -9,7 +9,7 @@ const tableOfContents = [
     id: "what-is-commercial-loan",
     label: "What is Asset & Equipment Finance?",
   },
-  { id: "how-structured", label: "Types of Asset & Equipment Financ" },
+  { id: "how-structured", label: "Types of Asset & Equipment Finance" },
   { id: "interest-repayments", label: "How Asset & Equipment Finance Works" },
   {
     id: "reviewing-refinancing",
@@ -106,7 +106,7 @@ export default function HomeContent() {
 
             <div id="how-structured" className="scroll-mt-24">
               <H2 className="font-[500] mb-4">
-                Types of Asset & Equipment Financ
+                Types of Asset & Equipment Finance
               </H2>
               <P className="mb-4">
                 We offer personalised options based on your documentation,
@@ -183,7 +183,7 @@ export default function HomeContent() {
                 <ul className="text-[#555555] styled space-y-1 mt-1 mb-4 ">
                   <li>Ownership from the beginning</li>
                   <li>Loan secured against the asset</li>
-                  <li>GST may be claimable upfront</li>
+                  <li>GST may be claimable upfront {""} (please obtain independent advice)</li>
                 </ul>
               <P className="">
                 <Highlight className="font-[700]">
@@ -267,9 +267,9 @@ export default function HomeContent() {
                 
               </P>
               <ul className="text-[#555555] mb-4 styled space-y-1 mt-1 ">
-                  <li>Full-doc: financials and tax returns</li>
-                  <li>Low-doc: bank statements and invoices</li>
-                  <li>No-doc: minimal documentation</li>
+                  <li>financials and tax returns</li>
+                  <li>bank statements and invoices</li>
+                  <li>minimal documentation</li>
                 </ul>
               <P className="mb-4 ">
                 <Highlight className="font-[700] mb-1 ">

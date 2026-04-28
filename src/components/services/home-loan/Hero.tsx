@@ -13,17 +13,11 @@ export default function Hero() {
             {/* Heading */}
             <Display className="text-[#FBFBFB] [word-spacing:8px] leading-8 lg:leading-12 font-light  mb-6">
               
-              <span className="font-[700]">SMSF Finance</span>
+              <span className="font-[700]">Home Loans</span>
             </Display>
-           <Lead className="text-[#FBFBFB] max-w-90 2xl:max-w-110 font-extralight mb-6">
-  Property investment through your SMSF, aligned with your long-term plans.
-  <br />
-  <span className="text-[#FBFBFB] text-[13px] leading-tight mt-2 block opacity-80">
-    Disclaimer: All SMSF clients must obtain independent financial advice
-    prior to engaging with NextGen.
-  </span>
-</Lead>
-                       
+            <Lead className="text-[#FBFBFB] max-w-90 2xl:max-w-110 font-extralight mb-6">
+  Start your home loan with the right approach, backed by clear choices and steady direction
+                        </Lead>
           </div>
         </div>
       </div>

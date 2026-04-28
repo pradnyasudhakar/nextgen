@@ -9,7 +9,7 @@ const tableOfContents = [
   { id: "what-is-commercial-loan", label: "What is a Commercial Property Loan?" },
   { id: "how-structured", label: "Types of Commercial Property Loans" },
   { id: "interest-repayments", label: "How Commercial Property Loans Are Structured" },
-  { id: "reviewing-refinancing", label: "What Lender Look At" },
+  { id: "reviewing-refinancing", label: "What Lenders Look At" },
   { id: "home-buying-process", label: "Steps to Secure a Commercial Property Loan" },
   { id: "nextgen-lending-group", label: "Why Work With NextGen Lending Group" },
   { id: "commercial-property", label: "Ready to Invest in Commercial Property?" },
@@ -269,7 +269,7 @@ Some commercial loans include a balloon (residual) payment at the end of the ter
             </div>
 
             <div id="reviewing-refinancing" className="scroll-mt-24">
-              <H2 className="font-[500] mb-4">What Lender Look At</H2>
+              <H2 className="font-[500] mb-4">What Lenders Look At</H2>
               <P className="mb-4">When assessing a commercial property loan, lenders look at a few key aspects to understand both the strength of the property and your overall position.</P>
               <P className="">
                 To tailor the right solutions, lenders assess:

@@ -88,10 +88,7 @@ export default function HomeContent() {
                   <Highlight className="font-[700]">Interest Type:</Highlight>{" "}
                   Variable rates move with the market. Fixed rates provide certainty for a defined period. Some borrowers choose a split structure to balance both.
                 </P>
-                <P>
-                  <Highlight className="font-[700]">Interest Type:</Highlight>{" "}
-                  Principal and interest reduce the loan balance over time. Interest only lowers short-term repayments but does not reduce the principal during that period.
-                </P>
+                
                 <P>
                   <Highlight className="font-[700]">
                     Repayment Method:
@@ -132,7 +129,7 @@ export default function HomeContent() {
             <div id="reviewing-refinancing" className="scroll-mt-24">
               <H2 className="font-[500] mb-4">Reviewing and Refinancing</H2>
               <P className="mb-4">
-                A loan should not remain untouched for decades. Circumstances change. Rates move. Financial goals evolve.
+                A loan should not remain untouched as time passes. Circumstances change. Rates move. Financial goals evolve.
               </P>
               <P className="mb-4">
                 Refinancing involves replacing your current plan with a new one, either with the same lender or a different institution. This may provide access to more competitive pricing, improved features, or a structure better suited to your current situation.
