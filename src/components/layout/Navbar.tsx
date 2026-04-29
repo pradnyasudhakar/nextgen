@@ -15,7 +15,7 @@ const navLinks = [
     label: "Services",
     href: "/#services",
     children: [
-      { label: "Home Loans", href: "/home-loan" },
+      { label: "Home Loans", href: "/homeloan" },
       { label: "Commercial Loans", href: "/commercial-loan" },
       { label: "Business Finance", href: "/business-finance" },
       { label: "Asset Finance", href: "/asset-finance" },
