@@ -267,9 +267,9 @@ export default function HomeContent() {
                 
               </P>
               <ul className="text-[#555555] mb-4 styled space-y-1 mt-1 ">
-                  <li>financials and tax returns</li>
-                  <li>bank statements and invoices</li>
-                  <li>minimal documentation</li>
+                  <li>Financials and tax returns</li>
+                  <li>Bank statements and invoices</li>
+                  <li>Minimal documentation</li>
                 </ul>
               <P className="mb-4 ">
                 <Highlight className="font-[700] mb-1 ">

@@ -18,7 +18,7 @@ export default function Hero() {
            <Lead className="text-[#FBFBFB] max-w-90 2xl:max-w-110 font-extralight mb-6">
   Property investment through your SMSF, aligned with your long-term plans.
   <br />
-  <span className="text-[#FBFBFB] text-[13px] leading-tight mt-2 block opacity-80">
+  <span className="text-[#FBFBFB] text-[13px] italic  leading-tight mt-2 block opacity-80">
     Disclaimer: All SMSF clients must obtain independent financial advice
     prior to engaging with NextGen.
   </span>
