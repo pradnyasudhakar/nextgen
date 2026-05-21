@@ -1,0 +1,131 @@
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   IMPORTS — must be first
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@import url("https://stijndv.com/fonts/Eudoxus-Sans.css");
+@import "tailwindcss";
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DESIGN TOKENS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@theme {
+  /* Colors — Figma scheme */
+  --color-primary:       #00674E;
+  --color-primary-dark:  #004f3c;
+  --color-primary-light: #e6f2ef;
+  --color-secondary:     #006868;
+  --color-accent:        #006868;
+  --color-dark:          #002566;
+  --color-light:         #f5f9f7;
+
+  /* Font */
+  --font-sans: "Eudoxus Sans", sans-serif;
+
+  /* Font Weights */
+  --font-light:    300;
+  --font-regular:  400;
+  --font-medium:   500;
+  --font-semibold: 600;
+  --font-bold:     700;
+  --font-black:    900;
+
+  /* Spacing */
+  --section-y: 5rem;
+  --section-x: 4rem;
+
+  /* Border Radius */
+  --radius-sm:   0.5rem;
+  --radius-md:   0.75rem;
+  --radius-lg:   1rem;
+  --radius-xl:   1.5rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,103,78,0.08);
+  --shadow-md: 0 4px 16px rgba(0,103,78,0.12);
+  --shadow-lg: 0 8px 32px rgba(0,103,78,0.16);
+
+  /* Transition */
+  --transition: all 0.2s ease;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BASE RESET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family:             "Eudoxus Sans", sans-serif;
+  color:                   #0F0F0F;
+  background:              #FBFBFB;
+  -webkit-font-smoothing:  antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height:             1.6;
+}
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   LIST RESET FIX
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@layer base {
+  ul.styled {
+    list-style: disc;
+    padding-left: 1.25rem;
+  }
+  ul.styled li::marker {
+    color: #00674E;
+  }
+}
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   LAYOUT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.section {
+  padding-top:    var(--section-y);
+  padding-bottom: var(--section-y);
+  padding-left:   1.5rem;
+  padding-right:  1.5rem;
+}
+@media (min-width: 640px) {
+  .section { padding-left: 2.5rem; padding-right: 2.5rem; }
+}
+@media (min-width: 1024px) {
+  .section { padding-left: var(--section-x); padding-right: var(--section-x); }
+}
+
+.container {
+  max-width:    1280px;
+  margin-left:  auto;
+  margin-right: auto;
+}
+
+.section-header { margin-bottom: 3rem; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ICON BUTTON
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.icon-btn {
+  width:           2rem;
+  height:          2rem;
+  border-radius:   var(--radius-full);
+  border:          1.5px solid var(--color-primary);
+  color:           var(--color-primary);
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  transition:      var(--transition);
+  cursor:          pointer;
+}
+.icon-btn:hover { background: var(--color-primary-light); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DIVIDER & LINK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.divider {
+  border:     none;
+  border-top: 1px solid #e8eeec;
+  margin:     0;
+}
+
+.link {
+  color:       var(--color-primary);
+  font-weight: var(--font-semibold);
+  transition:  var(--transition);
+}
+.link:hover { opacity: 0.75; }

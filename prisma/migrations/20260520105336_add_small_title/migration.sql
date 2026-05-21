@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "posts" ALTER COLUMN "smallTitle" DROP NOT NULL,
+ALTER COLUMN "smallTitle" DROP DEFAULT;
