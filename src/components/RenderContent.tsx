@@ -36,7 +36,7 @@ const RenderContent = ({ content, path }) => {
             return (
               <a
                 {...props}
-                className="text-blue-600 inline-block p-1 break-words transition-colors"
+                className="text-dark inline-block p-1 break-words transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
                 role="link"
@@ -61,9 +61,17 @@ const RenderContent = ({ content, path }) => {
             <h1 className="text-5xl font-bold mt-8 mb-4">{props.children}</h1>
           ),
 
-          h2: ({ node, ...props }) => (
-            <h2 className="text-4xl font-bold mt-7 mb-4">{props.children}</h2>
-          ),
+         h2: ({ node, children, ...props }) => {
+  const text = typeof children === "string"
+    ? children
+    : Array.isArray(children)
+    ? children.map((c) => (typeof c === "string" ? c : "")).join("")
+    : "";
+  const id = text.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+  return (
+    <h2 id={id} className="text-[1.6rem] text-dark font-[500] mt-7 mb-2">{children}</h2>
+  );
+},
 
           h3: ({ node, ...props }) => (
             <h3 className="text-3xl font-semibold mt-6 mb-3">
