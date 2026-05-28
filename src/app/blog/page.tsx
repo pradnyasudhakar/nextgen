@@ -5,6 +5,7 @@ import BlogContent from "./FeaturePost";
 import { H2, P } from "@/components/ui/typography";
 import Image from "next/image";
 import { ChevronRight } from "lucide-react";
+import FAQPage from "./BlogFaqs";
 
 export default async function BlogPage() {
   const posts = await prisma.post.findMany({
@@ -18,7 +19,7 @@ export default async function BlogPage() {
       <BlogContent />
 
       <main className="max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-16">
-        <H2 className="font-[500] text-[1.4rem] mb-6 text-[#002566]">
+        <H2 className="font-[500] text-[1.4rem] mb-6 text-dark">
           All Blogs
         </H2>
 
@@ -42,12 +43,12 @@ export default async function BlogPage() {
 
               <div className="py-4 flex flex-col flex-1">
                 {post.smallTitle && (
-                  <span className="text-xs font-semibold text-[#0f6e56] uppercase tracking-wide mb-2">
+                  <span className="text-xs hidden font-semibold text-primary uppercase tracking-wide mb-2">
                     {post.smallTitle}
                   </span>
                 )}
 
-                <P className="mb-3 group-hover:text-[#002566] transition-colors duration-200">
+                <P className="mb-3 group-hover:text-dark transition-colors duration-200">
                   {post.title}
                 </P>
 
@@ -61,6 +62,7 @@ export default async function BlogPage() {
           ))}
         </div>
       </main>
+      <FAQPage/>
     </>
   );
 }

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { P, Display } from "@/components/ui/typography";
-import { Mail, Instagram, Linkedin } from "lucide-react";
+import { Mail, Instagram, Linkedin, PhoneCall } from "lucide-react";
 import TableOfContents from "@/components/TableOfContents";
 
 type Props = {
@@ -105,10 +105,10 @@ export default async function BlogDetailsPage({ params }: Props) {
           </div>
 
           {/* ── Sidebar ── */}
-          <aside className="w-full lg:w-[300px] shrink-0 space-y-8 lg:sticky lg:top-6 lg:self-start">
+          <aside className="w-full lg:w-75 shrink-0 space-y-8 lg:sticky lg:top-6 lg:self-start">
 
              {/* Share */}
-            <div className="border border-[#9C9C9C] border-t-4 border-t-[#00674E] shadow-md bg-[#FBFBFB] rounded-[5px] p-4">
+            <div className="border border-[#9C9C9C] border-t-4 border-t-primary shadow-md bg-[#FBFBFB] rounded-[5px] p-4">
               <p className="text-sm font-normal text-[#555555]  tracking-wide mb-3">
                 Share this article
               </p>
@@ -130,7 +130,7 @@ export default async function BlogDetailsPage({ params }: Props) {
            <TableOfContents items={tableOfContents} />
             {/* Latest Posts */}
             <div className="border-[#9C9C9C] shadow-lg border rounded-[5px] p-4 " >
-              <h3 className="text-base font-[700] text-[#00674E] mb-4 pb-2 ">
+              <h3 className="text-base font-[700] text-primary mb-4 pb-2 ">
                 Latest Posts
               </h3>
               <div className="space-y-4 border-[#9C9C9C] border-b pb-4 ">
@@ -157,7 +157,7 @@ export default async function BlogDetailsPage({ params }: Props) {
                   </span>
                 )}
 
-                      <p className="text-sm font-medium text-[#002566] leading-snug group-hover:text-[#002566] transition-colors line-clamp-2">
+                      <p className="text-sm font-medium text-dark leading-snug group-hover:text-dark transition-colors line-clamp-2">
                         {p.title}
                       </p>
                       <div className="text-[#9C9C9C] text-sm">
@@ -174,14 +174,15 @@ export default async function BlogDetailsPage({ params }: Props) {
 
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-1 mt-4 text-sm font-[700] text-[#00674E] hover:underline"
+                className="inline-flex items-center gap-1 mt-4 text-sm font-[700] text-primary hover:underline"
               >
                 View All Posts →
               </Link>
             </div>
 
             {/* CTA Card */}
-            <div className="bg-[#00674E] rounded-[5px]  p-6 text-white">
+            <div className="bg-primary rounded-[5px]  p-6 text-[#FBFBFB]">
+              <div className="text-center flex justify-center mb-4 " ><PhoneCall /></div>
               <p className="text-xs font-[700] uppercase text-center tracking-widest text-[#FBFBFB] mb-4">
                 Talk to a Broker Today
               </p>
