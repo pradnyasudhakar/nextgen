@@ -25,6 +25,7 @@ export async function GET(req: NextRequest) {
       postedDate: true,
       readTime: true,
       slug: true,
+      description: true,
       excerpt: true,
       published: true,
       createdAt: true,
@@ -40,7 +41,7 @@ export async function POST(req: NextRequest) {
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const body = await req.json();
-  const { title, smallTitle, writerName, postedDate, readTime, content, excerpt, coverImage, published } = body;
+  const { title, smallTitle, writerName, postedDate, readTime, content, description, excerpt, coverImage, published, faqs } = body;
 
   if (!title || !content) {
     return NextResponse.json({ error: "Title and content are required." }, { status: 400 });
@@ -50,7 +51,6 @@ export async function POST(req: NextRequest) {
   let slug = baseSlug;
   let counter = 1;
 
-  // Ensure unique slug
   while (await prisma.post.findUnique({ where: { slug } })) {
     slug = `${baseSlug}-${counter++}`;
   }
@@ -63,10 +63,18 @@ export async function POST(req: NextRequest) {
       postedDate: postedDate ? new Date(postedDate) : new Date(),
       readTime: readTime ? parseInt(readTime, 10) : 2,
       slug,
+      description,
       content,
       excerpt: excerpt ?? null,
       coverImage: coverImage ?? null,
       published: Boolean(published),
+      faqs: {
+        create: (faqs ?? []).map((f: { question: string; answer: string }, i: number) => ({
+          question: f.question,
+          answer: f.answer,
+          order: i,
+        })),
+      },
     },
   });
 

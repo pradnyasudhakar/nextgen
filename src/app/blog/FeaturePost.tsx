@@ -12,13 +12,10 @@ const categoryColors: Record<string, string> = {
   "Development Finance": "bg-[#fee8e8] text-[#dc2626]",
 };
 
-export default async function BlogContent() {
-  const featuredPost = await prisma.post.findFirst({
-    where: { published: true },
-    orderBy: { postedDate: "desc" },
-  });
-
+// ← prop accept karo, prisma call hato
+export default function BlogContent({ featuredPost }: { featuredPost: Post | null }) {
   if (!featuredPost) return null;
+
 
   return (
     <section className="w-full max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-16">

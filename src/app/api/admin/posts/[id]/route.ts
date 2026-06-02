@@ -19,7 +19,10 @@ export async function GET(_req: NextRequest, { params }: Params) {
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { id } = await params;
-  const post = await prisma.post.findUnique({ where: { id } });
+  const post = await prisma.post.findUnique({
+    where: { id },
+    include: { faqs: { orderBy: { order: "asc" } } },
+  });
   if (!post) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
   return NextResponse.json(post);
@@ -32,12 +35,11 @@ export async function PATCH(req: NextRequest, { params }: Params) {
 
   const { id } = await params;
   const body = await req.json();
-  const { title, smallTitle, writerName, postedDate, readTime, content, excerpt, coverImage, published } = body;
+  const { title, smallTitle, writerName, postedDate, readTime, description, content, excerpt, coverImage, published, faqs } = body;
 
   const existing = await prisma.post.findUnique({ where: { id } });
   if (!existing) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
-  // Re-slug only if title changed
   let slug = existing.slug;
   if (title && title !== existing.title) {
     const baseSlug = slugify(title);
@@ -50,6 +52,9 @@ export async function PATCH(req: NextRequest, { params }: Params) {
     }
   }
 
+  // Delete old FAQs and recreate
+  await prisma.faq.deleteMany({ where: { postId: id } });
+
   const post = await prisma.post.update({
     where: { id },
     data: {
@@ -59,9 +64,17 @@ export async function PATCH(req: NextRequest, { params }: Params) {
       ...(postedDate !== undefined && { postedDate: postedDate ? new Date(postedDate) : existing.postedDate }),
       ...(readTime !== undefined && { readTime: readTime ? parseInt(readTime, 10) : existing.readTime }),
       ...(content !== undefined && { content }),
+      ... (description !== undefined && { description }),
       ...(excerpt !== undefined && { excerpt }),
       ...(coverImage !== undefined && { coverImage }),
       ...(published !== undefined && { published: Boolean(published) }),
+      faqs: {
+        create: (faqs ?? []).map((f: { question: string; answer: string }, i: number) => ({
+          question: f.question,
+          answer: f.answer,
+          order: i,
+        })),
+      },
     },
   });
 

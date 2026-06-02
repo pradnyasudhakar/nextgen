@@ -6,6 +6,7 @@ import Link from "next/link";
 import { P, Display } from "@/components/ui/typography";
 import { Mail, Instagram, Linkedin, PhoneCall } from "lucide-react";
 import TableOfContents from "@/components/TableOfContents";
+import FAQPage from "../BlogFaqs";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -63,7 +64,7 @@ export default async function BlogDetailsPage({ params }: Props) {
             </P>
             )}
             
-            <Display className="text-[#FBFBFB] max-w-120 lg:max-w-150  [word-spacing:8px] leading-8 lg:leading-12  mt-4 mb-4">
+            <Display className="text-[#FBFBFB] max-w-120 lg:max-w-160  [word-spacing:8px] leading-8 lg:leading-12  mt-4 mb-4">
                           <span className="font-[700]">
                             {post.title}
                           </span>
@@ -86,7 +87,16 @@ export default async function BlogDetailsPage({ params }: Props) {
 
           {/* ── Main Content ── */}
           <div className="flex-1 min-w-0">
-
+{/* Intro Description - paragraph wise */}
+{post.description && (
+  <div className="mb-6">
+    {post.description.split("\n").filter(Boolean).map((para, i) => (
+      <p key={i} className="text-[#555555] text-[1rem] leading-relaxed mb-4">
+        {para}
+      </p>
+    ))}
+  </div>
+)}
             {/* Excerpt blockquote */}
             {post.excerpt && (
               
@@ -103,6 +113,7 @@ export default async function BlogDetailsPage({ params }: Props) {
               <RenderContent content={post.content} path={post.slug} />
             </article>
           </div>
+          
 
           {/* ── Sidebar ── */}
           <aside className="w-full lg:w-75 shrink-0 space-y-8 lg:sticky lg:top-6 lg:self-start">
@@ -199,7 +210,9 @@ export default async function BlogDetailsPage({ params }: Props) {
 
           </aside>
         </div>
+        
       </div>
+     <FAQPage postId={post.id} />
     </>
   );
 }

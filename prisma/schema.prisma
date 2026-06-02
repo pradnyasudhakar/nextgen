@@ -16,11 +16,25 @@ model Post {
   readTime    Int      @default(2)
   slug        String   @unique
   excerpt     String?
+  description String?
   content     String
   coverImage  String?
   published   Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  faqs        Faq[]
 
   @@map("posts")
+}
+
+model Faq {
+  id        String   @id @default(cuid())
+  question  String
+  answer    String
+  order     Int      @default(0)
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@map("faqs")
 }

@@ -5,18 +5,29 @@ import BlogContent from "./FeaturePost";
 import { H2, P } from "@/components/ui/typography";
 import Image from "next/image";
 import { ChevronRight } from "lucide-react";
-import FAQPage from "./BlogFaqs";
+
 
 export default async function BlogPage() {
-  const posts = await prisma.post.findMany({
+  // Featured post fetch karo
+  const featuredPost = await prisma.post.findFirst({
     where: { published: true },
-    orderBy: { postedDate: "desc" },
+    orderBy: { createdAt: "desc" },
   });
+
+  // All Blogs mein featured ko exclude karo
+  const posts = await prisma.post.findMany({
+    where: {
+      published: true,
+      NOT: { id: featuredPost?.id ?? "" }, // ← exclude featured
+    },
+    orderBy: { createdAt: "desc" },
+  });
+
 
   return (
     <>
       <Hero />
-      <BlogContent />
+      <BlogContent featuredPost={featuredPost} /> {/* ← prop pass karo */}
 
       <main className="max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-16">
         <H2 className="font-[500] text-[1.4rem] mb-6 text-dark">
@@ -62,7 +73,7 @@ export default async function BlogPage() {
           ))}
         </div>
       </main>
-      <FAQPage/>
+      
     </>
   );
 }
