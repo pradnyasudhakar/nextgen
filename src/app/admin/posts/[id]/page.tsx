@@ -12,7 +12,10 @@ export default async function EditPostPage({ params }: Props) {
   await requireAdminSession();
 
   const { id } = await params;
-  const post = await prisma.post.findUnique({ where: { id } });
+ const post = await prisma.post.findUnique({
+  where: { id },
+  include: { faqs: { orderBy: { order: "asc" } } },
+});
 
   if (!post) notFound();
 
@@ -28,7 +31,7 @@ export default async function EditPostPage({ params }: Props) {
           Posts
         </Link>
         <span>/</span>
-        <span className="text-emerald-400 truncate max-w-[200px]">{post.title}</span>
+        <span className="text-emerald-400 truncate max-w-50">{post.title}</span>
       </div>
 
       {/* Page title */}
@@ -53,10 +56,12 @@ export default async function EditPostPage({ params }: Props) {
             postedDate: post.postedDate,
             readTime: post.readTime,
             slug: post.slug,
+            description: post.description,
             excerpt: post.excerpt,
             content: post.content,
             coverImage: post.coverImage,
             published: post.published,
+            faqs: post.faqs,
           }}
         />
       </div>

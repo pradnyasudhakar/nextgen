@@ -18,10 +18,12 @@ interface PostFormProps {
     postedDate?: string | Date;
     readTime?: number;
     slug: string;
+    description?: string | null; 
     excerpt?: string | null;
     content: string;
     coverImage?: string | null;
     published: boolean;
+    faqs?: { question: string; answer: string }[];
   };
 }
 
@@ -31,20 +33,22 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [title, setTitle] = useState(initialData?.title ?? "");
   const [smallTitle, setSmallTitle] = useState(initialData?.smallTitle ?? "");
-  const [writerName, setWriterName] = useState(
-    initialData?.writerName ?? "Admin",
-  );
+  const [writerName, setWriterName] = useState(initialData?.writerName ?? "Admin");
 
   const initialDateStr = initialData?.postedDate
     ? new Date(initialData.postedDate).toISOString().split("T")[0]
     : new Date().toISOString().split("T")[0];
   const [postedDate, setPostedDate] = useState(initialDateStr);
-  const [readTime, setReadTime] = useState(initialData?.readTime ?? 2);
+  const [readTime, setReadTime] = useState<number>(initialData?.readTime ?? 2);
 
+  const [description, setDescription] = useState(initialData?.description ?? "");
   const [excerpt, setExcerpt] = useState(initialData?.excerpt ?? "");
   const [content, setContent] = useState(initialData?.content ?? "");
   const [coverImage, setCoverImage] = useState(initialData?.coverImage ?? "");
   const [published, setPublished] = useState(initialData?.published ?? false);
+  const [faqs, setFaqs] = useState<{ question: string; answer: string }[]>(
+    initialData?.faqs ?? []
+  );
 
   const [isPreview, setIsPreview] = useState(false);
   const [showMoreToolbar, setShowMoreToolbar] = useState(false);
@@ -55,6 +59,14 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+
+  const addFaq = () => setFaqs([...faqs, { question: "", answer: "" }]);
+
+  const removeFaq = (index: number) => setFaqs(faqs.filter((_, i) => i !== index));
+
+  const updateFaq = (index: number, field: "question" | "answer", value: string) => {
+    setFaqs(faqs.map((faq, i) => i === index ? { ...faq, [field]: value } : faq));
+  };
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -111,7 +123,7 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
 
   const renderPreview = (text: string) => {
     if (!text)
-      return <p className="text-white/20 italic">Nothing to preview yet…</p>;
+      return <p className="text-white/20 italic">Nothing to preview yet...</p>;
 
     let html = text
       .replace(/&/g, "&amp;")
@@ -146,21 +158,21 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
 
     html = html.replace(
       /^> (.*?)$/gm,
-      '<blockquote class="border-l-4 border-emerald-400 bg-white/[0.02] px-4 py-2 my-4 italic text-white/70">$1</blockquote>',
+      '<blockquote class="border-l-4 border-emerald-400 bg-white/2 px-4 py-2 my-4 italic text-white/70">$1</blockquote>',
     );
 
     html = html.replace(
       /```([\s\S]*?)```/g,
-      '<pre class="bg-black/40 border border-white/[0.06] rounded-lg p-4 font-mono text-[13px] text-emerald-300 overflow-x-auto my-4">$1</pre>',
+      '<pre class="bg-black/40 border border-white/6 rounded-lg p-4 font-mono text-[13px] text-emerald-300 overflow-x-auto my-4">$1</pre>',
     );
     html = html.replace(
       /`([^`\n]+)`/g,
-      '<code class="bg-white/[0.08] px-1.5 py-0.5 rounded font-mono text-emerald-300 text-[13px]">$1</code>',
+      '<code class="bg-white/8 px-1.5 py-0.5 rounded font-mono text-emerald-300 text-[13px]">$1</code>',
     );
 
     html = html.replace(
       /!\[(.*?)\]\((.*?)\)/g,
-      '<div class="my-6 text-center"><img src="$2" alt="$1" class="rounded-xl border border-white/[0.08] max-h-[400px] mx-auto object-cover shadow-2xl" /><span class="block text-center text-xs text-white/35 mt-2 font-mono">$1</span></div>',
+      '<div class="my-6 text-center"><img src="$2" alt="$1" class="rounded-xl border border-white/8 max-h-100 mx-auto object-cover shadow-2xl" /></div>',
     );
 
     html = html.replace(
@@ -188,7 +200,7 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
       ) {
         return p;
       }
-      return `<p class="leading-relaxed text-sm text-white/75 my-3">${p.replace(/\n/g, "<br />")}</p>`;
+      return '<p class="leading-relaxed text-sm text-white/75 my-3">' + p.replace(/\n/g, "<br />") + "</p>";
     });
 
     return (
@@ -220,10 +232,12 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
       writerName,
       postedDate: new Date(postedDate).toISOString(),
       readTime: parseInt(readTime.toString(), 10),
+      description,
       excerpt,
       content,
       coverImage,
       published,
+      faqs,
     };
 
     startTransition(async () => {
@@ -271,7 +285,7 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
               type="text"
               value={smallTitle}
               onChange={(e) => setSmallTitle(e.target.value)}
-              placeholder="e.g. Technology, Finance, Travel…"
+              placeholder="e.g. Technology, Finance, Travel..."
               required
               className={inputCls}
             />
@@ -283,7 +297,7 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="Enter main headline here…"
+              placeholder="Enter main headline here..."
               required
               className={inputCls}
             />
@@ -298,7 +312,7 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
               type="text"
               value={writerName}
               onChange={(e) => setWriterName(e.target.value)}
-              placeholder="Author's name…"
+              placeholder="Author's name..."
               required
               className={inputCls}
             />
@@ -321,7 +335,7 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
               type="number"
               min="1"
               value={readTime}
-              onChange={(e) => setReadTime(parseInt(e.target.value, 10))}
+              onChange={(e) => setReadTime(parseInt(e.target.value, 10) || 2)}
               required
               className={inputCls}
             />
@@ -334,16 +348,12 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="md:col-span-1">
           <label className={labelCls}>Cover Image</label>
-
           <label
             htmlFor="cover-upload"
-            className={`
-      flex flex-col items-center justify-center gap-2 w-full h-32 rounded-lg
-      border-2 border-dashed border-white/[0.12] bg-white/[0.02]
-      cursor-pointer hover:border-emerald-400/40 hover:bg-white/[0.04]
-      transition-all duration-150 group relative overflow-hidden
-      ${coverImage ? "border-emerald-400/30" : ""}
-    `}
+            className={
+              "flex flex-col items-center justify-center gap-2 w-full h-32 rounded-lg border-2 border-dashed border-white/[0.12] bg-white/[0.02] cursor-pointer hover:border-emerald-400/40 hover:bg-white/[0.04] transition-all duration-150 group relative overflow-hidden" +
+              (coverImage ? " border-emerald-400/30" : "")
+            }
           >
             {coverImage ? (
               <>
@@ -354,7 +364,7 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
                 />
                 <div className="relative z-10 flex flex-col items-center gap-1">
                   <span className="text-[10px] font-mono text-emerald-400 bg-black/60 px-2 py-1 rounded">
-                    ✓ Uploaded — click to change
+                    Uploaded - click to change
                   </span>
                 </div>
               </>
@@ -377,11 +387,10 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
                   Click to upload image
                 </span>
                 <span className="text-[9px] font-mono text-white/15">
-                  JPG, PNG, WEBP — max 5MB
+                  JPG, PNG, WEBP - max 5MB
                 </span>
               </>
             )}
-
             <input
               id="cover-upload"
               type="file"
@@ -396,9 +405,7 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
               <div className="flex-1 h-1 rounded-full bg-white/[0.06] overflow-hidden">
                 <div className="h-full bg-emerald-400 rounded-full animate-pulse w-2/3" />
               </div>
-              <span className="text-[10px] font-mono text-white/30">
-                Uploading…
-              </span>
+              <span className="text-[10px] font-mono text-white/30">Uploading...</span>
             </div>
           )}
 
@@ -408,10 +415,22 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
               onClick={() => setCoverImage("")}
               className="mt-1.5 text-[10px] font-mono text-white/25 hover:text-red-400/70 transition-colors"
             >
-              ✕ Remove image
+              Remove image
             </button>
           )}
         </div>
+        
+  {/* Description */}
+          <div className="md:col-span-2">
+            <label className={labelCls}>Description</label>
+            <textarea
+              rows={3}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Intro description shown above the quote block..."
+              className={inputCls + " resize-none"}
+            />
+          </div>
         <div className="md:col-span-2">
           <label className={labelCls}>Excerpt / Meta Description</label>
           <textarea
@@ -419,34 +438,28 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
             rows={2}
             value={excerpt}
             onChange={(e) => setExcerpt(e.target.value)}
-            placeholder="Short introductory summary for post listings…"
-            className={`${inputCls} resize-none`}
+            placeholder="Short introductory summary for post listings..."
+            className={inputCls + " resize-none"}
           />
         </div>
+      
       </div>
 
       <div className="space-y-2">
         <label className={labelCls}>Content *</label>
         <div className="rounded-xl border border-white/[0.08] overflow-hidden flex flex-col">
-          {/* Custom Editor Toolbar */}
           <div className="flex items-center justify-between border-b border-white/[0.08] px-4 py-2 flex-wrap gap-2">
             <div className="flex items-center gap-1.5 flex-wrap">
-              {/* Heading Dropdown */}
               <div className="relative">
                 <select
                   aria-label="Add heading format"
                   onChange={(e) => {
                     if (e.target.value === "h1") insertFormatting("\n# ", "\n");
-                    if (e.target.value === "h2")
-                      insertFormatting("\n## ", "\n");
-                    if (e.target.value === "h3")
-                      insertFormatting("\n### ", "\n");
-                    if (e.target.value === "h4")
-                      insertFormatting("\n#### ", "\n");
-                    if (e.target.value === "h5")
-                      insertFormatting("\n##### ", "\n");
-                    if (e.target.value === "h6")
-                      insertFormatting("\n###### ", "\n");
+                    if (e.target.value === "h2") insertFormatting("\n## ", "\n");
+                    if (e.target.value === "h3") insertFormatting("\n### ", "\n");
+                    if (e.target.value === "h4") insertFormatting("\n#### ", "\n");
+                    if (e.target.value === "h5") insertFormatting("\n##### ", "\n");
+                    if (e.target.value === "h6") insertFormatting("\n###### ", "\n");
                     e.target.value = "";
                   }}
                   className="rounded border border-white/[0.20] text-xs bg-[#000000] px-2 py-1.5 cursor-pointer outline-none focus:border-emerald-400/50"
@@ -463,97 +476,29 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
 
               <div className="h-4 w-[1px] mx-1" />
 
-              <button
-                type="button"
-                onClick={() => insertFormatting("**", "**")}
-                title="Bold"
-                className="w-8 h-8 rounded hover:bg-white/[0.06] flex items-center justify-center font-bold text-sm text-white/80 active:scale-95 transition-all"
-              >
-                B
-              </button>
-
-              <button
-                type="button"
-                onClick={() => insertFormatting("*", "*")}
-                title="Italic"
-                className="w-8 h-8 rounded hover:bg-white/[0.06] flex items-center justify-center italic text-sm text-white/80 active:scale-95 transition-all"
-              >
-                I
-              </button>
-
-              <button
-                type="button"
-                onClick={() => insertFormatting("__", "__")}
-                title="Underline"
-                className="w-8 h-8 rounded hover:bg-white/[0.06] flex items-center justify-center underline text-sm text-white/80 active:scale-95 transition-all"
-              >
-                U
-              </button>
+              <button type="button" onClick={() => insertFormatting("**", "**")} title="Bold" className="w-8 h-8 rounded hover:bg-white/[0.06] flex items-center justify-center font-bold text-sm text-white/80 active:scale-95 transition-all">B</button>
+              <button type="button" onClick={() => insertFormatting("*", "*")} title="Italic" className="w-8 h-8 rounded hover:bg-white/[0.06] flex items-center justify-center italic text-sm text-white/80 active:scale-95 transition-all">I</button>
+              <button type="button" onClick={() => insertFormatting("__", "__")} title="Underline" className="w-8 h-8 rounded hover:bg-white/[0.06] flex items-center justify-center underline text-sm text-white/80 active:scale-95 transition-all">U</button>
 
               <button
                 type="button"
                 onClick={() => setShowMoreToolbar((s) => !s)}
-                className={`w-8 h-8 rounded hover:bg-white/[0.06] cursor-pointer flex items-center justify-center text-xs font-bold transition-all ${
-                  showMoreToolbar
-                    ? "bg-white/[0.1] text-emerald-400"
-                    : "text-white/40"
-                }`}
+                className={
+                  "w-8 h-8 rounded hover:bg-white/[0.06] cursor-pointer flex items-center justify-center text-xs font-bold transition-all " +
+                  (showMoreToolbar ? "bg-white/[0.1] text-emerald-400" : "text-white/40")
+                }
               >
-                •••
+                ...
               </button>
 
               {showMoreToolbar && (
-                <div className="flex items-center gap-4 bg-[#090e15] border border-white/[0.08] rounded px-1.5 py-2 animate-in fade-in zoom-in duration-100">
-                  <button
-                    type="button"
-                    onClick={() => insertFormatting("- ", "")}
-                    title="Bullet list"
-                    className="w-5 h-5 rounded hover:bg-white/[0.08] text-white/70"
-                  >
-                    <List />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => insertFormatting("1. ", "")}
-                    title="Numbered list"
-                    className="w-5 h-5 rounded hover:bg-white/[0.08] flex items-center justify-center text-white/70 font-mono text-[10px]"
-                  >
-                    <ListOrdered />
-                  </button>
-                  {/* Inline Code */}
-                  <button
-                    type="button"
-                    onClick={() => insertFormatting("`", "`")}
-                    title="Code"
-                    className="w-5 h-5 rounded hover:bg-white/[0.08] flex items-center justify-center text-emerald-400 font-mono text-xs"
-                  >
-                    <Code />
-                  </button>
-                  {/* Insert Link */}
-                  <button
-                    type="button"
-                    onClick={openLinkPopup}
-                    title="Insert Link"
-                    className="w-5 h-5 rounded hover:bg-white/[0.08] flex items-center justify-center text-emerald-400 text-xs"
-                  >
-                    <Link />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setShowImagePopup(true)}
-                    title="Insert Image"
-                    className="w-5 h-5 rounded hover:bg-white/[0.08] flex items-center justify-center text-emerald-400 text-xs"
-                  >
-                    <Image />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => insertFormatting("> ", "")}
-                    title="Blockquote"
-                    className="w-5 h-5 rounded hover:bg-white/[0.08] flex items-center justify-center text-white/70 text-xs"
-                  >
-                    <Quote />
-                  </button>
+                <div className="flex items-center gap-4 bg-[#090e15] border border-white/[0.08] rounded px-1.5 py-2">
+                  <button type="button" onClick={() => insertFormatting("- ", "")} title="Bullet list" className="w-5 h-5 rounded hover:bg-white/[0.08] text-white/70"><List /></button>
+                  <button type="button" onClick={() => insertFormatting("1. ", "")} title="Numbered list" className="w-5 h-5 rounded hover:bg-white/[0.08] flex items-center justify-center text-white/70"><ListOrdered /></button>
+                  <button type="button" onClick={() => insertFormatting("`", "`")} title="Code" className="w-5 h-5 rounded hover:bg-white/[0.08] flex items-center justify-center text-emerald-400"><Code /></button>
+                  <button type="button" onClick={openLinkPopup} title="Insert Link" className="w-5 h-5 rounded hover:bg-white/[0.08] flex items-center justify-center text-emerald-400"><Link /></button>
+                  <button type="button" onClick={() => setShowImagePopup(true)} title="Insert Image" className="w-5 h-5 rounded hover:bg-white/[0.08] flex items-center justify-center text-emerald-400"><Image /></button>
+                  <button type="button" onClick={() => insertFormatting("> ", "")} title="Blockquote" className="w-5 h-5 rounded hover:bg-white/[0.08] flex items-center justify-center text-white/70"><Quote /></button>
                 </div>
               )}
             </div>
@@ -561,11 +506,12 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
             <button
               type="button"
               onClick={() => setIsPreview(!isPreview)}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wider font-mono border transition-all duration-150 ${
-                isPreview
-                  ? "bg-emerald-400 text-[#070a0f] border-emerald-400 shadow-md shadow-emerald-400/10"
-                  : "bg-white/[0.04] text-white/60 border-white/[0.08] hover:bg-white/[0.08] hover:text-white"
-              }`}
+              className={
+                "px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wider font-mono border transition-all duration-150 " +
+                (isPreview
+                  ? "bg-emerald-400 text-[#070a0f] border-emerald-400"
+                  : "bg-white/[0.04] text-white/60 border-white/[0.08] hover:bg-white/[0.08] hover:text-white")
+              }
             >
               {isPreview ? "Edit mode" : "Preview mode"}
             </button>
@@ -581,7 +527,7 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
                 ref={textareaRef}
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
-                placeholder="Write your article content here… You can use the toolbar above to style the text and embed images dynamically."
+                placeholder="Write your article content here..."
                 required
                 className="w-full min-h-[350px] bg-transparent p-6 outline-none text-white/80 placeholder-white/10 font-mono text-[13.5px] leading-relaxed resize-y"
               />
@@ -590,28 +536,75 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
         </div>
       </div>
 
+      {/* FAQs */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <label className={labelCls}>FAQs</label>
+          <button
+            type="button"
+            onClick={addFaq}
+            className="px-3 py-1.5 rounded-lg bg-emerald-400/10 border border-emerald-400/30 text-emerald-400 font-mono text-xs hover:bg-emerald-400/20 transition-all"
+          >
+            + Add FAQ
+          </button>
+        </div>
+
+        {faqs.length === 0 && (
+          <p className="text-white/20 font-mono text-xs italic">No FAQs added yet.</p>
+        )}
+
+        {faqs.map(function(faq, i) {
+          return (
+            <div key={i} className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-[10px] text-white/30 uppercase tracking-widest">FAQ {i + 1}</span>
+                <button
+                  type="button"
+                  onClick={() => removeFaq(i)}
+                  className="text-[10px] font-mono text-red-400/50 hover:text-red-400 transition-colors"
+                >
+                  Remove
+                </button>
+              </div>
+              <input
+                type="text"
+                placeholder="Question"
+                value={faq.question}
+                onChange={(e) => updateFaq(i, "question", e.target.value)}
+                className={inputCls}
+              />
+              <textarea
+                rows={3}
+                placeholder="Answer"
+                value={faq.answer}
+                onChange={(e) => updateFaq(i, "answer", e.target.value)}
+                className={inputCls + " resize-none"}
+              />
+            </div>
+          );
+        })}
+      </div>
+
       <div className="flex items-center gap-3 bg-white/[0.015] border border-white/[0.04] w-fit px-4 py-2.5 rounded-xl">
         <button
           id="post-published-toggle"
           type="button"
           onClick={() => setPublished((p) => !p)}
-          className={`relative inline-flex h-5.5 w-10 items-center rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-400/40 ${
-            published ? "bg-emerald-400" : "bg-white/10"
-          }`}
+          className={
+            "relative inline-flex h-5.5 w-10 items-center rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-400/40 " +
+            (published ? "bg-emerald-400" : "bg-white/10")
+          }
         >
           <span
-            className={`inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform duration-200 ${
-              published ? "translate-x-5.5" : "translate-x-0.5"
-            }`}
+            className={
+              "inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform duration-200 " +
+              (published ? "translate-x-5.5" : "translate-x-0.5")
+            }
           />
         </button>
         <span className="font-mono text-xs text-white/60">
           Status:{" "}
-          <span
-            className={
-              published ? "text-emerald-400 font-bold" : "text-white/30"
-            }
-          >
+          <span className={published ? "text-emerald-400 font-bold" : "text-white/30"}>
             {published ? "Published" : "Draft"}
           </span>
         </span>
@@ -625,10 +618,7 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
 
       {success && (
         <p className="rounded-lg border border-emerald-400/20 bg-emerald-400/10 px-4 py-3 font-mono text-xs text-emerald-400">
-          {mode === "create"
-            ? "Post created successfully!"
-            : "Changes saved successfully!"}{" "}
-          Redirecting…
+          {mode === "create" ? "Post created successfully!" : "Changes saved successfully!"} Redirecting...
         </p>
       )}
 
@@ -637,15 +627,11 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
           id="post-submit"
           type="submit"
           disabled={isPending || success}
-          className="px-6 py-2.5 rounded-lg cursor-pointer bg-emerald-400 text-[#070a0f] font-bold text-sm hover:bg-emerald-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150 active:scale-98 shadow-lg shadow-emerald-400/5"
+          className="px-6 py-2.5 rounded-lg cursor-pointer bg-emerald-400 text-[#070a0f] font-bold text-sm hover:bg-emerald-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150 shadow-lg shadow-emerald-400/5"
         >
           {isPending
-            ? mode === "create"
-              ? "Creating Post…"
-              : "Saving Changes…"
-            : mode === "create"
-              ? "Create Post"
-              : "Save Changes"}
+            ? mode === "create" ? "Creating Post..." : "Saving Changes..."
+            : mode === "create" ? "Create Post" : "Save Changes"}
         </button>
         <button
           id="post-cancel"
