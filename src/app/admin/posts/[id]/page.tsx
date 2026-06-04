@@ -51,7 +51,7 @@ export default async function EditPostPage({ params }: Props) {
           initialData={{
             id: post.id,
             title: post.title,
-            smallTitle: post.smallTitle,
+            smallTitle: post.smallTitle ?? undefined,
             writerName: post.writerName,
             postedDate: post.postedDate,
             readTime: post.readTime,

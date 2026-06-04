@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { H2, H3, P } from "@/components/ui/typography";
-import { prisma } from "@/lib/prisma";
+import type { Post } from "@/generated/prisma/client";
 import { User } from "lucide-react";
 
 const categoryColors: Record<string, string> = {
