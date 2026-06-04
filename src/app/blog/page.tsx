@@ -6,6 +6,7 @@ import { H2, P } from "@/components/ui/typography";
 import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 
+export const dynamic = "force-dynamic";
 
 export default async function BlogPage() {
   // Featured post fetch karo
