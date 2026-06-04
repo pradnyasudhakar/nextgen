@@ -16,7 +16,7 @@ export default function BlogFaqsClient({ faqs }: { faqs: Faq[] }) {
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-26 py-20">
         <div className="mb-10">
           <Label className="mb-3">FAQS</Label>
-          {/* <p>test</p> */}
+       
           <H2 className="mb-3">
             Frequently Asked <Highlight>Questions</Highlight>
           </H2>
