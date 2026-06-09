@@ -456,9 +456,9 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
                   onChange={(e) => {
                     if (e.target.value === "h1") insertFormatting("\n# ", "\n");
                     if (e.target.value === "h2") insertFormatting("\n## ", "\n");
-                    if (e.target.value === "h3") insertFormatting("\n### ", "\n");
-                    if (e.target.value === "h4") insertFormatting("\n#### ", "\n");
-                    if (e.target.value === "h5") insertFormatting("\n##### ", "\n");
+                    // if (e.target.value === "h3") insertFormatting("\n### ", "\n");
+                    // if (e.target.value === "h4") insertFormatting("\n#### ", "\n");
+                    // if (e.target.value === "h5") insertFormatting("\n##### ", "\n");
                     if (e.target.value === "h6") insertFormatting("\n###### ", "\n");
                     e.target.value = "";
                   }}
@@ -467,9 +467,9 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
                   <option value="">Add a title</option>
                   <option value="h1">H1</option>
                   <option value="h2">H2</option>
-                  <option value="h3">H3</option>
-                  <option value="h4">H4</option>
-                  <option value="h5">H5</option>
+                  {/* <option value="h3">H3</option> */}
+                  {/* <option value="h4">H4</option> */}
+                  {/* <option value="h5">H5</option> */}
                   <option value="h6">H6</option>
                 </select>
               </div>
@@ -478,7 +478,7 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
 
               <button type="button" onClick={() => insertFormatting("**", "**")} title="Bold" className="w-8 h-8 rounded hover:bg-white/[0.06] flex items-center justify-center font-bold text-sm text-white/80 active:scale-95 transition-all">B</button>
               <button type="button" onClick={() => insertFormatting("*", "*")} title="Italic" className="w-8 h-8 rounded hover:bg-white/[0.06] flex items-center justify-center italic text-sm text-white/80 active:scale-95 transition-all">I</button>
-              <button type="button" onClick={() => insertFormatting("__", "__")} title="Underline" className="w-8 h-8 rounded hover:bg-white/[0.06] flex items-center justify-center underline text-sm text-white/80 active:scale-95 transition-all">U</button>
+              {/* <button type="button" onClick={() => insertFormatting("__", "__")} title="Underline" className="w-8 h-8 rounded hover:bg-white/[0.06] flex items-center justify-center underline text-sm text-white/80 active:scale-95 transition-all">U</button> */}
 
               <button
                 type="button"
@@ -494,11 +494,11 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
               {showMoreToolbar && (
                 <div className="flex items-center gap-4 bg-[#090e15] border border-white/[0.08] rounded px-1.5 py-2">
                   <button type="button" onClick={() => insertFormatting("- ", "")} title="Bullet list" className="w-5 h-5 rounded hover:bg-white/[0.08] text-white/70"><List /></button>
-                  <button type="button" onClick={() => insertFormatting("1. ", "")} title="Numbered list" className="w-5 h-5 rounded hover:bg-white/[0.08] flex items-center justify-center text-white/70"><ListOrdered /></button>
+                  {/* <button type="button" onClick={() => insertFormatting("1. ", "")} title="Numbered list" className="w-5 h-5 rounded hover:bg-white/[0.08] flex items-center justify-center text-white/70"><ListOrdered /></button> */}
                   <button type="button" onClick={() => insertFormatting("`", "`")} title="Code" className="w-5 h-5 rounded hover:bg-white/[0.08] flex items-center justify-center text-emerald-400"><Code /></button>
                   <button type="button" onClick={openLinkPopup} title="Insert Link" className="w-5 h-5 rounded hover:bg-white/[0.08] flex items-center justify-center text-emerald-400"><Link /></button>
                   <button type="button" onClick={() => setShowImagePopup(true)} title="Insert Image" className="w-5 h-5 rounded hover:bg-white/[0.08] flex items-center justify-center text-emerald-400"><Image /></button>
-                  <button type="button" onClick={() => insertFormatting("> ", "")} title="Blockquote" className="w-5 h-5 rounded hover:bg-white/[0.08] flex items-center justify-center text-white/70"><Quote /></button>
+                  {/* <button type="button" onClick={() => insertFormatting("> ", "")} title="Blockquote" className="w-5 h-5 rounded hover:bg-white/[0.08] flex items-center justify-center text-white/70"><Quote /></button> */}
                 </div>
               )}
             </div>
