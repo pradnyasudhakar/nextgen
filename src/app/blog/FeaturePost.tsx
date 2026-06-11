@@ -68,7 +68,7 @@ export default function BlogContent({ featuredPost }: { featuredPost: Post | nul
                     <User className="w-8 h-8" />
                   </div>
                   <div>
-                    <P className="text-[1rem] flex gap-3 text-[#555555] mb-2 leading-none">
+                    <P className="text-[1rem] flex gap-1 text-[#555555] mb-2 leading-none">
                       By 
                       <span className="font-[600]">
                         {featuredPost.writerName}
