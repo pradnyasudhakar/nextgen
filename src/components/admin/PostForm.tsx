@@ -275,7 +275,7 @@ export default function PostForm({ mode, initialData }: PostFormProps) {
     "block font-mono text-[10px] tracking-[0.18em] uppercase text-white/35 mb-2";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
+    <form onSubmit={handleSubmit}  className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-5">
           <div>

@@ -87,6 +87,7 @@ function LoginForm() {
         {/* Form */}
         <form
           onSubmit={handleSubmit}
+          autoComplete="off"  
           className="flex flex-col gap-5"
           style={{ animation: "fadeUp 0.5s 0.18s both" }}
           noValidate
@@ -123,7 +124,7 @@ function LoginForm() {
               <input
                 id="email"
                 type="email"
-                autoComplete="email"
+                autoComplete="off"  
                 required
                 placeholder="admin@example.com"
                 value={email}
