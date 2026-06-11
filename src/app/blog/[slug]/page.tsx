@@ -82,14 +82,14 @@ export default async function BlogDetailsPage({ params }: Props) {
       </section>
 
       {/* Body */}
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-26 py-20">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-26  lg:py-20">
         <div className="flex flex-col lg:flex-row gap-12">
 
           {/* ── Main Content ── */}
           <div className="flex-1 min-w-0">
 {/* Intro Description - paragraph wise */}
 {post.description && (
-  <div className="mb-6">
+  <div className="mb-6 mt-6 lg:mt-0 ">
     {post.description.split("\n").filter(Boolean).map((para, i) => (
       <p key={i} className="text-[#555555] text-[1rem] leading-relaxed mb-4">
         {para}
