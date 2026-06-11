@@ -53,7 +53,7 @@ const RenderContent = ({ content, path }: { content: string; path?: string }) =>
           ),
 
           h6: ({ node, ...props }) => (
-            <h6 className="text-[1rem] font-[500] text-primary mt-4 mb-2">
+            <h6 className="text-[1rem] font-[600] text-primary mt-4 mb-2">
               {props.children}
             </h6>
           ),
