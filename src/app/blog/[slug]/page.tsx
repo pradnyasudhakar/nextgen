@@ -14,10 +14,8 @@ type Props = {
 
 export default async function BlogDetailsPage({ params }: Props) {
   const { slug } = await params;
-  
 
   const post = await prisma.post.findUnique({ where: { slug } });
-  const shareUrl = encodeURIComponent(`https://nextgenlg.com.au/blog/${post?.slug}`);
 
   if (!post || !post.published) notFound();
 
@@ -125,41 +123,23 @@ export default async function BlogDetailsPage({ params }: Props) {
               <p className="text-sm font-normal text-[#555555]  tracking-wide mb-3">
                 Share this article
               </p>
-             
-
-<div className="flex gap-3">
-  {/* Gmail */}
-  <a 
-    href={`https://mail.google.com/mail/?view=cm&to=&su=Check this post&body=${shareUrl}`}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Email" 
-    className="w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-[#9C9C9C] transition-colors"
-  >
-    <Mail className="w-4 h-4 text-[#FFFFFF]" />
-  </a>
-
-  {/* Instagram - direct share nahi hota, profile pe jaata hai */}
-  <a 
-    href="https://www.instagram.com/nextgenlg/" 
-    target="_blank" 
-    aria-label="Instagram" 
-    className="w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-[#9C9C9C] transition-colors"
-  >
-    <Instagram className="w-4 h-4 text-[#FFFFFF]" />
-  </a>
-
-  {/* LinkedIn */}
-  <a 
-    href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="LinkedIn" 
-    className="w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-[#9C9C9C] transition-colors"
-  >
-    <Linkedin fill="currentColor" strokeWidth={0} className="w-4 h-4 text-[#FFFFFF]" />
-  </a>
-</div>
+              <div className="flex gap-3">
+                <a 
+  href="https://mail.google.com/mail/?view=cm&to=admin@nextgenlg.com.au" 
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Email" 
+  className="w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-[#9C9C9C] transition-colors"
+>
+  <Mail className="w-4 h-4 text-[#FFFFFF]" />
+</a>
+                <a href="https://www.instagram.com/nextgenlg/" target="_blank" aria-label="Instagram" className="w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-[#9C9C9C] transition-colors">
+                  <Instagram className="w-4 h-4 hover:text-primary text-[#FFFFFF]" />
+                </a>
+                <a href="https://www.linkedin.com/company/nextgen-lending-group/" target="_blank" aria-label="LinkedIn" className="w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-[#9C9C9C] transition-colors">
+                  <Linkedin fill="currentColor" strokeWidth={0} className="w-4 h-4 hover:text-primary text-[#FFFFFF]" />
+                </a>
+              </div>
             </div>
 
            
