@@ -289,13 +289,7 @@ function LoginForm() {
           </button>
         </form>
 
-        {/* Footer */}
-        <p
-          className="mt-8 font-mono text-[10px] text-center tracking-widest text-white/15 uppercase"
-          style={{ animation: "fadeUp 0.5s 0.3s both" }}
-        >
-          All access attempts are logged and monitored
-        </p>
+       
       </div>
 
       {/* Keyframes injected inline — works without extra CSS file */}
