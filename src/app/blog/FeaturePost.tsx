@@ -27,7 +27,7 @@ export default function BlogContent({ featuredPost }: { featuredPost: Post | nul
         <Link href={`/blog/${featuredPost.slug}`} className="group block">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-md overflow-hidden border border-[#9C9C9C]  hover:shadow-lg transition-shadow duration-300">
             {/* Image */}
-            <div className="relative h-64 lg:h-80 bg-[#d1d5db] overflow-hidden">
+            <div className="relative h-64 lg:h-full bg-[#d1d5db] overflow-hidden">
               {featuredPost.coverImage ? (
                 <Image
                   src={featuredPost.coverImage}
