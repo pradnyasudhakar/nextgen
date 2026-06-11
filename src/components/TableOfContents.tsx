@@ -32,7 +32,7 @@ export default function TableOfContents({ items }: { items: Item[] }) {
   if (items.length === 0) return null;
 
   return (
-    <div className="border border-[#9C9C9C] border-t-4 border-t-[#00674E] shadow-md bg-[#FBFBFB] rounded-[5px] p-4">
+    <div className="border border-[#9C9C9C] border-t-4 border-t-primary shadow-md bg-[#FBFBFB] rounded-[5px] p-4">
       
       <h3 className="text-base font-bold text-[#1a1a1a] mb-3">Table Of Content</h3>
       <ol className="space-y-2 list-none">

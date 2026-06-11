@@ -56,7 +56,7 @@ export default async function BlogDetailsPage({ params }: Props) {
           <div className="absolute rounded-md w-full h-130 sm:h-90 lg:h-100   inset-0 bg-black/40" />
 
           {/* Title overlay on image */}
-          <div className="absolute inset-0 z-10 flex flex-col justify-end mx-auto px-10 sm:px-16 lg:px-26 py-20 max-w-7xl">
+          <div className="absolute inset-0 z-10 flex flex-col justify-end mx-auto px-10 sm:px-16 lg:px-26 py-16 max-w-7xl">
             {post.smallTitle && (
              
               <P className="text-[#FBFBFB] capitalize font-normal">
@@ -70,11 +70,11 @@ export default async function BlogDetailsPage({ params }: Props) {
                           </span>
                         </Display>
             <div className="flex flex-wrap gap-3 text-[#FFFFFF] text-sm">
-              <span>By <b className="" >{post.writerName}</b></span>
+              <span className="flex gap-1.5" >By <b className="" >{post.writerName}</b></span>
               <span className="text-white/70" >|</span>
-              <span>{new Date(post.postedDate).toLocaleDateString("en-AU", { day: "numeric", month: "long", year: "numeric" })}</span>
+              <span className="flex gap-1.5">{new Date(post.postedDate).toLocaleDateString("en-AU", { day: "numeric", month: "long", year: "numeric" })}</span>
               <span className="text-white/70">|</span>
-              <span>{post.readTime} Min Read</span>
+              <span className="flex gap-1.5">{post.readTime} Min Read</span>
             </div>
           </div>
         </div>
@@ -82,14 +82,14 @@ export default async function BlogDetailsPage({ params }: Props) {
       </section>
 
       {/* Body */}
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-26  lg:py-20">
+      <div className="max-w-7xl bg-[#FFFFF] mx-auto px-6 md:px-10 lg:px-26  lg:py-20">
         <div className="flex flex-col lg:flex-row gap-12">
 
           {/* ── Main Content ── */}
           <div className="flex-1 min-w-0">
 {/* Intro Description - paragraph wise */}
 {post.description && (
-  <div className="mb-6 mt-6 lg:mt-0 ">
+  <div className="mb-6 mt-6 md:mt-0 lg:mt-0 ">
     {post.description.split("\n").filter(Boolean).map((para, i) => (
       <p key={i} className="text-[#555555] text-[1rem] leading-relaxed mb-4">
         {para}
@@ -119,24 +119,30 @@ export default async function BlogDetailsPage({ params }: Props) {
           <aside className="w-full lg:w-75 shrink-0 space-y-8 lg:sticky lg:top-6 lg:self-start">
 
              {/* Share */}
-            <div className="border border-[#9C9C9C] border-t-4 border-t-primary shadow-md bg-[#FBFBFB] rounded-[5px] p-4">
+            <div className="border border-[#9C9C9C]  shadow-md bg-[#FBFBFB] rounded-[5px] p-4">
               <p className="text-sm font-normal text-[#555555]  tracking-wide mb-3">
                 Share this article
               </p>
               <div className="flex gap-3">
-                <a href="#" aria-label="Email" className="w-9 h-9 rounded-full  bg-primary  flex items-center justify-center hover:bg-gray-100 transition-colors">
-                  <Mail className="w-4 h-4 hover:text-primary text-[#FFFFFF]" />
-                </a>
-                <a href="#" aria-label="Instagram" className="w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-gray-100 transition-colors">
+                <a 
+  href="https://mail.google.com/mail/?view=cm&to=admin@nextgenlg.com.au" 
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Email" 
+  className="w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-[#9C9C9C] transition-colors"
+>
+  <Mail className="w-4 h-4 text-[#FFFFFF]" />
+</a>
+                <a href="https://www.instagram.com/nextgenlg/" target="_blank" aria-label="Instagram" className="w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-[#9C9C9C] transition-colors">
                   <Instagram className="w-4 h-4 hover:text-primary text-[#FFFFFF]" />
                 </a>
-                <a href="#" aria-label="LinkedIn" className="w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-gray-100 transition-colors">
+                <a href="https://www.linkedin.com/company/nextgen-lending-group/" target="_blank" aria-label="LinkedIn" className="w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-[#9C9C9C] transition-colors">
                   <Linkedin fill="currentColor" strokeWidth={0} className="w-4 h-4 hover:text-primary text-[#FFFFFF]" />
                 </a>
               </div>
             </div>
 
-            {/* Table of Contents */}
+           
              {/* Table of Contents */}
            <TableOfContents items={tableOfContents} />
             {/* Latest Posts */}

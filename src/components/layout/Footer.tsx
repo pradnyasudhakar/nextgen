@@ -61,7 +61,7 @@ export default function Footer() {
           <div className=" lg:ml-10 flex flex-col justify-between gap-10">
             {/* Social icons */}
             <div className="flex gap-3">
-              <a href="mailto:admin@nextgenlg.com.au" 
+              <a href="https://mail.google.com/mail/?view=cm&to=admin@nextgenlg.com.au" target="_blank" 
                 className="w-9 h-9 rounded-full flex items-center justify-center"
                 style={{ backgroundColor: "var(--color-primary)", color: "#fff" }}>
                 <Mail size={18} />
