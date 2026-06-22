@@ -33,7 +33,7 @@ const navLinks = [
   ],
 },
 
-  // { label: "Blogs", href: "/blog" },
+  { label: "Blogs", href: "/blog" },
   { label: "FAQs", href: "/faqs" },
 ];
 
