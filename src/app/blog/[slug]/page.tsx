@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { P, Display } from "@/components/ui/typography";
-import { Mail, Instagram, Linkedin, PhoneCall } from "lucide-react";
+import { Mail, Instagram, Linkedin, PhoneCall, Twitter } from "lucide-react";
 import TableOfContents from "@/components/TableOfContents";
 import FAQPage from "../BlogFaqs";
 
@@ -124,7 +124,7 @@ export default async function BlogDetailsPage({ params }: Props) {
                 Share this article
               </p>
               <div className="flex gap-3">
-                <a 
+                {/* <a 
   href="https://mail.google.com/mail/?view=cm&to=admin@nextgenlg.com.au" 
   target="_blank"
   rel="noopener noreferrer"
@@ -132,9 +132,12 @@ export default async function BlogDetailsPage({ params }: Props) {
   className="w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-[#9C9C9C] transition-colors"
 >
   <Mail className="w-4 h-4 text-[#FFFFFF]" />
-</a>
-                <a href="https://www.instagram.com/nextgenlg/" target="_blank" aria-label="Instagram" className="w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-[#9C9C9C] transition-colors">
+</a> */}
+                {/* <a href="https://www.instagram.com/nextgenlg/" target="_blank" aria-label="Instagram" className="w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-[#9C9C9C] transition-colors">
                   <Instagram className="w-4 h-4 hover:text-primary text-[#FFFFFF]" />
+                </a> */}
+                <a href="https://www.Twitter.com/company/nextgen-lending-group/" target="_blank" aria-label="LinkedIn" className="w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-[#9C9C9C] transition-colors">
+                  <Twitter fill="currentColor" strokeWidth={0} className="w-4 h-4 hover:text-primary text-[#FFFFFF]" />
                 </a>
                 <a href="https://www.linkedin.com/company/nextgen-lending-group/" target="_blank" aria-label="LinkedIn" className="w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-[#9C9C9C] transition-colors">
                   <Linkedin fill="currentColor" strokeWidth={0} className="w-4 h-4 hover:text-primary text-[#FFFFFF]" />
