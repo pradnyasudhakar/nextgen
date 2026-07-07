@@ -9,20 +9,20 @@ import { ChevronRight } from "lucide-react";
 export const dynamic = "force-dynamic";
 
 export default async function BlogPage() {
-  // Featured post fetch karo
-  const featuredPost = await prisma.post.findFirst({
-    where: { published: true },
-    orderBy: { createdAt: "desc" },
-  });
+  // Featured post fetch karo — sabse pehle add kiya gaya blog
+const featuredPost = await prisma.post.findFirst({
+  where: { published: true },
+  orderBy: { createdAt: "asc" }, // ← "desc" ki jagah "asc" kiya
+});
 
-  // All Blogs mein featured ko exclude karo
-  const posts = await prisma.post.findMany({
-    where: {
-      published: true,
-      NOT: { id: featuredPost?.id ?? "" }, // ← exclude featured
-    },
-    orderBy: { createdAt: "desc" },
-  });
+// All Blogs mein featured ko exclude karo
+const posts = await prisma.post.findMany({
+  where: {
+    published: true,
+    NOT: { id: featuredPost?.id ?? "" },
+  },
+  orderBy: { createdAt: "desc" }, // baaki blogs newest-first hi rahenge
+});
 
 
   return (
