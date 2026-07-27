@@ -50,11 +50,11 @@ export default function Navbar() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", fn);
-    return () => window.removeEventListener("scroll", fn);
-  }, []);
+useEffect(() => {
+  const fn = () => setScrolled(window.scrollY > 10);
+  window.addEventListener("scroll", fn, { passive: true });
+  return () => window.removeEventListener("scroll", fn);
+}, []);
 
   // Track navbar height for drawer positioning
   useEffect(() => {
@@ -117,7 +117,9 @@ export default function Navbar() {
                   className=" p-2"
                   width={200}
                   height={52}
-                  alt=""
+                  alt="NextGen Lending Group"
+                  priority
+                  
                 />
               </span>
             </Link>

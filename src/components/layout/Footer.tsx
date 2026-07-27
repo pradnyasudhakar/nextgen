@@ -14,7 +14,8 @@ export default function Footer() {
           {/* COL 1 — Logo + address + links */}
           <div className="flex flex-col justify-between " >
             <Link href="/">
-              <Image src="/images/nextgen-logo-1.png" width={220} height={60} alt="NextGen" />
+              <Image src="/images/nextgen-logo-1.png" width={220} height={60} alt="NextGen Lending Group"
+  priority />
             </Link>
 
             <p className="mt-10 leading-snug text-[0.9rem] text-[#555555]">
@@ -26,7 +27,7 @@ export default function Footer() {
             </p>
 
             <div className="flex flex-row gap-3 mt-6 text-[0.8rem] text-[#555555] underline flex-wrap">
-              <Link href="/privacy-policy">Privacy policy</Link>
+              <Link href="/privacy-policy">Privacy  policy</Link>
               <Link href="/disclaimer">Disclaimer</Link>
             </div>
             <div className="flex flex-row md:-mt-3 gap-3  text-[0.8rem] text-[#555555] underline flex-wrap">
@@ -61,17 +62,17 @@ export default function Footer() {
           <div className=" lg:ml-10 flex flex-col justify-between gap-10">
             {/* Social icons */}
             <div className="flex gap-3">
-              <a href="https://mail.google.com/mail/?view=cm&to=admin@nextgenlg.com.au" target="_blank" 
+              <a href="https://mail.google.com/mail/?view=cm&to=admin@nextgenlg.com.au" target="_blank" rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full flex items-center justify-center"
                 style={{ backgroundColor: "var(--color-primary)", color: "#fff" }}>
                 <Mail size={18} />
               </a>
-              <a href="https://www.instagram.com/nextgenlg/" target="_blank"
+              <a href="https://www.instagram.com/nextgenlg/" target="_blank" rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full flex items-center justify-center"
                 style={{ backgroundColor: "var(--color-primary)", color: "#fff" }}>
                 <Instagram size={18} />
               </a>
-              <a href="https://www.linkedin.com/company/nextgen-lending-group/" target="_blank"
+              <a href="https://www.linkedin.com/company/nextgen-lending-group/" target="_blank" rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full flex items-center justify-center"
                 style={{ backgroundColor: "var(--color-primary)", color: "#fff" }}>
                 <Linkedin size={18} fill="currentColor" strokeWidth={0} />

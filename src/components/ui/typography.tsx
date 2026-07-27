@@ -84,7 +84,7 @@ export function Small({ className, ...props }: React.HTMLAttributes<HTMLParagrap
 export function Label({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
     <p
-      className={cn("text-[0.7rem]  font-extrabold text-[#9C9C9C] uppercase tracking-[0.26em] ", className)}
+      className={cn("text-[0.7rem]  font-extrabold text-[#6B6B6B] uppercase tracking-[0.26em] ", className)}
       {...props}
     />
   );
