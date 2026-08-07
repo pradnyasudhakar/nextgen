@@ -14,15 +14,14 @@ export default function Footer() {
           {/* COL 1 — Logo + address + links */}
           <div className="flex flex-col justify-between " >
             <Link href="/">
-              <Image src="/images/nextgen-logo-1.png" width={220} height={60} alt="NextGen Lending Group"
-  priority />
+              <Image src="/webp-img/nextgen-logo-1.webp" width={220} height={60} alt="NextGen Lending Group" />
             </Link>
 
             <p className="mt-10 leading-snug text-[0.9rem] text-[#555555]">
               © {new Date().getFullYear()} ZAK Consultancy Pty Ltd.
             </p>
             <p className="mt-0 flex items-center gap-2 leading-snug text-[0.9rem] text-[#555555]">
-              <Image src="/images/location.png" alt="location" width={14} height={14} />
+              <Image src="/webp-img/location.webp" alt="location" width={14} height={14} />
               PO Box 52, Vermont, VIC 3133
             </p>
 
@@ -80,7 +79,7 @@ export default function Footer() {
             </div>
 
             {/* FBAA Logo */}
-            <Image src="/images/footer-logo.png" width={120} height={40} alt="FBAA" />
+            <Image src="/webp-img/footer-logo.webp" width={120} height={40} alt="FBAA" />
           </div>
 
         </div>

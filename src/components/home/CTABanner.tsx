@@ -11,7 +11,7 @@ export default function CTABanner() {
           style={{ backgroundColor: "#f0f2f0" }}
         >
           {/* Background Image */}
-          <Image src="/images/cta-bg.png" alt="" fill className="" />
+          <Image src="/webp-img/cta-bg.webp" alt="" fill className="" />
 
           {/* Gradient border bottom */}
           <div

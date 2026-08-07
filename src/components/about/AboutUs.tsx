@@ -40,7 +40,7 @@ export default function AboutSection() {
            {/* ── Left: Image ── */}
           <div className="relative rounded-md w-full h-75 sm:w-full sm:h-120 lg:w-115 lg:h-95 overflow-hidden">
             <Image
-              src="/images/about-img-2.png"
+              src="/webp-img/about-img-2.webp"
               alt="Two professionals discussing finance documents"
               fill
               className="object-cover"

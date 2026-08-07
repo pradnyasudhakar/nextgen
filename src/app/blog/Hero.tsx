@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section className="w-full px-3 overflow-hidden">
       <div
-        style={{ backgroundImage: "url('/images/blog-bg.png')" }}
+        style={{ backgroundImage: "url('/webp-img/blog-bg.webp')" }}
         className="w-full h-130 sm:h-90 lg:h-100 rounded-md bg-cover bg-center bg-no-repeat relative"
       >
         

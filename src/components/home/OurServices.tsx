@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const services = [
   {
-    icon: "/images/icon-1.png",
+    icon: "/webp-img/icon-1.webp",
     titleGreen: "Home",
     titleBlack: "Loans",
     description:
@@ -12,7 +12,7 @@ const services = [
     href: "#",
   },
   {
-    icon: "/images/icon-2.png",
+    icon: "/webp-img/icon-2.webp",
     titleGreen: "Commercial",
     titleBlack: "Loans",
     description:
@@ -20,7 +20,7 @@ const services = [
     href: "#",
   },
   {
-    icon: "/images/icon-3.png",
+    icon: "/webp-img/icon-3.webp",
     titleGreen: "Business",
     titleBlack: "Finance",
     description:
@@ -28,7 +28,7 @@ const services = [
     href: "#",
   },
   {
-    icon: "/images/icon-4.png",
+    icon: "/webp-img/icon-4.webp",
     titleGreen: "Asset",
     titleBlack: "Finance",
     description:
@@ -36,7 +36,7 @@ const services = [
     href: "#",
   },
   {
-    icon: "/images/icon-5.png",
+    icon: "/webp-img/icon-5.webp",
     titleGreen: "Development",
     titleBlack: "Finance",
     description:
@@ -44,7 +44,7 @@ const services = [
     href: "#",
   },
   {
-    icon: "/images/icon-6.png",
+    icon: "/webp-img/icon-6.webp",
     titleGreen: "SMSF",
     titleBlack: "Finance",
     description:

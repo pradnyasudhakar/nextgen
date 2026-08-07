@@ -90,7 +90,7 @@ export default function CalculatorsPage() {
         <section className="w-full px-3 overflow-hidden">
           <div
             className="w-full h-130 sm:h-90 lg:h-100 rounded-[20px]
-            bg-[url('/images/calculator.png')] bg-black/20 bg-blend-overlay bg-position-[65%] lg:bg-cover bg-no-repeat"
+            bg-[url('/webp-img/calculator.webp')] bg-black/20 bg-blend-overlay bg-position-[65%] lg:bg-cover bg-no-repeat"
           >
             <div className="flex items-center h-130 sm:h-90 lg:h-100 max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-20">
               <div className="max-w-120 lg:max-w-160 2xl:max-w-200">

@@ -249,21 +249,21 @@ export default function ContactPage() {
               0424-687-866
             </P>
             <P className="flex items-center gap-3">
-              <Image src="/images/mail.png" alt="email" width={20} height={20} />
+              <Image src="/webp-img/mail.webp" alt="email" width={20} height={20} />
               admin@nextgenlg.com.au
             </P>
             <P className="flex items-center gap-3">
-              <Image src="/images/clock.png" alt="hours" width={20} height={20} />
+              <Image src="/webp-img/clock.webp" alt="hours" width={20} height={20} />
               Monday to Friday, 9 AM – 6 PM (AEDT)
             </P>
             <P className="flex items-center gap-3">
-              <Image src="/images/send.png" alt="address" width={20} height={20} />
+              <Image src="/webp-img/send.webp" alt="address" width={20} height={20} />
               PO Box 52, Vermont, VIC 3133
             </P>
           </div>
 
           <div className="relative mt-8 h-70 rounded-md overflow-hidden">
-            <Image src="/images/contact-img.png" alt="contact" fill className="object-cover" />
+            <Image src="/webp-img/contact-img.webp" alt="contact" fill className="object-cover" />
           </div>
         </div>
       </div>

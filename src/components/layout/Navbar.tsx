@@ -110,19 +110,17 @@ useEffect(() => {
             ref={dropdownRef}
           >
             {/* Logo */}
-            <Link href="/" className="flex items-center shrink-0">
-              <span className="text-[2rem] text-primary font-[600] uppercase tracking-[0.04em]">
-                <Image
-                  src="/images/nextgen-logo-1.png"
-                  className=" p-2"
-                  width={200}
-                  height={52}
-                  alt="NextGen Lending Group"
-                  priority
-                  
-                />
-              </span>
-            </Link>
+          
+<Link href="/" className="flex items-center shrink-0">
+  <Image
+    src="/webp-img/nextgen-logo-1.webp"
+    className="p-2"
+    width={200}
+    height={52}
+    alt="NextGen Lending Group"
+    priority
+  />
+</Link>
 
             {/* Desktop Nav */}
             <div className="hidden text-[0.9rem] lg:flex items-center gap-1">

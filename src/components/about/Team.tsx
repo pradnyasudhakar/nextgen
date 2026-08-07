@@ -8,7 +8,7 @@ export default function MeetTeam() {
     <section>
       <div className="max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-10">
 
-        <div className="relative rounded-[15px] overflow-hidden bg-[url('/images/a-bg.png')] bg-[#EBEBEB] bg-cover bg-center  ">
+        <div className="relative rounded-[15px] overflow-hidden bg-[url('/webp-img/a-bg.webp')] bg-[#EBEBEB] bg-cover bg-center  ">
 
           <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] items-center">
 
@@ -16,7 +16,7 @@ export default function MeetTeam() {
             <div className="p-8 lg:p-8  lg:pr-0 flex justify-start items-center">
               <div className="w-full border border-primary  h-auto lg:w-auto lg:h-88 rounded-md overflow-hidden shrink-0">
                 <Image
-                  src="/images/team-1.png"
+                  src="/webp-img/team-1.webp"
                   alt="Zoher Kakajiwala"
                   width={280}
                   height={400}
