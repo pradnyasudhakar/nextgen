@@ -1,6 +1,20 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import "./globals.css";
 import ConditionalLayout from "@/components/layout/ConditionalLayout";
+
+const eudoxusSans = localFont({
+  src: [
+    { path: "./fonts/EudoxusSans-ExtraLight.woff2", weight: "200", style: "normal" },
+    { path: "./fonts/EudoxusSans-Light.woff2", weight: "300", style: "normal" },
+    { path: "./fonts/EudoxusSans-Regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/EudoxusSans-Medium.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/EudoxusSans-Bold.woff2", weight: "700", style: "normal" },
+    { path: "./fonts/EudoxusSans-ExtraBold.woff2", weight: "800", style: "normal" },
+  ],
+  display: "swap",
+  variable: "--font-eudoxus",   // 👈 naam badla
+});
 
 export const metadata: Metadata = {
   title: {
@@ -51,17 +65,11 @@ export default function RootLayout({
 }) {
   return (
     <html
-      className="[&::-webkit-scrollbar]:hidden [scrollbar-width:none]"
+      className={`${eudoxusSans.variable} [&::-webkit-scrollbar]:hidden [scrollbar-width:none]`}
       lang="en"
       suppressHydrationWarning
     >
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://stijndv.com/fonts/Eudoxus-Sans.css"
-        />
-      </head>
-      <body className="flex flex-col min-h-screen" suppressHydrationWarning>
+      <body className="flex flex-col min-h-screen font-sans" suppressHydrationWarning>
         <ConditionalLayout>
           <main className="flex-1">{children}</main>
         </ConditionalLayout>

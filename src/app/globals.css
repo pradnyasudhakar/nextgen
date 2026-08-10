@@ -1,7 +1,7 @@
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    IMPORTS — must be first
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-@import url("https://stijndv.com/fonts/Eudoxus-Sans.css");
+/* @import url("https://stijndv.com/fonts/Eudoxus-Sans.css"); */
 @import "tailwindcss";
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -18,7 +18,7 @@
   --color-light:         #f5f9f7;
 
   /* Font */
-  --font-sans: "Eudoxus Sans", sans-serif;
+  --font-sans: var(--font-eudoxus), sans-serif;
 
   /* Font Weights */
   --font-light:    300;
@@ -54,7 +54,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family:             "Eudoxus Sans", sans-serif;
+   font-family: var(--font-eudoxus), sans-serif;
   color:                   #0F0F0F;
   background:              #FBFBFB;
   -webkit-font-smoothing:  antialiased;
