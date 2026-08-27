@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import localFont from "next/font/local";
 import "./globals.css";
 import ConditionalLayout from "@/components/layout/ConditionalLayout";
@@ -13,7 +14,7 @@ const eudoxusSans = localFont({
     { path: "./fonts/EudoxusSans-ExtraBold.woff2", weight: "800", style: "normal" },
   ],
   display: "swap",
-  variable: "--font-eudoxus",   // 👈 naam badla
+  variable: "--font-eudoxus",
 });
 
 export const metadata: Metadata = {
@@ -73,6 +74,20 @@ export default function RootLayout({
         <ConditionalLayout>
           <main className="flex-1">{children}</main>
         </ConditionalLayout>
+
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-PT0XH3BZRY"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-PT0XH3BZRY');
+          `}
+        </Script>
       </body>
     </html>
   );
