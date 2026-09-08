@@ -1,3 +1,39 @@
+// import type { NextConfig } from "next";
+
+// const nextConfig: NextConfig = {
+//   turbopack: {
+//     root: __dirname,
+//   },
+//   images: {
+//   formats: ['image/avif', 'image/webp'],
+//   minimumCacheTTL: 60,  
+// },
+//   async headers() {
+//     return [
+//       {
+//         source: "/images/:path*",
+//         headers: [
+//           {
+//             key: "Cache-Control",
+//             value: "public, max-age=31536000, immutable",
+//           },
+//         ],
+//       },
+//       {
+//         source: "/webp-img/:path*",
+//         headers: [
+//           {
+//             key: "Cache-Control",
+//             value: "public, max-age=31536000, immutable",
+//           },
+//         ],
+//       },
+//     ];
+//   },
+// };
+
+// export default nextConfig;
+
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -5,9 +41,8 @@ const nextConfig: NextConfig = {
     root: __dirname,
   },
   images: {
-  formats: ['image/avif', 'image/webp'],
-  minimumCacheTTL: 60,   // seconds — error bhi zyada der cache nahi rahega
-},
+    formats: ['image/avif', 'image/webp'],
+  },
   async headers() {
     return [
       {
@@ -29,6 +64,18 @@ const nextConfig: NextConfig = {
         ],
       },
     ];
+  },
+  async rewrites() {
+    return {
+      beforeFiles: [],
+      afterFiles: [
+        {
+          source: "/uploads/:path*",
+          destination: "/api/uploads/:path*",
+        },
+      ],
+      fallback: [],
+    };
   },
 };
 

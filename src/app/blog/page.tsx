@@ -23,7 +23,7 @@ const posts = await prisma.post.findMany({
   },
   orderBy: { createdAt: "desc" }, // baaki blogs newest-first hi rahenge
 });
-
+console.log("post",posts)
 
   return (
     <>
