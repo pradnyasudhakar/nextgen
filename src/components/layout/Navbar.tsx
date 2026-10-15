@@ -166,6 +166,7 @@ useEffect(() => {
                     ) : (
                       <Link
                         href={link.href}
+                        prefetch={false}
                         className="flex items-center px-4 py-2 rounded-lg text-[0.9rem] transition-all duration-200 whitespace-nowrap"
                         style={{
                           color: active ? "var(--color-primary)" : "#002566",
@@ -199,6 +200,7 @@ useEffect(() => {
                           <Link
                             key={`${link.label}-${child.label}`}
                             href={child.href}
+                            prefetch={false}
                             className="block px-4 py-1.5 text-[0.9rem] transition-colors duration-150"
                             style={{ color: "#002566" }}
                             onMouseEnter={(e) => {
@@ -407,6 +409,7 @@ useEffect(() => {
                             <Link
                               key={`${link.label}-${child.label}`}
                               href={child.href}
+                              prefetch={false}
                               onClick={() => setIsOpen(false)}
                               className="px-4 py-2.5 rounded-lg text-[0.9rem] transition-colors duration-150"
                               style={{ color: "#002566" }}
@@ -420,6 +423,7 @@ useEffect(() => {
                   ) : (
                     <Link
                       href={link.href}
+                      prefetch={false}
                       onClick={() => setIsOpen(false)}
                       className="block px-4 py-3 rounded-lg text-[0.9rem] transition-colors duration-200"
                       style={

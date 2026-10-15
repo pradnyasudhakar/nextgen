@@ -26,11 +26,11 @@ export default function Footer() {
             </p>
 
             <div className="flex flex-row gap-3 mt-6 text-[0.8rem] text-[#555555] underline flex-wrap">
-              <Link href="/privacy-policy">Privacy  policy</Link>
-              <Link href="/disclaimer">Disclaimer</Link>
+              <Link href="/privacy-policy" prefetch={false}>Privacy  policy</Link>
+              <Link href="/disclaimer" prefetch={false}>Disclaimer</Link>
             </div>
             <div className="flex flex-row md:-mt-3 gap-3  text-[0.8rem] text-[#555555] underline flex-wrap">
-              <Link href="/compliments-concerns">Compliments and Concerns</Link>
+              <Link href="/compliments-concerns" prefetch={false}>Compliments and Concerns</Link>
             
             </div>
           </div>
@@ -39,21 +39,21 @@ export default function Footer() {
           <div>
             <p className="mb-5 font-[700] text-[0.9rem] text-primary tracking-wide">SERVICES</p>
             <ul className="space-y-3 text-[#555555] text-[0.95rem]">
-              <li><Link href="/homeloan" className="hover:text-primary transition-colors">Home Finance</Link></li>
-              <li><Link href="/commercial-loan" className="hover:text-primary transition-colors">Commercial Finance</Link></li>
-              <li><Link href="/business-finance" className="hover:text-primary transition-colors">Business Finance</Link></li>
-              <li><Link href="/asset-finance" className="hover:text-primary transition-colors">Asset Finance</Link></li>
-              <li><Link href="/development-finance" className="hover:text-primary transition-colors">Development Finance</Link></li>
-              <li><Link href="/smsf-finance" className="hover:text-primary transition-colors">SMSF Finance</Link></li>
+              <li><Link href="/homeloan" prefetch={false}   className="hover:text-primary transition-colors">Home Finance</Link></li>
+              <li><Link href="/commercial-loan" prefetch={false} className="hover:text-primary transition-colors">Commercial Finance</Link></li>
+              <li><Link href="/business-finance" prefetch={false} className="hover:text-primary transition-colors">Business Finance</Link></li>
+              <li><Link href="/asset-finance" prefetch={false} className="hover:text-primary transition-colors">Asset Finance</Link></li>
+              <li><Link href="/development-finance" prefetch={false} className="hover:text-primary transition-colors">Development Finance</Link></li>
+              <li><Link href="/smsf-finance" prefetch={false} className="hover:text-primary transition-colors">SMSF Finance</Link></li>
             </ul>
           </div>
 
           {/* COL 3 — About / Blogs / FAQs */}
           <div>
             <div className="flex flex-col gap-5">
-              <Link href="/about" className="font-[700] text-[0.9rem] text-primary tracking-wide uppercase hover:opacity-80">ABOUT Us</Link>
-              <Link href="/blog" className="font-[700] text-[0.9rem] text-primary tracking-wide uppercase hover:opacity-80">BLOGS</Link>
-              <Link href="/faqs" className="font-[700] text-[0.9rem] text-primary tracking-wide uppercase hover:opacity-80">FAQS</Link>
+              <Link href="/about" prefetch={false} className="font-[700] text-[0.9rem] text-primary tracking-wide uppercase hover:opacity-80">ABOUT Us</Link>
+              <Link href="/blog" prefetch={false} className="font-[700] text-[0.9rem] text-primary tracking-wide uppercase hover:opacity-80">BLOGS</Link>
+              <Link href="/faqs" prefetch={false} className="font-[700] text-[0.9rem] text-primary tracking-wide uppercase hover:opacity-80">FAQS</Link>
             </div>
           </div>
 
@@ -79,7 +79,7 @@ export default function Footer() {
             </div>
 
             {/* FBAA Logo */}
-            <Image src="/webp-img/footer-logo.webp" width={120} height={40} alt="FBAA" />
+            <Image src="/webp-img/footer-logo.webp"  width={120} height={40} alt="FBAA" />
           </div>
 
         </div>
