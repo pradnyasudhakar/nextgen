@@ -16,24 +16,45 @@ type Props = {
 };
 
 // ✅ Yeh ADD karo - existing function se PEHLE
+const SITE = "https://www.nextgenlg.com.au";
+
+function absoluteUrl(path?: string | null) {
+  if (!path) return undefined;
+  if (path.startsWith("http")) return path;
+  return `${SITE}${path.startsWith("/") ? "" : "/"}${path}`;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = await prisma.post.findUnique({ where: { slug } });
 
-  if (!post) return { title: "Post Not Found" };
+  if (!post || !post.published) return { title: "Post Not Found" };
+
+  const description =
+    post.description?.split("\n")[0]?.slice(0, 200) ??
+    "Read on NextGen Lending Group";
+  const image = absoluteUrl(post.coverImage) ?? absoluteUrl("/images/NextGenicon.png");
+  const url = `${SITE}/blog/${post.slug}`;
 
   return {
     title: post.title,
-    description: post.description?.split("\n")[0] ?? "Read on NextGen Lending Group",
+    description,
+    alternates: { canonical: url },
     openGraph: {
       title: post.title,
-      description: post.description?.split("\n")[0] ?? "Read on NextGen Lending Group",
-      url: `https://nextgenlg.com.au/blog/${post.slug}`,
+      description,
+      url,
       siteName: "NextGen Lending Group",
-      images: post.coverImage
-        ? [{ url: post.coverImage, width: 1200, height: 630, alt: post.title }]
-        : [],
+      locale: "en_AU",
       type: "article",
+      publishedTime: new Date(post.postedDate).toISOString(),
+      images: [{ url: image!, width: 1200, height: 630, alt: post.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description,
+      images: [image!],
     },
   };
 }
@@ -43,7 +64,9 @@ export default async function BlogDetailsPage({ params }: Props) {
 
   const post = await prisma.post.findUnique({ where: { slug } });
 
-  if (!post || !post.published) notFound();
+if (!post || !post.published) notFound();
+
+const shareUrl = `${SITE}/blog/${post.slug}`;
 
   // Latest posts for sidebar
   const latestPosts = await prisma.post.findMany({
@@ -154,7 +177,7 @@ export default async function BlogDetailsPage({ params }: Props) {
 
     {/* Facebook */}
     
-     <a href={`https://www.facebook.com/sharer/sharer.php?u=https://nextgenlg.com.au/blog/${post.slug}`}
+     <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Share on Facebook"
@@ -176,7 +199,7 @@ export default async function BlogDetailsPage({ params }: Props) {
 
     {/* LinkedIn */}
     
-    <a  href={`https://www.linkedin.com/sharing/share-offsite/?url=https://nextgenlg.com.au/blog/${post.slug}`}
+    <a  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Share on LinkedIn"
@@ -187,7 +210,7 @@ export default async function BlogDetailsPage({ params }: Props) {
 
     {/* WhatsApp */}
     
-    <a  href={`https://wa.me/?text=${encodeURIComponent(post.title + " - https://nextgenlg.com.au/blog/" + post.slug)}`}
+    <a  href={`https://wa.me/?text=${encodeURIComponent(`${post.title} - ${shareUrl}`)}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Share on WhatsApp"

@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import ConditionalLayout from "@/components/layout/ConditionalLayout";
+import SocialSidebar from "@/components/ui/SocialSidebar";
 
 const eudoxusSans = localFont({
   src: [
@@ -74,6 +75,7 @@ export default function RootLayout({
         <ConditionalLayout>
           <main className="flex-1">{children}</main>
         </ConditionalLayout>
+        <SocialSidebar />
       </body>
       <GoogleAnalytics gaId="G-PT0XH3BZRY" />
     </html>
