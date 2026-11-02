@@ -8,7 +8,7 @@ import {
 const links = [
   {
     label: "WhatsApp",
-    href: "https://wa.me/92686717402",
+    href: "https://wa.me/61424687866",
     icon: <FaWhatsapp size={16} />,
     external: true,
   },
@@ -43,7 +43,7 @@ export default function SocialSidebar() {
           {...(item.external
             ? { target: "_blank", rel: "noopener noreferrer" }
             : {})}
-          className="flex h-8 w-8 items-center justify-center text-white border-b border-white/20 last:border-b-0 sm:h-9 sm:w-9"
+          className="flex h-8 w-8 items-center justify-center text-white border-b border-white/20 last:border-b-0 sm:h-10 sm:w-10"
           style={{ backgroundColor: "var(--color-primary)" }}
         >
           {item.icon}
