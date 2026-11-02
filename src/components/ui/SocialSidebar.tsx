@@ -7,11 +7,11 @@ import {
 
 const links = [
   {
-    label: "WhatsApp",
-    href: "https://wa.me/61424687866",
-    icon: <FaWhatsapp size={16} />,
-    external: true,
-  },
+  label: "WhatsApp",
+  href: `https://wa.me/61424687866?text=${encodeURIComponent("Can I get more info")}`,
+  icon: <FaWhatsapp size={16} />,
+  external: true,
+},
   {
     label: "Facebook",
     href: "https://www.facebook.com/nextgenlg",

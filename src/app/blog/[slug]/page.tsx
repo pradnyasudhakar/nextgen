@@ -8,6 +8,7 @@ import { P, Display } from "@/components/ui/typography";
 import { Mail, Instagram, Linkedin, PhoneCall, Twitter, Facebook } from "lucide-react";
 import TableOfContents from "@/components/TableOfContents";
 import FAQPage from "../BlogFaqs";
+import CopyLinkButton from "@/components/ui/CopyLinkButton";
 
 
 
@@ -221,6 +222,7 @@ const shareUrl = `${SITE}/blog/${post.slug}`;
         <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.135 1.535 5.879L.057 23.882a.5.5 0 0 0 .61.641l6.188-1.453A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.031-1.378l-.361-.214-3.733.877.947-3.645-.235-.374A9.867 9.867 0 0 1 2.106 12C2.106 6.533 6.533 2.106 12 2.106c5.467 0 9.894 4.427 9.894 9.894 0 5.467-4.427 9.894-9.894 9.894z"/>
       </svg>
     </a>
+    <CopyLinkButton url={shareUrl} />
 
   </div>
 </div>
