@@ -8,13 +8,13 @@ import {
 const links = [
   {
   label: "WhatsApp",
-  href: `https://wa.me/61424687866?text=${encodeURIComponent("Can I get more info")}`,
+  href: `https://wa.me/61424687866?text=${encodeURIComponent("Can I get more info?")}`,
   icon: <FaWhatsapp size={16} />,
   external: true,
 },
   {
     label: "Facebook",
-    href: "https://www.facebook.com/nextgenlg",
+    href: "https://www.facebook.com/NextGenLendingGroup/",
     icon: <FaFacebookF size={14} />,
     external: true,
   },
