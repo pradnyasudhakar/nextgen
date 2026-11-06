@@ -11,7 +11,7 @@ export default function Hero() {
   useEffect(() => {
     const id = setInterval(() => {
       setActive((prev) => (prev + 1) % 2);
-    }, 3000);
+    }, 4500);
     return () => clearInterval(id);
   }, []);
 
