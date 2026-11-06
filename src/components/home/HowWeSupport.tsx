@@ -55,7 +55,7 @@ const features: {
 
 export default function HowWeSupport() {
   return (
-    <section className="">
+    <section id="how-we-support" className="scroll-mt-24">
       <div className="max-w-7xl mx-auto px-10 sm:px-16 lg:px-26 py-10">
 
         <div className="section-header">
